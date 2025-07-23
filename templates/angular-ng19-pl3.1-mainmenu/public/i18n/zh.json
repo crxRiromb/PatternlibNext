@@ -1,0 +1,28 @@
+{
+  "app.app-title": "模板",
+  "app.error-general-data-access": "数据访问失败",
+  "app.error-general-exception-message": "发生意外错误！",
+  "app.footer-imprint": "版权声明superlongtext版权声明superlongte2版权声明superlongtext",
+  "app.footer-privacy-policy": "数据保护",
+  "app.footer-terms-of-use": "使用条款",
+  "app.main-menu": {
+    "home": "主页",
+    "httperror": "HTTP 404 错误",
+    "footer": "页脚",
+    "pl4integration": "PL4 集成"
+  },
+  "pages": {
+    "home": {
+      "page-title": "主页",
+      "page-subtitle": "Angular 19 模板（Patternlib 3.1.2）"
+    },
+    "form-controls": {
+      "options": {
+        "MUC": "慕尼黑 (zh)",
+        "JFK": "纽约 (zh)",
+        "YYZ": "多伦多 (zh)",
+        "MIL": "米兰 (zh)"
+      }
+    }
+  }
+}

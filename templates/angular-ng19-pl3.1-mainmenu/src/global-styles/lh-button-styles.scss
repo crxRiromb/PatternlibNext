@@ -1,0 +1,29 @@
+@use './lh-font-utils';
+
+.lh-submit-button {
+  background-color: #ffd000;
+  color: black;
+  outline: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  padding: 0px 19px;
+  min-height: 48px;
+  padding-left: 35px;
+  padding-right: 35px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+
+  @include lh-font-utils.lh-font-copytext-small;
+
+  &:hover {
+    background-color: #eb6f24;
+  }
+
+  &:active {
+    background-color: black;
+    color: white;
+  }
+}

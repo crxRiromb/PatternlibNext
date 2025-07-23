@@ -1,0 +1,45 @@
+<div class="page-container">
+  <!-- Page meta header - breadcrumb -->
+  <div class="page-metahead">
+    <patternlib-breadcrumb-v1 aria-label="Breadcrumb">
+      <patternlib-breadcrumb-item-v1 routerLink="/home">
+        <patternlib-link type="prominent" [hideIcon]="true" label="Home"></patternlib-link>
+      </patternlib-breadcrumb-item-v1>
+      <patternlib-breadcrumb-item-v1>Footer Example</patternlib-breadcrumb-item-v1>
+    </patternlib-breadcrumb-v1>
+  </div>
+
+  <!-- Page content -->
+  <div class="page-content">
+    <!-- Page head -->
+    <div class="page-head">
+      <patternlib-headline headingTag="h1" separator="bottom" [headline]="'Footer Example'" />
+      <div class="lh-mt-32px"></div>
+    </div>
+
+    <!-- Page body -->
+    <div class="page-body">
+      <p>The footer supports two modes: <strong>fixed</strong> and <strong>scrollable</strong>.</p>
+      <p style="margin-top: 8px">
+        The fixed mode will keep the footer at the bottom of the page, while the scrollable mode will allow the footer
+        to scroll with the page. The scollable footer is configured to show a <strong>Scroll to Top</strong> icon button
+        on the right side. The settings for the footer is a global setting and will affect all pages.
+      </p>
+      <p style="margin-top: 8px">
+        Please note that the mode for Mobile Breakpoint is automatically set to <strong>scrollable</strong>.
+      </p>
+      <p style="margin-top: 8px">You can toggle between the two modes by clicking the button below.</p>
+
+      <div class="lh-mt-32px"></div>
+      <patternlib-button (click)="onToggleFooterStyle()">Toggle footer mode</patternlib-button>
+
+      <p>
+        Current footer mode: <strong>{{ footerFixed ? 'fixed' : 'scrollable' }}</strong>
+      </p>
+
+      <p style="margin-top: 64px; height: 1600px">
+        The page is filled with empty space to demonstrate the scrollable footer.
+      </p>
+    </div>
+  </div>
+</div>

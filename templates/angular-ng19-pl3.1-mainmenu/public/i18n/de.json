@@ -1,0 +1,27 @@
+{
+  "app.app-title": "Template",
+  "app.error-general-data-access": "Datenzugriff fehlgeschlagen",
+  "app.error-general-exception-message": "Unerwarteter Fehler!",
+  "app.footer-imprint": "ImpressumSuperLangerTextWasZumÜberlaufFührt",
+  "app.footer-privacy-policy": "Datenschutz",
+  "app.footer-terms-of-use": "Nutzungsbedingungen",
+  "app.main-menu": {
+    "home": "Home",
+    "footer": "Fußzeile",
+    "pl4integration": "PL4 Integration"
+  },
+  "pages": {
+    "home": {
+      "page-title": "Startseite",
+      "page-subtitle": "Angular 19 Template mit Patternlib 3.1.2"
+    },
+    "form-controls": {
+      "options": {
+        "MUC": "München (de)",
+        "JFK": "New York (de)",
+        "YYZ": "Toronto (de)",
+        "MIL": "Mailand (de)"
+      }
+    }
+  }
+}

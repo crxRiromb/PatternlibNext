@@ -1,0 +1,13 @@
+@use 'global-styles/lh-button-styles';
+@use 'global-styles/lh-common-styles';
+@use 'global-styles/lh-flex-styles';
+@use 'global-styles/lh-page-styles';
+@use 'global-styles/lh-spacing-styles';
+
+@use 'global-styles/lh-font-utils';
+
+@use 'modern-normalize';
+
+body {
+  @include lh-font-utils.lh-font-copytext-small;
+}

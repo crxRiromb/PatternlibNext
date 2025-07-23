@@ -1,0 +1,109 @@
+<div class="page-container">
+  <!-- Page meta header - breadcrumb -->
+  <div class="page-metahead">
+    <!-- Placeholder for breadcrumb -->
+    <div style="height: 48px"></div>
+  </div>
+
+  <!-- Page content -->
+  <div class="page-content">
+    <!-- Page head -->
+    <div class="page-head">
+      <div class="title">{{ 'pages.home.page-title' | transloco }}</div>
+      <div>{{ 'pages.home.page-subtitle' | transloco }}</div>
+    </div>
+
+    <!-- Page body -->
+    <div class="page-body">
+      <patternlib-headline headingTag="h2" separator="none" animation="never" [headline]="'About this Template'" />
+
+      <p>
+        This Angular app serves as an example application to demonstrate the integration and usage of the
+        <strong>Patternlib</strong> in an <strong>Angular Standalone App</strong>. The goal is to provide developers
+        with a quick and easy introduction to using the Patternlib by showcasing practical use cases.
+      </p>
+
+      <div class="lh-mt-32px"></div>
+      <patternlib-headline headingTag="h3" separator="none" animation="never" [headline]="'Key Features of the App'" />
+      <ul>
+        <li>
+          <strong>Standalone Angular Architecture:</strong> The app is based on Angular's new Standalone API and does
+          not require traditional <code>NgModules</code>.
+        </li>
+        <li>
+          <strong>Integration of the Patternlib:</strong> Demonstrates how Patternlib components can be integrated and
+          used in an Angular application.
+        </li>
+        <li>
+          <strong>CSS-Toolkit:</strong> The app doesn't use any external CSS toolkit. Instead, it relies on pure CSS and
+          SCSS.
+        </li>
+        <li>
+          <strong>Signals:</strong> The Signal pattern is used for communication between components, allowing for loose
+          coupling. <br />On the Footer page, the footer mode (fixed or scrollable) can be toggled. <br />The value is
+          transmitted via a signal to the Shell component, which manages the footer.
+        </li>
+        <li>
+          <strong>Translation Library:</strong> The app uses the Transloco library for text internationalization.
+          <br />Transloco is particularly useful for multilingual applications in the context of Angular Standalone
+          Apps. <br />Transloco is integrated into the app and ready for use.<br />
+          <i>Note: For efficiency reasons, not all parts of the app are localized—only the menu.</i>
+        </li>
+        <li>
+          <strong>Main Menu:</strong> The app includes a main menu that enables navigation between the different pages
+          of the app.
+        </li>
+        <li>
+          <strong>Code as a Learning Resource:</strong> Developers are provided with an easy-to-understand codebase to
+          help them get started quickly.
+        </li>
+      </ul>
+
+      <p>
+        This application is ideal for developers who want to familiarize themselves with the
+        <strong>Patternlib</strong> and efficiently use it in their Angular Standalone Apps.
+      </p>
+
+      <div class="lh-mt-32px"></div>
+      <patternlib-headline headingTag="h3" separator="none" animation="never" [headline]="'Alternativ Template'" />
+      <p>
+        Another template is available with much more content and a more complex menu structure. It uses a side
+        navigation in desktop mode and a top navigation in mobile mode. Furthermore is has multiple Patternlib
+        components implemented. The template <strong>angular-ng19-pl3.1-sidebar</strong> is also available for download.
+      </p>
+
+      <div class="lh-mt-32px"></div>
+      <patternlib-headline headingTag="h3" separator="none" animation="never" headline="Changelog" />
+
+      <!-- 3.1.2 -->
+      <patternlib-headline headingTag="h4" separator="none" animation="never" headline="Patternlib 3.1.2" />
+      <ul>
+        <li>
+          <strong>Components:</strong> The majority of the Patternlib component examples have been moved to the app with
+          the sidebar.
+        </li>
+        <li><strong>Template:</strong> The menu has been simplified.</li>
+      </ul>
+
+      <!-- 3.1.0 -->
+      <patternlib-headline headingTag="h4" separator="none" animation="never" headline="Patternlib 3.1.0" />
+      <ul>
+        <li><strong>Forms:</strong> Add Timeinput component.</li>
+        <li><strong>Header:</strong> Update portal header with new menu flyouts.</li>
+        <li>
+          <strong>Pages:</strong> Cluster components and organize main menu accordingly, e.g. R-T (more pages will
+          follow).
+        </li>
+        <li><strong>Patternlib:</strong> Update Patternlib to version 3.1.0</li>
+      </ul>
+
+      <!-- 2.21.2 -->
+      <patternlib-headline headingTag="h4" separator="none" animation="never" headline="Patternlib 2.21.2" />
+      <ul>
+        <li>
+          <strong>Initial Version:</strong> First version of the Angular 19 Standalone App with Patternlib 2.21.2.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

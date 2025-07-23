@@ -1,0 +1,19 @@
+.page-container {
+  .page-metahead {
+    padding-left: 20px;
+    margin-bottom: 24px; // marging between breadcrumbs and content
+
+    @media screen and (min-width: 768px) {
+      padding-left: 0;
+    }
+  }
+
+  .page-content {
+    background-color: white;
+    padding: 20px;
+
+    .page-body {
+      margin-top: 32px;
+    }
+  }
+}

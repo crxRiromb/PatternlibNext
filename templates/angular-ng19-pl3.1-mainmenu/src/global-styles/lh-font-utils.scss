@@ -1,0 +1,49 @@
+// Regular font
+@mixin lh-font-copytext {
+  font-family: var(--ppl-font-family-copy-text);
+  font-size: var(--ppl-font-size-copy); // 18px
+  line-height: var(--ppl-line-heigh-copy); // 28px
+}
+
+@mixin lh-font-copytext-small {
+  font-family: var(--ppl-font-family-copy-text);
+  font-size: var(--ppl-font-size-copy-small); // 16px
+  line-height: var(--ppl-line-heigh-copy-small); // 24px
+}
+
+@mixin lh-font-copytext-smaller {
+  font-family: var(--ppl-font-family-copy-text);
+  font-size: var(--ppl-font-size-copy-smaller); // 14px
+  line-height: var(--ppl-line-heigh-copy-smaller); // 20px
+}
+
+@mixin lh-font-copytext-extrasmall {
+  font-family: var(--ppl-font-family-copy-text);
+  font-size: var(--ppl-font-size-copy-extrasmall); // 12px
+  line-height: var(--ppl-line-heigh-copy-extrasmall); // 16px
+}
+
+// Bold font
+@mixin lh-font-bold {
+  font-family: var(--ppl-font-family-text-bold);
+  font-size: var(--ppl-font-size-copy); // 18px
+  line-height: var(--ppl-line-heigh-copy); // 28px
+}
+
+@mixin lh-font-bold-small {
+  font-family: var(--ppl-font-family-text-bold);
+  font-size: var(--ppl-font-size-copy-small); // 16px
+  line-height: var(--ppl-line-heigh-copy-small); // 24px
+}
+
+@mixin lh-font-bold-smaller {
+  font-family: var(--ppl-font-family-text-bold);
+  font-size: var(--ppl-font-size-copy-smaller); // 14px
+  line-height: var(--ppl-line-heigh-copy-smaller); // 20px
+}
+
+@mixin lh-font-bold-extra-small {
+  font-family: var(--ppl-font-family-text-bold);
+  font-size: var(--ppl-font-size-copy-extrasmall); // 12px
+  line-height: var(--ppl-line-heigh-copy-extrasmall); // 16px
+}

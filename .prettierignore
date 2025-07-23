@@ -1,0 +1,13 @@
+**/lotties/*.json
+dist
+www
+.idea
+.vscode
+hydrate
+test-results
+playwright-report
+loader
+**/*.md
+**/*.mdx
+storybook-static
+projects-for-statistics

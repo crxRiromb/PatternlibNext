@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1024 1024"
+    fill="currentColor"
+    stroke="currentColor"
+    stroke-width="14px"
+    aria-hidden="true" 
+    data-lh-customized="true">
+    <g transform="scale(1, -1) translate(0, -1024)">
+        <path d="M488 192c-172.8 0-312 139.2-312 312s139.2 312 312 312c172.8 0 312-139.2 312-312s-139.2-312-312-312zM488 784c-153.6 0-280-126.4-280-280s126.4-280 280-280 280 126.4 280 280-126.4 280-280 280zM687.769 283.464l22.627 22.627 239.848-239.848-22.627-22.627-239.848 239.848z" />
+    </g>
+</svg>

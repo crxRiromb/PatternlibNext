@@ -1,0 +1,25 @@
+.page-content {
+  padding: 0px;
+
+  .page-head {
+    background-color: #ffd000;
+    color: black;
+    padding: 24px;
+    height: 144px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+      font-family: var(--font-liebherr-text-bold);
+      font-size: 36px;
+      line-height: 1.2;
+      color: black;
+    }
+  }
+
+  .page-body {
+    padding: 24px;
+  }
+}

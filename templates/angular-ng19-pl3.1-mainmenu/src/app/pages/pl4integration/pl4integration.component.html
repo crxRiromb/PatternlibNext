@@ -1,0 +1,32 @@
+<div class="page-container">
+  <!-- Page meta header - breadcrumb -->
+  <div class="page-metahead">
+    <patternlib-breadcrumb-v1 aria-label="Breadcrumb">
+      <patternlib-breadcrumb-item-v1 routerLink="/home">
+        <patternlib-link type="prominent" [hideIcon]="true" label="Home"></patternlib-link>
+      </patternlib-breadcrumb-item-v1>
+      <patternlib-breadcrumb-item-v1>PL 4 Integration</patternlib-breadcrumb-item-v1>
+    </patternlib-breadcrumb-v1>
+  </div>
+
+  <!-- Page content -->
+  <div class="page-content">
+    <!-- Page head -->
+    <div class="page-head">
+      <patternlib-headline headingTag="h1" separator="bottom" [headline]="'PL 4 Integration'" />
+      <div class="lh-mt-32px"></div>
+    </div>
+
+    <!-- Page body -->
+    <div class="page-body">
+      <p>Button from Patternlib 3</p>
+      <patternlib-button (click)="onClickButton3()">Patternlib 3</patternlib-button>
+
+      <p class="lh-mt-16px">Button from Patternlib 4</p>
+      <pl-button-angular (pl-click)="onClickButton4()" label="Patternlib 4"></pl-button-angular>
+
+      <p class="lh-mt-16px">Icon from Patternlib 4</p>
+      <pl-icon-angular alt="Globe Icon von Patternlib 4" iconName="globe"></pl-icon-angular>
+    </div>
+  </div>
+</div>

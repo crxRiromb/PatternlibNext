@@ -1,0 +1,25 @@
+{
+  "name": "@liebherr2/angularnext",
+  "version": "0.0.1",
+  "description": "Angular Wrapper für @liebherr2/plnext.",
+  "peerDependencies": {
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@liebherr2/plnext": "file:.yalc/@liebherr2/plnext"
+  },
+  "module": "fesm2022/liebherr2-angularnext.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./fesm2022/liebherr2-angularnext.mjs"
+    }
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

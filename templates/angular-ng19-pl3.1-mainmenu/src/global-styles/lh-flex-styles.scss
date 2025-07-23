@@ -1,0 +1,46 @@
+// flex
+.lh-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lh-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.lh-flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.lh-flex-no-wrap {
+  flex-wrap: nowrap;
+}
+
+.lh-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.lh-flex-grow {
+  flex-grow: 1;
+}
+
+.lh-gap-8px {
+  gap: 8px;
+}
+.lh-gap-16px {
+  gap: 16px;
+}
+.lh-gap-32px {
+  gap: 32px;
+}
+
+.lh-flex-justify-end {
+  justify-content: flex-end;
+}
+
+.lh-flex-space-between {
+  justify-content: space-between;
+}

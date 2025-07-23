@@ -1,0 +1,33 @@
+{
+  "name": "@liebherr2/plnext",
+  "version": "0.0.1",
+  "description": "Web-Komponenten-Bibliothek basierend auf Lit.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./*": {
+      "import": "./dist/*"
+    }
+  },
+  "scripts": {
+    "build": "vite build && tsc --emitDeclarationOnly && node --max-old-space-size=4096 ./node_modules/@custom-elements-manifest/analyzer/cli.js analyze --litelement",
+    "build:watch": "vite build --watch",
+    "serve": "web-dev-server --node-resolve --open",
+    "lint": "eslint 'src/**/*.ts'",
+    "test": "web-test-runner 'dist/test/**/*.test.js' --node-resolve",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "lit": "^3.1.0"
+  },
+  "customElements": "custom-elements.json",
+  "yalcSig": "c7648de4d593018cbfa32c8ce7d3d29b"
+}

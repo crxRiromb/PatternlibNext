@@ -1,0 +1,240 @@
+<div class="app-container">
+  <patternlib-header-portal
+    [sticky]="false"
+    [unseenNotificationCount]="0"
+    portalName="{{ 'app.app-title' | transloco }}"
+    [stickyByDefault]="true"
+    (lhClickBrandLogo)="handleLogoClick()"
+  >
+    <!-- Main Navigation -->
+    <patternlib-main-navigation-portal>
+      @for (item of mainNavigationItems; track item.id) {
+        @if (item.show === true) {
+          <patternlib-main-navigation-item-portal
+            [id]="item.id"
+            [routerLink]="item.route"
+            [isActive]="currentRoute === item.route"
+            tabindex="{-1}"
+          >
+            {{ item.label | transloco }}
+          </patternlib-main-navigation-item-portal>
+        }
+      }
+    </patternlib-main-navigation-portal>
+
+    <!-- Slot Search -->
+    <patternlib-navigation-icon-item slot="search" iconName="search" (click)="handleSearchClick()" />
+
+    <!-- Slot language -->
+    <patternlib-language-picker-service
+      slot="language"
+      [selected]="currLang"
+      [options]="languageData"
+      (lhLanguageSelect)="handleLanguageChange($event)"
+    />
+
+    <!-- Slot info-header -->
+    <patternlib-navigation-icon-item iconName="info-circle" slot="info-header" (click)="handleInfoClick()" />
+
+    <!-- Slot more-first-row -->
+    <patternlib-panel-flyout
+      slot="more-first-row"
+      [scrollablefitcontent]="false"
+      [autoHeight]="false"
+      width="748"
+      height="600"
+      useFlyoutGroups
+    >
+      <patternlib-navigation-icon-item
+        slot="element-icon"
+        iconName="my-notifier"
+        [badge]="notificationData.length.toString()"
+      />
+
+      <div slot="flyout-headline">Messages ({{ notificationData.length }})</div>
+      <div slot="flyout-action-right">
+        <patternlib-link type="prominent" label="View all" variant="context" />
+      </div>
+      <div slot="flyout-items">
+        @for (notification of notificationData; track notification.id) {
+          <patternlib-notification-item [viewed]="notification.isRead" [isImportant]="notification.isImportant">
+            <div slot="icon-start">
+              <patternlib-message-type-item type="icon" [iconName]="notification.iconName">
+              </patternlib-message-type-item>
+            </div>
+
+            <div slot="headline">{{ notification.subject }}</div>
+            <div slot="info">{{ notification.publishedSince }} • {{ notification.genreName }}</div>
+
+            <div slot="icon-end">
+              <patternlib-icon icon-name="x" size="24px"></patternlib-icon>
+            </div>
+          </patternlib-notification-item>
+        }
+      </div>
+      <div slot="flyout-action-left">
+        <patternlib-link type="prominent" label="Clear all" variant="action" icon="x"></patternlib-link>
+      </div>
+    </patternlib-panel-flyout>
+
+    <patternlib-menu-flyout
+      slot="avatar"
+      flyout-position="auto"
+      width="280px"
+      user-name="John Doe"
+      user-info="Liebherr"
+      user-initials="jd"
+      default-align="left"
+      [zIndex]="200"
+      useFlyoutGroups
+    >
+      <patternlib-navigation-icon-item slot="flyout-button">
+        <patternlib-avatar initials="LB"></patternlib-avatar>
+      </patternlib-navigation-icon-item>
+
+      <div slot="flyout-content" style="display: grid">
+        <patternlib-menu-flyout-separator></patternlib-menu-flyout-separator>
+        <patternlib-menu-flyout-item label="Personal data"></patternlib-menu-flyout-item>
+        <patternlib-menu-flyout-item label="Colleagues"></patternlib-menu-flyout-item>
+        <patternlib-menu-flyout-item label="Address book"></patternlib-menu-flyout-item>
+        <patternlib-menu-flyout-item label="Business relations"></patternlib-menu-flyout-item>
+        <patternlib-menu-flyout-item label="Products"></patternlib-menu-flyout-item>
+        <patternlib-menu-flyout-item label="Orders"></patternlib-menu-flyout-item>
+        <patternlib-menu-flyout-item label="Offers"></patternlib-menu-flyout-item>
+        <patternlib-menu-flyout-item label="Messages"></patternlib-menu-flyout-item>
+        <patternlib-menu-flyout-item
+          label="Licences and Services"
+          style="border-bottom: none"
+        ></patternlib-menu-flyout-item>
+        <patternlib-menu-flyout-separator></patternlib-menu-flyout-separator>
+        <patternlib-menu-flyout-item isActionItem label="Sign in with other Company">
+          <patternlib-icon icon-name="profile-change" slot="icon-left" bold></patternlib-icon>
+        </patternlib-menu-flyout-item>
+        <patternlib-menu-flyout-item isActionItem label="Log out">
+          <patternlib-icon icon-name="exit" slot="icon-left" bold></patternlib-icon>
+        </patternlib-menu-flyout-item>
+      </div>
+    </patternlib-menu-flyout>
+
+    <patternlib-panel-flyout
+      slot="more-first-row"
+      [scrollablefitcontent]="false"
+      [autoHeight]="false"
+      [width]="748"
+      [height]="600"
+      useFlyoutGroups
+    >
+      <patternlib-navigation-icon-item slot="element-icon" iconName="app-launcher"></patternlib-navigation-icon-item>
+
+      <div slot="flyout-headline">My apps ({{ applauncherData.length }})</div>
+      <div slot="flyout-action-right">
+        <patternlib-link type="prominent" label="Request Licence" variant="context"></patternlib-link>
+      </div>
+
+      <div slot="flyout-items" class="app-launcher-items" style="display: flex; flex-direction: column">
+        <h4 class="app-launcher-items-headline">Favourites</h4>
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap; column-gap: 24px">
+          @for (app of applauncherData; track app.id) {
+            <patternlib-app-launcher-item [label]="app.displayName" [iconName]="app.iconName">
+            </patternlib-app-launcher-item>
+          }
+        </div>
+
+        <div style="margin-top: 8px">
+          <h4 class="app-launcher-items-headline">All apps</h4>
+          <div style="display: flex; flex-direction: row; flex-wrap: wrap; column-gap: 24px">
+            @for (app of applauncherData; track app.id) {
+              <patternlib-app-launcher-item [label]="app.displayName" [iconName]="app.iconName" />
+            }
+          </div>
+        </div>
+      </div>
+      <div slot="flyout-footer" style="margin-bottom: 32px">
+        <div class="empty space"></div>
+      </div>
+    </patternlib-panel-flyout>
+
+    <patternlib-panel-flyout
+      slot="more"
+      [scrollablefitcontent]="false"
+      [autoHeight]="false"
+      [width]="748"
+      [height]="600"
+      useFlyoutGroups
+    >
+      <patternlib-navigation-icon-item
+        slot="element-icon"
+        [iconName]="'shopping-cart'"
+        [badge]="basketData.length.toString()"
+      ></patternlib-navigation-icon-item>
+      <div slot="flyout-headline">Mini basket</div>
+      <div slot="flyout-action-right">
+        <patternlib-link type="prominent" label="View all" variant="context"></patternlib-link>
+      </div>
+      <div slot="flyout-notification">
+        <patternlib-notification-inline showIcon type="info">
+          <div slot="custom-content">
+            You received this cart from <b>&lt;shopManagerName&gt;</b>. on <b>8 July 2024, 10.17 a.m.</b> with a
+            personal message: I've sent you the shopping carts for review. Could you please take a look and complete the
+            orders? Thanks for your help!
+          </div>
+        </patternlib-notification-inline>
+      </div>
+      <div slot="flyout-items" class="mini-basket-items">
+        <div style="display: flex; flex-direction: column">
+          @for (basket of basketData; track basket.id) {
+            <patternlib-mini-basket-item
+              [sku]="basket.sku"
+              [name]="basket.name"
+              [imageUrl]="basket.imageUrl || ''"
+              [imageAlt]="basket.name"
+              [price]="'EUR 800'"
+              [priceStrikethrough]="'EUR 1000'"
+              [quantity]="basket.quantity + 'x'"
+              [badgeTopText]="basket.badgeTopText"
+              [badgeBottomText]="basket.badgeBottomText"
+            />
+          }
+        </div>
+      </div>
+      <div slot="flyout-action-left">
+        <patternlib-link type="prominent" label="New shopping cart" variant="action" icon="plus"></patternlib-link>
+      </div>
+      <div slot="flyout-action-button">
+        <patternlib-button display="block" label="Order shopping cart" icon-position="right">
+          <patternlib-icon iconName="font-arrow" size="24px" slot="icon" tabindex="-1" />
+        </patternlib-button>
+      </div>
+    </patternlib-panel-flyout>
+  </patternlib-header-portal>
+
+  <!-- Content -->
+  <div class="app-content-wrapper">
+    <patternlib-toast
+      #toastElementRef
+      position="bottom-center"
+      width="408px"
+      (lhClose)="handleToastCloseEvent($event)"
+      (lhUndo)="handleToastUndoEvent($event)"
+    />
+
+    <div id="app-content" class="app-content">
+      <router-outlet></router-outlet>
+    </div>
+
+    @if (translationInitialized) {
+      <patternlib-footer
+        id="footer"
+        class="footer"
+        [additionalLinks]="lazyFooterLinks"
+        [appResizeObserver]
+        [showArrowIcon]="!footerFixed"
+        [showLogo]="!footerFixed"
+        (appResizeEvent)="handleFooterResizeEvent($any($event))"
+        (lhClickArrowTop)="handleArrowTopClick()"
+        (lhClickBrandLogo)="handleLogoClick()"
+        (lhClickLink)="handleFooterLinkClick($any($event))"
+      />
+    }
+  </div>
+</div>

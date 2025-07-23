@@ -1,0 +1,29 @@
+.simplified-chinese {
+  font-size: 18px;
+  line-height: 1.3;
+
+  .sc-light {
+    font-family: var(--font-noto-head-hau);
+    margin-top: 24px;
+  }
+
+  .sc-regular {
+    font-family: var(--font-noto-text);
+    margin-top: 24px;
+  }
+
+  .sc-medium {
+    font-family: var(--font-noto-text-medium);
+    margin-top: 24px;
+  }
+
+  .sc-bold {
+    font-family: var(--font-noto-text-bold);
+    margin-top: 24px;
+  }
+
+  .sc-black {
+    font-family: var(--font-noto-head-corporate);
+    margin-top: 24px;
+  }
+}
