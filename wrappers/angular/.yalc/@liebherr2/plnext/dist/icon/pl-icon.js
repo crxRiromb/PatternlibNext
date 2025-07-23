@@ -17,15 +17,12 @@ let r = class extends f {
   }
   render() {
     const o = a[this.iconName] || a.default;
-    return c`
-      <img
-        src=${o}
-        alt=${this.alt}
-      />
-    `;
+    return c` <img src=${o} alt=${this.alt} /> `;
   }
 };
-r.styles = v`${h(y)}`;
+r.styles = v`
+    ${h(y)}
+  `;
 n([
   l({ type: String })
 ], r.prototype, "alt", 2);

@@ -16,11 +16,7 @@ let s = class extends m {
   }
   render() {
     return a`
-      <button
-        type=${this.type}
-        ?disabled=${this.disabled}
-        @click=${this._handleClick}
-      >
+      <button type=${this.type} ?disabled=${this.disabled} @click=${this._handleClick}>
         ${this.label ? a`<strong>${this.label}</strong>` : a`<slot></slot>`}
       </button>
     `;
@@ -34,7 +30,9 @@ let s = class extends m {
     this.dispatchEvent(e);
   }
 };
-s.styles = h`${f(c)}`;
+s.styles = h`
+    ${f(c)}
+  `;
 l([
   u({ type: String })
 ], s.prototype, "label", 2);
