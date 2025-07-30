@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --no-cache",
-    "start:symlinks": "ng serve --preserve-symlinks --no-cache",
+    "start": "ng serve",
+    "start:symlinks": "ng serve --preserve-symlinks",
     "start:watch": "nodemon --watch src --watch ../../angular-wrapper/dist -e ts,html,scss,js --exec \"npm run start\"",
     "build": "ng build",
     "test": "ng test",
