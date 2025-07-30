@@ -1,1 +1,0 @@
-{"version":3,"file":"pl-icon.d.ts","sourceRoot":"","sources":["../../src/icon/pl-icon.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,UAAU,EAAwB,MAAM,KAAK,CAAC;AAKvD,qBACa,MAAO,SAAQ,UAAU;IAEpC,GAAG,SAAM;IAGT,QAAQ,SAAW;IAEnB,MAAM,CAAC,MAAM,qEAEX;IAEF,MAAM;CAKP;AAED,OAAO,CAAC,MAAM,CAAC;IACb,UAAU,qBAAqB;QAC7B,SAAS,EAAE,MAAM,CAAC;KACnB;CACF"}

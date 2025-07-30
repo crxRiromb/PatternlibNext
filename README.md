@@ -1,14 +1,20 @@
 # Liebherr2 Patternlib Next
 
-## Build and Run
+## Single Build 
 
 ```bash
 npm install
 npm run build
-yalc publish
 ```
 
-## Storybook
+## Watch Build + Publish via Yalc
+
+```bash
+npm install
+npm yalc:watch
+```
+
+## Build+Open Storybook
 
 ```bash
 npm run storybook

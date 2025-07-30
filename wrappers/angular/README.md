@@ -3,12 +3,12 @@
 ## Build and Run
 
 ```bash
-yalc add @liebherr2/plnext
+yalc add @liebherr2/plnext # erzeugt Fehler, sihe unten
 npm install
 npm run build
 ```
 
-## Hinweis
+## Hinweis zu 'yalc add @liebherr2/plnext'
 
 Nach 'yalc add @liebherr2/plnext' wird die Abhängigkeit in der package.json bei dependencies hinzugefügt und nicht in peerDependencies.
 

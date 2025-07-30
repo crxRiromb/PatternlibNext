@@ -29,11 +29,12 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "format": "prettier --write \"src/**/*.{js,ts,json,md,html,css,scss}\"",
-    "format:check": "prettier --check \"src/**/*.{js,ts,json,md,html,css,scss}\""
+    "format:check": "prettier --check \"src/**/*.{js,ts,json,md,html,css,scss}\"",
+    "build:watch:angular-wrapper": "nodemon --watch wrappers/angular/src --ext ts,html,scss --exec \"(cd wrappers/angular && npm run build && yalc publish --push)\""
   },
   "dependencies": {
     "lit": "^3.1.0"
   },
   "customElements": "custom-elements.json",
-  "yalcSig": "cb3baa61f0ecba54ea5f9006904ad53e"
+  "yalcSig": "faabd0803b8d7a2e28be21e0fbb067a7"
 }

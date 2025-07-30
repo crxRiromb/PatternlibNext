@@ -30,8 +30,11 @@ export default meta;
 
 type Story = StoryObj;
 
+// Hinweis:
+// Die Custom Elements sollten nicht self-closing sein sonder explizit geschlossen werden.
+
 export const PrimaryStory: Story = {
-  render: args => html` <pl-button label=${args.label} ?disabled=${args.disabled} type=${args.type} /> `,
+  render: args => html`<pl-button label=${args.label} ?disabled=${args.disabled} type=${args.type}> </pl-button>`,
   args: {
     disabled: false,
     label: 'Klick mich',
@@ -40,7 +43,7 @@ export const PrimaryStory: Story = {
 };
 
 export const DisabledStory: Story = {
-  render: args => html` <pl-button label=${args.label} ?disabled=${args.disabled} type=${args.type} /> `,
+  render: args => html`<pl-button label=${args.label} ?disabled=${args.disabled} type=${args.type}> </pl-button>`,
   args: {
     disabled: true,
     label: 'Nicht klickbar',
