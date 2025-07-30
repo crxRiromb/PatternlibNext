@@ -21,7 +21,7 @@
     "prebuild": "npm run analyze",
     "build": "vite build && tsc --emitDeclarationOnly",
     "build:watch": "vite build --watch",
-    "yalc:publish": "npm run build && yalc publish --push",
+    "yalc:publish": "npm run build && yalc publish",
     "yalc:watch": "nodemon --watch src --ext ts,scss --exec \"npm run yalc:publish\"",
     "serve": "web-dev-server --node-resolve --open",
     "lint": "eslint 'src/**/*.ts'",
@@ -35,5 +35,5 @@
     "lit": "^3.1.0"
   },
   "customElements": "custom-elements.json",
-  "yalcSig": "d2d004a328e6f37b38a91b5fe3938f16"
+  "yalcSig": "d484ffdb5ddacf029504002b34440ed0"
 }

@@ -21,7 +21,7 @@
     "prebuild": "npm run analyze",
     "build": "vite build && tsc --emitDeclarationOnly",
     "build:watch": "vite build --watch",
-    "yalc:publish": "npm run build && yalc publish",
+    "yalc:publish": "npm run build && yalc publish --push",
     "yalc:watch": "nodemon --watch src --ext ts,scss --exec \"npm run yalc:publish\"",
     "serve": "web-dev-server --node-resolve --open",
     "lint": "eslint 'src/**/*.ts'",

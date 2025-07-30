@@ -3,6 +3,9 @@
   "packages": {
     "@liebherr2/plnext": {
       "signature": "d2d004a328e6f37b38a91b5fe3938f16"
+    },
+    "@liebherr2/angularnext": {
+      "signature": "7baacd9eb04bcb6d384d2954dd561dc7"
     }
   }
 }

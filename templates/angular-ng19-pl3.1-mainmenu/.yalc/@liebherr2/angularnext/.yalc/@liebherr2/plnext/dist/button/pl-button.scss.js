@@ -17,8 +17,8 @@ button {
   padding-right: 36px;
   border: 1px solid transparent;
   border-radius: 0;
-  // background-color: #ffd000;
-  background-color: green;
+  background-color: #ffd000;
+  background-color: red;
   color: black;
   cursor: pointer;
 }

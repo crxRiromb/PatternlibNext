@@ -9,7 +9,18 @@ npm run serve
 
 Open `http://localhost:4200/`.
 
+## Command archive
+
+```bash
+yalc link @liebherr2/plnext
+yalc link @liebherr2/angularnext
+
+npx ng cache clean
+```
+
 ## package.json
+"start": "ng serve --preserve-symlinks",
+
 
 "@liebherr2/plnext": "0.0.1",
 "@liebherr2/angularnext": "0.0.1",

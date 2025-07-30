@@ -27,7 +27,7 @@ Richtig wäre (manuell ändern):
 yalc publish
 
 # fügt symlinks hinz
-yalc link @liebherr2/plnext
+yalc link @liebherr2/plnext u
 
 # fügt Eintrag in package.json unter dependencies 
 # für das Release sollte der Eintrag zu peerDependencies geändert werden
