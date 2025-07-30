@@ -37,7 +37,7 @@ export const PrimaryStory: Story = {
   render: args => html`<pl-button label=${args.label} ?disabled=${args.disabled} type=${args.type}> </pl-button>`,
   args: {
     disabled: false,
-    label: 'Klick mich',
+    label: 'Klick mich 3',
     type: 'button',
   },
 };

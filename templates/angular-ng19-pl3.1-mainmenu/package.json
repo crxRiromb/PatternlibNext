@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "watchorg": "ng build --watch --configuration development",
+    "watch": "nodemon --watch src --watch .yalc/@liebherr2/angularnext -e ts,html,scss,js --exec \"ng build --watch --configuration development\"",
     "test": "ng test"
   },
   "private": true,

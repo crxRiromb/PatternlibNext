@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "description": "Angular Wrapper für @liebherr2/plnext.",
   "scripts": {
-    "build": "ng-packagr -p ng-package.json"
+    "build": "ng-packagr -p ng-package.json",
+    "yalc:publish": "npm run build && yalc publish",
+    "yalc:watch": "nodemon --watch src --watch ../../dist --ext ts,html,css,scss,js,d.ts --exec \"npm run yalc:publish\""
   },
   "peerDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",
-    "@liebherr2/plnext": "file:.yalc/@liebherr2/plnext"
+    "@liebherr2/plnext": "0.0.1"
   },
   "devDependencies": {
     "@angular/common": "^19.0.0",

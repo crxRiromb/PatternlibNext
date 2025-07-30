@@ -19,3 +19,10 @@ npm yalc:watch
 ```bash
 npm run storybook
 ```
+
+## Command Archive
+
+```bash
+yalc publish
+yalc publish --push
+```

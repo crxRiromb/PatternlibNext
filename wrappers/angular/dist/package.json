@@ -5,7 +5,7 @@
   "peerDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",
-    "@liebherr2/plnext": "file:.yalc/@liebherr2/plnext"
+    "@liebherr2/plnext": "0.0.1"
   },
   "module": "fesm2022/liebherr2-angularnext.mjs",
   "typings": "index.d.ts",
