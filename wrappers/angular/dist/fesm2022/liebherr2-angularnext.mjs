@@ -2,6 +2,7 @@ import * as i0 from '@angular/core';
 import { Input, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component } from '@angular/core';
 import '@liebherr2/plnext/button/pl-button.js';
 import '@liebherr2/plnext/icon/pl-icon.js';
+import '@liebherr2/plnext/itemlist/pl-itemlist.js';
 
 class PLButtonAngular {
     label = 'Button';
@@ -59,8 +60,33 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.1.1", ngImpor
             }] } });
 
 /**
+ * Angular component wrapper for the `pl-itemlist` web component.
+ * This component allows you to display a list of items with a headline.
+ */
+class PlItemlistAngular {
+    /**
+     * The headline for the list. Passed as an attribute.
+     */
+    headlineLabel = '';
+    /**
+     * The array of items to display. Passed as a property.
+     */
+    data = [];
+    static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "20.1.1", ngImport: i0, type: PlItemlistAngular, deps: [], target: i0.ɵɵFactoryTarget.Component });
+    static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "20.1.1", type: PlItemlistAngular, isStandalone: true, selector: "pl-itemlist-angular", inputs: { headlineLabel: "headlineLabel", data: "data" }, ngImport: i0, template: ` <pl-itemlist [attr.headline-label]="headlineLabel" [data]="data"></pl-itemlist> `, isInline: true, styles: [":host{display:block}\n"], changeDetection: i0.ChangeDetectionStrategy.OnPush });
+}
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.1.1", ngImport: i0, type: PlItemlistAngular, decorators: [{
+            type: Component,
+            args: [{ selector: 'pl-itemlist-angular', standalone: true, template: ` <pl-itemlist [attr.headline-label]="headlineLabel" [data]="data"></pl-itemlist> `, changeDetection: ChangeDetectionStrategy.OnPush, schemas: [CUSTOM_ELEMENTS_SCHEMA], styles: [":host{display:block}\n"] }]
+        }], propDecorators: { headlineLabel: [{
+                type: Input
+            }], data: [{
+                type: Input
+            }] } });
+
+/**
  * Generated bundle index. Do not edit.
  */
 
-export { PLButtonAngular, PLIconAngular };
+export { PLButtonAngular, PLIconAngular, PlItemlistAngular };
 //# sourceMappingURL=liebherr2-angularnext.mjs.map

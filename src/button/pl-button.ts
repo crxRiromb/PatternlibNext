@@ -4,12 +4,21 @@ import buttonStyles from './pl-button.scss?raw';
 
 @customElement('pl-button')
 export class PlButton extends LitElement {
-  @property({ type: String })
+  /**
+   * The label for the button.
+   */
+  @property({ type: String, reflect: true })
   label = '';
 
-  @property({ type: String })
+  /**
+   * The type of the button.
+   */
+  @property({ type: String, reflect: true })
   type: 'button' | 'submit' | 'reset' = 'button';
 
+  /**
+   * Whether the button is disabled.
+   */
   @property({ type: Boolean, reflect: true })
   disabled = false;
 
@@ -20,7 +29,7 @@ export class PlButton extends LitElement {
   render() {
     return html`
       <button type=${this.type} ?disabled=${this.disabled} @click=${this._handleClick}>
-        ${this.label ? html`<strong>${this.label}</strong>` : html`<slot></slot>`}
+        ${this.label ? html`${this.label}` : html`<slot></slot>`}
       </button>
     `;
   }

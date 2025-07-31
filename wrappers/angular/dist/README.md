@@ -1,24 +1,19 @@
 # Angular Wrapper for Liebherr2 Patternlib Next
 
-## Build and Run
+## Single Build
 
 ```bash
-yalc link @liebherr2/plnext # fügt symlinks hinzu
+yalc link @liebherr2/plnext
 npm install
 npm run build
 ```
 
-## Hinweis zu 'yalc add @liebherr2/plnext'
+## Watch Build + Publish via Yalc
 
-Nach 'yalc add @liebherr2/plnext' wird die Abhängigkeit in der package.json bei dependencies hinzugefügt und nicht in peerDependencies.
-
-Richtig wäre (manuell ändern):
-```json
-  "peerDependencies": {
-    "@angular/common": "^19.0.0",
-    "@angular/core": "^19.0.0",
-    "@liebherr2/plnext": "file:.yalc/@liebherr2/plnext"
-  },
+```bash
+yalc link @liebherr2/plnext
+npm install
+npm yalc:watch
 ```
 
 ## Commands archive
@@ -26,7 +21,7 @@ Richtig wäre (manuell ändern):
 ```bash
 yalc publish
 
-# fügt symlinks hinz
+# symlinks
 yalc link @liebherr2/plnext
 
 # fügt Eintrag in package.json unter dependencies 

@@ -5,10 +5,16 @@ import { iconMap } from './icon-map';
 
 @customElement('pl-icon')
 export class PlIcon extends LitElement {
-  @property({ type: String })
+  /**
+   * The alternative text for the icon.
+   */
+  @property({ type: String, reflect: true })
   alt = '';
 
-  @property({ type: String })
+  /**
+   * The name of the icon to display.
+   */
+  @property({ type: String, reflect: true })
   iconName = 'globe';
 
   static styles = css`

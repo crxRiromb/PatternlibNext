@@ -2,10 +2,10 @@
   "version": "v1",
   "packages": {
     "@liebherr2/plnext": {
-      "signature": "d7443cec56f7e594764f6e553ffab41c"
+      "signature": "d4d73353adf53412423e6687081e0682"
     },
     "@liebherr2/angularnext": {
-      "signature": "7baacd9eb04bcb6d384d2954dd561dc7"
+      "signature": "b2d4c0975a13b0c58b87c4306dec8658"
     }
   }
 }
