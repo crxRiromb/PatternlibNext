@@ -4,25 +4,21 @@
  */
 
 /* --- FONT FAMILIES --- */
-
-/* Default font families */
 $font-text-regular: LiebherrText-Regular, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
 $font-text-medium: LiebherrText-Medium, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
 $font-text-bold: LiebherrText-Bold, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
 $font-head-regular: LiebherrHead-Regular, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
 $font-head-black: LiebherrHead-Black, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
 
-/* Noto font families (for language overrides) */
 $font-noto-text-regular: NotoSansSC-Regular, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
 $font-noto-text-medium: NotoSansSC-Medium, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
 $font-noto-text-bold: NotoSansSC-Bold, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
 $font-noto-head-regular: NotoSansSC-Light, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
 $font-noto-head-black: NotoSansSC-Black, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
 
-/* LangPicker font families */
+/* --- LANG PICKER FONT FAMILIES --- */
 $font-lh-langpick-asia-regular: LH-LangPick-Asia-Regular, -apple-system, BlinkMacSystemFont, sans-serif;
 $font-lh-langpick-asia-bold: LH-LangPick-Asia-Bold, -apple-system, BlinkMacSystemFont, sans-serif;
-
 
 /* --- FONT SIZES & LINE HEIGHTS --- */
 $font-size-copy: 18px;

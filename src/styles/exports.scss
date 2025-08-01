@@ -1,7 +1,7 @@
 @use 'tokens' as token;
 
 :root {
-  /* Font Families */
+  /* --- FONT FAMILIES --- */
   --ppl-font-text-regular: #{token.$font-text-regular};
   --ppl-font-text-medium: #{token.$font-text-medium};
   --ppl-font-text-bold: #{token.$font-text-bold};
@@ -17,16 +17,16 @@
   --ppl-font-lh-langpick-asia-regular: #{token.$font-lh-langpick-asia-regular};
   --ppl-font-lh-langpick-asia-bold: #{token.$font-lh-langpick-asia-bold};
 
-  /* Language specific */
+  /* --- LANGUAGE SPECIFIC OVERRIDES --- */
   &[lang='zh'] {
     --ppl-font-text-regular: #{token.$font-noto-text-regular};
     --ppl-font-text-medium: #{token.$font-noto-text-medium};
     --ppl-font-text-bold: #{token.$font-noto-text-bold};
-    --ppl-font-head-hau: #{token.$font-noto-head-hau};
-    --ppl-font-head-corporate: #{token.$font-noto-head-corporate};
+    --ppl-font-head-regular: #{token.$font-noto-head-regular};
+    --ppl-font-head-black: #{token.$font-noto-head-black};
   }
 
-  /* Font sizes and line heights */
+  /* --- FONT SIZES & LINE HEIGHTS --- */
   --ppl-font-size-copy: #{token.$font-size-copy};
   --ppl-line-height-copy: #{token.$line-height-copy};
 
@@ -39,6 +39,55 @@
   --ppl-font-size-copy-extrasmall: #{token.$font-size-copy-extrasmall};
   --ppl-line-height-copy-extrasmall: #{token.$line-height-copy-extrasmall};
 
-  /* Misc */
+  /* --- MISC --- */
   --ppl-letter-spacing: #{token.$letter-spacing};
+
+  /* --- COLORS --- */
+  --ppl-color-artic-blue: #{token.$color-artic-blue};
+  --ppl-color-yellow: #{token.$color-yellow};
+  --ppl-color-blue: #{token.$color-blue};
+  --ppl-color-black: #{token.$color-black};
+  --ppl-color-white: #{token.$color-white};
+  --ppl-color-steel-50: #{token.$color-steel-50};
+  --ppl-color-steel-100: #{token.$color-steel-100};
+  --ppl-color-steel-200: #{token.$color-steel-200};
+  --ppl-color-steel-300: #{token.$color-steel-300};
+  --ppl-color-steel-400: #{token.$color-steel-400};
+  --ppl-color-steel-500: #{token.$color-steel-500};
+  --ppl-color-steel-600: #{token.$color-steel-600};
+  --ppl-color-steel-700: #{token.$color-steel-700};
+  --ppl-color-steel-800: #{token.$color-steel-800};
+  --ppl-color-steel-900: #{token.$color-steel-900};
+  --ppl-color-steel-950: #{token.$color-steel-950};
+  --ppl-color-steel-975: #{token.$color-steel-975};
+  --ppl-color-burgundy-dark: #{token.$color-burgundy-dark};
+  --ppl-color-burgundy-light: #{token.$color-burgundy-light};
+  --ppl-color-clay: #{token.$color-clay};
+  --ppl-color-clay-light: #{token.$color-clay-light};
+  --ppl-color-clay-light-300: #{token.$color-clay-light-300};
+  --ppl-color-clay-dark: #{token.$color-clay-dark};
+  --ppl-color-coolgreen-dark: #{token.$color-coolgreen-dark};
+  --ppl-color-leaf: #{token.$color-leaf};
+  --ppl-color-leaf-light: #{token.$color-leaf-light};
+  --ppl-color-leaf-dark: #{token.$color-leaf-dark};
+  --ppl-color-slate: #{token.$color-slate};
+  --ppl-color-slate-light: #{token.$color-slate-light};
+  --ppl-color-slate-dark: #{token.$color-slate-dark};
+  --ppl-color-ruby: #{token.$color-ruby};
+  --ppl-color-ruby-light: #{token.$color-ruby-light};
+  --ppl-color-ruby-dark: #{token.$color-ruby-dark};
+  --ppl-color-terra: #{token.$color-terra};
+  --ppl-color-terra-light: #{token.$color-terra-light};
+  --ppl-color-terra-dark: #{token.$color-terra-dark};
+  --ppl-color-copper: #{token.$color-copper};
+  --ppl-color-copper-light: #{token.$color-copper-light};
+  --ppl-color-copper-dark: #{token.$color-copper-dark};
+  --ppl-color-warning: #{token.$color-warning};
+  --ppl-color-warning-light: #{token.$color-warning-light};
+  --ppl-color-warning-light-300: #{token.$color-warning-light-300};
+  --ppl-color-success: #{token.$color-success};
+  --ppl-color-success-light: #{token.$color-success-light};
+  --ppl-color-success-light-300: #{token.$color-success-light-300};
+  --ppl-color-alert-dark: #{token.$color-alert-dark};
+  --ppl-color-font-base: #{token.$color-font-base};
 }
