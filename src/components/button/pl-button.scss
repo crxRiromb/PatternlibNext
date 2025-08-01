@@ -1,4 +1,6 @@
-// @use '../styles/fonts.css' as *;
+@use '/src/styles/reset';
+@use '/src/styles/mixins.scss' as mixins;
+@use '/src/styles/mixins-flex.scss' as flex;
 
 :host {
   display: inline-block;
@@ -11,12 +13,10 @@
 }
 
 button {
-  font-family: LiebherrText-Bold, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 24px;
+  @include mixins.font-bold-smaller;
   text-transform: uppercase;
 
+  @include flex.flex-center;
   height: 48px;
   padding-left: 36px;
   padding-right: 36px;

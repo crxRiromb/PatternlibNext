@@ -1,4 +1,4 @@
-@use 'tokens' as *;
+@use '/src/styles/tokens' as tokens;
 
 /*
  * File is defined as partial, which means it won't be compiled into CSS directly
@@ -7,52 +7,53 @@
 
 /* Regular fonts */
 @mixin font-text {
-  font-family: #{$font-text-regular};
-  font-size: #{$font-size-copy}; /* 18px */
-  line-height: #{$line-height-copy}; /* 28px */
+  font-family: #{tokens.$font-text-regular};
+  font-size: #{tokens.$font-size-copy}; /* 18px */
+  line-height: #{tokens.$line-height-copy}; /* 28px */
 }
 
 @mixin font-text-small {
-  font-family: #{$font-text-regular};
-  font-size: #{$font-size-copy-small}; /* 16px */
-  line-height: #{$line-height-copy-small}; /* 24px */
+  font-family: #{tokens.$font-text-regular};
+  font-size: #{tokens.$font-size-copy-small}; /* 16px */
+  line-height: #{tokens.$line-height-copy-small}; /* 24px */
 }
 
 @mixin font-text-smaller {
-  font-family: #{$font-text-regular};
-  font-size: #{$font-size-copy-smaller}; /* 14px */
-  line-height: #{$line-height-copy-smaller}; /* 20px */
+  font-family: #{tokens.$font-text-regular};
+  font-size: #{tokens.$font-size-copy-smaller}; /* 14px */
+  line-height: #{tokens.$line-height-copy-smaller}; /* 20px */
 }
 
 @mixin font-text-extrasmall {
-  font-family: #{$font-text-regular};
-  font-size: #{$font-size-copy-extrasmall}; /* 12px */
-  line-height: #{$line-height-copy-extrasmall}; /* 16px */
+  font-family: #{tokens.$font-text-regular};
+  font-size: #{tokens.$font-size-copy-extrasmall}; /* 12px */
+  line-height: #{tokens.$line-height-copy-extrasmall}; /* 16px */
 }
 
 /* Bold fonts */
 @mixin font-bold {
-  font-family: #{$font-text-bold};
-  font-size: #{$font-size-copy}; /* 18px */
-  line-height: #{$line-height-copy}; /* 28px */
+  font-family: #{tokens.$font-text-bold};
+  font-size: #{tokens.$font-size-copy}; /* 18px */
+  line-height: #{tokens.$line-height-copy}; /* 28px */
 }
 
 @mixin font-bold-small {
-  font-family: #{$font-text-bold};
-  font-size: #{$font-size-copy-small}; /* 16px */
-  line-height: #{$line-height-copy-small}; /* 24px */
+  font-family: #{tokens.$font-text-bold};
+  font-size: #{tokens.$font-size-copy-small}; /* 16px */
+  line-height: #{tokens.$line-height-copy-small}; /* 24px */
 }
 
 @mixin font-bold-smaller {
-  font-family: #{$font-text-bold};
-  font-size: #{$font-size-copy-smaller}; /* 14px */
-  line-height: #{$line-height-copy-smaller}; /* 20px */
+  font-family: #{tokens.$font-text-bold};
+  font-size: #{tokens.$font-size-copy-smaller}; /* 14px */
+  font-weight: bold; /* is not set by font-face! */
+  line-height: #{tokens.$line-height-copy-smaller}; /* 20px */
 }
 
 @mixin font-bold-extra-small {
-  font-family: #{$font-text-bold};
-  font-size: #{$font-size-copy-extrasmall}; /* 12px */
-  line-height: #{$line-height-copy-extrasmall}; /* 16px */
+  font-family: #{tokens.$font-text-bold};
+  font-size: #{tokens.$font-size-copy-extrasmall}; /* 12px */
+  line-height: #{tokens.$line-height-copy-extrasmall}; /* 16px */
 }
 
 /* Reset all browser default styles */

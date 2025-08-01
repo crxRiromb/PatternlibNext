@@ -1,37 +1,4 @@
-const n = `// @use '../styles/fonts.css' as *;
-
-:host {
-  display: inline-block;
-}
-
-:host([disabled]) button {
-  background-color: #cccccc;
-  color: #666666;
-  cursor: not-allowed;
-}
-
-button {
-  font-family: LiebherrText-Bold, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 24px;
-  text-transform: uppercase;
-
-  height: 48px;
-  padding-left: 36px;
-  padding-right: 36px;
-  border: 1px solid transparent;
-  border-radius: 0;
-  background-color: #ffd000;
-  // background-color: blue;
-  color: black;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #eb6f24;
-}
-`;
+const t = "*,*:before,*:after{box-sizing:border-box;margin:0;padding:0}button,input,select,textarea{font:inherit}img,picture,video,canvas,svg{display:block;max-width:100%}ol,ul{list-style:none}a{text-decoration:none;color:inherit}h1,h2,h3,h4,h5,h6{font-weight:400}:host{display:inline-block}:host([disabled]) button{background-color:#ccc;color:#666;cursor:not-allowed}button{font-family:LiebherrText-Bold,-apple-system,BlinkMacSystemFont,Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;line-height:20px;text-transform:uppercase;display:flex;justify-content:center;align-items:center;height:48px;padding-left:36px;padding-right:36px;border:1px solid transparent;border-radius:0;background-color:#ffd000;color:#000;cursor:pointer}button:hover{background-color:#eb6f24}";
 export {
-  n as default
+  t as default
 };

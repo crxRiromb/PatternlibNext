@@ -1,7 +1,7 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import buttonStyles from './pl-button.scss?raw';
-import fontStyles from '/src/styles/fonts.css?raw';
+import buttonStyles from './pl-button.scss?inline';
+import fontStyles from '/src/styles/fonts.css?inline';
 
 @customElement('pl-button')
 export class PlButton extends LitElement {
