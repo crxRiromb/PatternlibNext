@@ -37,7 +37,7 @@ export const PrimaryStory: Story = {
   render: args => html`<pl-button label=${args.label} ?disabled=${args.disabled} type=${args.type}> </pl-button>`,
   args: {
     disabled: false,
-    label: 'Klick mich 3',
+    label: 'Label',
     type: 'button',
   },
 };
@@ -46,15 +46,16 @@ export const DisabledStory: Story = {
   render: args => html`<pl-button label=${args.label} ?disabled=${args.disabled} type=${args.type}> </pl-button>`,
   args: {
     disabled: true,
-    label: 'Nicht klickbar',
+    label: 'Disabled',
     type: 'button',
   },
 };
 
 export const SlottedLabelStory: Story = {
-  render: args => html` <pl-button type=${args.type} ?disabled=${args.disabled}> Slotted Label </pl-button> `,
+  render: args => html` <pl-button type=${args.type} ?disabled=${args.disabled}>${args.label}</pl-button> `,
   args: {
     disabled: false,
+    label: 'Slotted Label',
     type: 'button',
   },
 };

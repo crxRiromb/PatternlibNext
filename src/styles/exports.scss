@@ -1,44 +1,44 @@
-@use 'tokens' as *;
+@use 'tokens' as token;
 
 :root {
   /* Font Families */
-  --ppl-font-text-regular: #{$font-text-regular};
-  --ppl-font-text-medium: #{$font-text-medium};
-  --ppl-font-text-bold: #{$font-text-bold};
-  --ppl-font-head-regular: #{$font-head-regular};
-  --ppl-font-head-black: #{$font-head-black};
+  --ppl-font-text-regular: #{token.$font-text-regular};
+  --ppl-font-text-medium: #{token.$font-text-medium};
+  --ppl-font-text-bold: #{token.$font-text-bold};
+  --ppl-font-head-regular: #{token.$font-head-regular};
+  --ppl-font-head-black: #{token.$font-head-black};
 
-  --ppl-font-noto-text: #{$font-noto-text-regular};
-  --ppl-font-noto-text-medium: #{$font-noto-text-medium};
-  --ppl-font-noto-text-bold: #{$font-noto-text-bold};
-  --ppl-font-noto-head-regular: #{$font-noto-head-regular};
-  --ppl-font-noto-head-black: #{$font-noto-head-black};
+  --ppl-font-noto-text: #{token.$font-noto-text-regular};
+  --ppl-font-noto-text-medium: #{token.$font-noto-text-medium};
+  --ppl-font-noto-text-bold: #{token.$font-noto-text-bold};
+  --ppl-font-noto-head-regular: #{token.$font-noto-head-regular};
+  --ppl-font-noto-head-black: #{token.$font-noto-head-black};
 
-  --ppl-font-lh-langpick-asia-regular: #{$font-lh-langpick-asia-regular};
-  --ppl-font-lh-langpick-asia-bold: #{$font-lh-langpick-asia-bold};
+  --ppl-font-lh-langpick-asia-regular: #{token.$font-lh-langpick-asia-regular};
+  --ppl-font-lh-langpick-asia-bold: #{token.$font-lh-langpick-asia-bold};
 
   /* Language specific */
   &[lang='zh'] {
-    --ppl-font-text-regular: #{$font-noto-text-regular};
-    --ppl-font-text-medium: #{$font-noto-text-medium};
-    --ppl-font-text-bold: #{$font-noto-text-bold};
-    --ppl-font-head-hau: #{$font-noto-head-hau};
-    --ppl-font-head-corporate: #{$font-noto-head-corporate};
+    --ppl-font-text-regular: #{token.$font-noto-text-regular};
+    --ppl-font-text-medium: #{token.$font-noto-text-medium};
+    --ppl-font-text-bold: #{token.$font-noto-text-bold};
+    --ppl-font-head-hau: #{token.$font-noto-head-hau};
+    --ppl-font-head-corporate: #{token.$font-noto-head-corporate};
   }
 
   /* Font sizes and line heights */
-  --ppl-font-size-copy: #{$font-size-copy};
-  --ppl-line-height-copy: #{$line-height-copy};
+  --ppl-font-size-copy: #{token.$font-size-copy};
+  --ppl-line-height-copy: #{token.$line-height-copy};
 
-  --ppl-font-size-copy-small: #{$font-size-copy-small};
-  --ppl-line-height-copy-small: #{$line-height-copy-small};
+  --ppl-font-size-copy-small: #{token.$font-size-copy-small};
+  --ppl-line-height-copy-small: #{token.$line-height-copy-small};
 
-  --ppl-font-size-copy-smaller: #{$font-size-copy-smaller};
-  --ppl-line-height-copy-smaller: #{$line-height-copy-smaller};
+  --ppl-font-size-copy-smaller: #{token.$font-size-copy-smaller};
+  --ppl-line-height-copy-smaller: #{token.$line-height-copy-smaller};
 
-  --ppl-font-size-copy-extrasmall: #{$font-size-copy-extrasmall};
-  --ppl-line-height-copy-extrasmall: #{$line-height-copy-extrasmall};
+  --ppl-font-size-copy-extrasmall: #{token.$font-size-copy-extrasmall};
+  --ppl-line-height-copy-extrasmall: #{token.$line-height-copy-extrasmall};
 
   /* Misc */
-  --ppl-letter-spacing: #{$letter-spacing};
+  --ppl-letter-spacing: #{token.$letter-spacing};
 }
