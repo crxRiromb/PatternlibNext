@@ -1,11 +1,15 @@
-const n = `@use '../styles/fonts.css' as *;
+@use '../styles/base';
+// @use '../styles/mixins.scss' as mixins;
+@use '../styles/mixins-flex.scss' as flex;
+@use '../styles/fonts.css' as *;
 
 :host {
+  // @include mixins.reset;
   display: inline-block;
+  // @include mixins.font-bold-smaller;
   font-family: LiebherrText-Bold, Arial, sans-serif;
   font-size: 14px;
   font-weight: normal;
-  letter-spacing: 0.78px;
   line-height: 24px;
 }
 
@@ -18,12 +22,12 @@ const n = `@use '../styles/fonts.css' as *;
 button {
   font-family: inherit;
   font-size: inherit;
-  font-weight: normal; /* important to reset the agent styles */
-  letter-spacing: inherit;
+  // font-weight: normal; /* important to reset the agent style */
   line-height: inherit;
 
   text-transform: uppercase;
 
+  @include flex.flex-center;
   height: 48px;
   padding-left: 36px;
   padding-right: 36px;
@@ -38,7 +42,3 @@ button {
 button:hover {
   background-color: #eb6f24;
 }
-`;
-export {
-  n as default
-};

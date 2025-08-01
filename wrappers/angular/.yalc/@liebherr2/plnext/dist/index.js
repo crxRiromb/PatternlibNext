@@ -1,6 +1,8 @@
-import { PlButton as t } from "./button/pl-button.js";
-import { PlIcon as f } from "./icon/pl-icon.js";
+import { PlButton as r } from "./components/button/pl-button.js";
+import { PlIcon as l } from "./components/icon/pl-icon.js";
+import { PlItemlist as f } from "./components/itemlist/pl-itemlist.js";
 export {
-  t as PlButton,
-  f as PlIcon
+  r as PlButton,
+  l as PlIcon,
+  f as PlItemlist
 };

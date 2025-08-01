@@ -1,12 +1,7 @@
-@use '../styles/fonts.css' as *;
+const n = `// @use '../styles/fonts.css' as *;
 
 :host {
   display: inline-block;
-  font-family: LiebherrText-Bold, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: normal;
-  letter-spacing: 0.78px;
-  line-height: 24px;
 }
 
 :host([disabled]) button {
@@ -16,12 +11,10 @@
 }
 
 button {
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: normal; /* important to reset the agent style */
-  letter-spacing: inherit;
-  line-height: inherit;
-
+  font-family: LiebherrText-Bold, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
   text-transform: uppercase;
 
   height: 48px;
@@ -38,3 +31,7 @@ button {
 button:hover {
   background-color: #eb6f24;
 }
+`;
+export {
+  n as default
+};

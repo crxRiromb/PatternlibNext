@@ -1,4 +1,6 @@
-const n = `:host {
+const n = `// @use '../styles/fonts.css' as *;
+
+:host {
   display: inline-block;
 }
 
@@ -9,16 +11,19 @@ const n = `:host {
 }
 
 button {
-  font-family: Arial, sans-serif;
+  font-family: LiebherrText-Bold, Arial, sans-serif;
   font-size: 14px;
+  font-weight: bold;
   line-height: 24px;
+  text-transform: uppercase;
+
   height: 48px;
   padding-left: 36px;
   padding-right: 36px;
   border: 1px solid transparent;
   border-radius: 0;
-  // background-color: #ffd000;
-  background-color: blue;
+  background-color: #ffd000;
+  // background-color: blue;
   color: black;
   cursor: pointer;
 }

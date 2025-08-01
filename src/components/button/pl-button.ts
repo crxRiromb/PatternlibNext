@@ -1,6 +1,7 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import buttonStyles from './pl-button.scss?raw';
+import fontStyles from '/src/styles/fonts.css?raw';
 
 @customElement('pl-button')
 export class PlButton extends LitElement {
@@ -23,6 +24,7 @@ export class PlButton extends LitElement {
   disabled = false;
 
   static styles = css`
+    ${unsafeCSS(fontStyles)}
     ${unsafeCSS(buttonStyles)}
   `;
 

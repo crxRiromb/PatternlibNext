@@ -1,0 +1,13 @@
+/*
+ * File is defined as partial, which means it won't be compiled into CSS directly
+ * It's intended to be used as a building block for the component styles.
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}

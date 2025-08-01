@@ -1,4 +1,3 @@
-**/lotties/*.json
 dist
 www
 .idea
@@ -11,3 +10,6 @@ loader
 **/*.mdx
 storybook-static
 projects-for-statistics
+
+# Tokens
+src/styles/_tokens.scss

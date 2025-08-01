@@ -1,0 +1,77 @@
+@use 'tokens' as *;
+
+/*
+ * File is defined as partial, which means it won't be compiled into CSS directly
+ * It's intended to be used as a building block for the component styles.
+ */
+
+/* Regular fonts */
+@mixin font-text {
+  font-family: #{$font-text-regular};
+  font-size: #{$font-size-copy}; /* 18px */
+  line-height: #{$line-height-copy}; /* 28px */
+}
+
+@mixin font-text-small {
+  font-family: #{$font-text-regular};
+  font-size: #{$font-size-copy-small}; /* 16px */
+  line-height: #{$line-height-copy-small}; /* 24px */
+}
+
+@mixin font-text-smaller {
+  font-family: #{$font-text-regular};
+  font-size: #{$font-size-copy-smaller}; /* 14px */
+  line-height: #{$line-height-copy-smaller}; /* 20px */
+}
+
+@mixin font-text-extrasmall {
+  font-family: #{$font-text-regular};
+  font-size: #{$font-size-copy-extrasmall}; /* 12px */
+  line-height: #{$line-height-copy-extrasmall}; /* 16px */
+}
+
+/* Bold fonts */
+@mixin font-bold {
+  font-family: #{$font-text-bold};
+  font-size: #{$font-size-copy}; /* 18px */
+  line-height: #{$line-height-copy}; /* 28px */
+}
+
+@mixin font-bold-small {
+  font-family: #{$font-text-bold};
+  font-size: #{$font-size-copy-small}; /* 16px */
+  line-height: #{$line-height-copy-small}; /* 24px */
+}
+
+@mixin font-bold-smaller {
+  font-family: #{$font-text-bold};
+  font-size: #{$font-size-copy-smaller}; /* 14px */
+  line-height: #{$line-height-copy-smaller}; /* 20px */
+}
+
+@mixin font-bold-extra-small {
+  font-family: #{$font-text-bold};
+  font-size: #{$font-size-copy-extrasmall}; /* 12px */
+  line-height: #{$line-height-copy-extrasmall}; /* 16px */
+}
+
+/* Reset all browser default styles */
+@mixin reset {
+  all: unset;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+  font-family: inherit;
+  line-height: 1.5;
+  color: inherit;
+  list-style: none;
+  quotes: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-radius: 0;
+  text-decoration: none;
+  background-color: transparent;
+  vertical-align: baseline;
+}

@@ -1,4 +1,4 @@
-@font-face {
+const e = `@font-face {
   font-family: LiebherrText-Regular;
   font-weight: normal;
   font-display: swap;
@@ -34,3 +34,7 @@
   src: url('https://assets-cdn.liebherr.com/assets/api/3c3d21f7-2747-4a07-bb1b-f9f4598c21df/original/LiebherrHead-Black_Web.woff2')
     format('woff2');
 }
+`;
+export {
+  e as default
+};

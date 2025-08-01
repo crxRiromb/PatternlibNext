@@ -1,0 +1,10 @@
+/*
+ * File is defined as partial, which means it won't be compiled into CSS directly
+ * It's intended to be used as a building block for the component styles.
+ */
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

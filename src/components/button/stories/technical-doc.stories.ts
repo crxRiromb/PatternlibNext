@@ -52,11 +52,7 @@ export const DisabledStory: Story = {
 };
 
 export const SlottedLabelStory: Story = {
-  render: args => html`
-    <pl-button type=${args.type} ?disabled=${args.disabled}>
-      <strong>Slot-Inhalt</strong>
-    </pl-button>
-  `,
+  render: args => html` <pl-button type=${args.type} ?disabled=${args.disabled}> Slotted Label </pl-button> `,
   args: {
     disabled: false,
     type: 'button',
