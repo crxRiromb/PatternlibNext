@@ -1,8 +1,0 @@
-{
-  "version": "v1",
-  "packages": {
-    "@liebherr2/plnext": {
-      "signature": "ef35fa75025ccd18f68d3e96573d710a"
-    }
-  }
-}
