@@ -1,0 +1,181 @@
+@use '../../../global/variables' as vars;
+@use '../../../global/host-utils';
+
+$buttonColors: (
+  default: (
+    light: (
+      // Primary.
+      stroke-primary: vars.$brand-primary,
+      stroke-primary-active: vars.$color-black,
+      stroke-primary-hover: vars.$brand-primary-accent,
+      stroke-primary-focus: vars.$color-black,
+      stroke-primary-focusgap: vars.$color-white,
+      stroke-primary-disabled: vars.$color-neutral-steel-400,
+      surface-primary: vars.$brand-primary,
+      surface-primary-active: vars.$color-black,
+      surface-primary-hover: vars.$brand-primary-accent,
+      surface-primary-disabled: vars.$color-neutral-steel-100,
+      text-primary: vars.$brand-foreground,
+      text-primary-active: vars.$color-white,
+      text-primary-hover: vars.$brand-foreground,
+      text-primary-disabled: vars.$color-neutral-steel-400,
+      loading-primary: vars.$color-black,
+
+      // Primary inverted.
+      stroke-primary-inverted: vars.$brand-primary,
+      stroke-primary-inverted-focus: vars.$color-white,
+      stroke-primary-inverted-focusgap: vars.$color-black,
+      stroke-primary-inverted-hover: vars.$color-clay-light,
+      stroke-primary-inverted-active: vars.$color-white,
+      stroke-primary-inverted-disabled: vars.$color-neutral-steel-900,
+      surface-primary-inverted: vars.$brand-primary,
+      surface-primary-inverted-active: vars.$color-white,
+      surface-primary-inverted-hover: vars.$color-clay-light,
+      surface-primary-inverted-disabled: vars.$color-neutral-steel-900,
+      text-primary-inverted: vars.$color-black,
+      text-primary-inverted-disabled: vars.$color-neutral-steel-600,
+      loading-primary-inverted: vars.$color-black,
+
+      // Secondary.
+      stroke-secondary: vars.$brand-secondary,
+      stroke-secondary-active: vars.$brand-secondary,
+      stroke-secondary-hover: vars.$color-steel-700,
+      stroke-secondary-focus: vars.$color-black,
+      stroke-secondary-focusgap: vars.$color-white,
+      stroke-secondary-disabled: vars.$color-steel-400,
+      surface-secondary: transparent,
+      surface-secondary-hover: transparent,
+      text-secondary: vars.$brand-secondary,
+      text-secondary-hover: vars.$color-steel-700,
+      text-secondary-disabled: vars.$color-steel-400,
+      loading-secondary: vars.$brand-secondary,
+
+      // Secondary inverted.
+      stroke-secondary-inverted: vars.$color-neutral-steel-600,
+      stroke-secondary-inverted-active: vars.$color-white,
+      stroke-secondary-inverted-hover: vars.$color-accent-clay-dark-soft,
+      stroke-secondary-inverted-focus: vars.$color-white,
+      stroke-secondary-inverted-focusgap: vars.$color-black,
+      stroke-secondary-inverted-disabled: vars.$color-steel-600,
+      surface-secondary-inverted: transparent,
+      surface-secondary-inverted-hover: transparent,
+      surface-secondary-inverted-active: transparent,
+      surface-secondary-inverted-disabled: transparent,
+      text-secondary-inverted: vars.$color-white,
+      text-secondary-inverted-hover: vars.$color-accent-clay-dark-soft,
+      text-secondary-inverted-active: vars.$color-white,
+      text-secondary-inverted-disabled: vars.$color-steel-600,
+      loading-secondary-inverted: vars.$color-white,
+
+      // Warning.
+      stroke-warning: vars.$color-functional-error,
+      stroke-warning-hover: vars.$color-accent-ruby,
+      stroke-warning-focus: vars.$color-black,
+      stroke-warning-focusgap: vars.$color-white,
+      stroke-warning-active: vars.$color-black,
+      stroke-warning-disabled: vars.$color-neutral-steel-400,
+      surface-warning: vars.$color-functional-error,
+      surface-warning-active: vars.$color-black,
+      surface-warning-hover: vars.$color-accent-ruby,
+      surface-warning-disabled: vars.$color-neutral-steel-100,
+      text-warning: vars.$color-white,
+      text-warning-hover: vars.$color-white,
+      text-warning-disabled: vars.$color-neutral-steel-400,
+      text-warning-active: vars.$color-white,
+      loading-warning: vars.$color-white,
+
+      // Danger.
+      stroke-danger: vars.$color-functional-error,
+      stroke-danger-hover: vars.$color-accent-ruby,
+      stroke-danger-focus: vars.$color-black,
+      stroke-danger-focusgap: vars.$color-white,
+      stroke-danger-active: vars.$color-black,
+      stroke-danger-disabled: vars.$color-neutral-steel-400,
+      surface-danger: vars.$color-functional-error,
+      surface-danger-hover: vars.$color-accent-ruby,
+      surface-danger-disabled: vars.$color-neutral-steel-100,
+      surface-danger-active: vars.$color-black,
+      text-danger: vars.$color-white,
+      text-danger-hover: vars.$color-white,
+      text-danger-disabled: vars.$color-neutral-steel-400,
+      text-danger-active: vars.$color-white,
+      loading-danger: vars.$color-white,
+    ),
+
+    dark: (
+      surface-primary-active: vars.$color-white,
+      stroke-primary-disabled: vars.$color-neutral-steel-900,
+      surface-primary-disabled: vars.$color-neutral-steel-900,
+      text-primary-disabled: vars.$color-neutral-steel-600,
+      stroke-primary-active: vars.$color-white,
+      text-primary-active: vars.$color-black,
+
+      stroke-secondary-disabled: vars.$color-steel-600,
+      text-secondary: vars.$color-white,
+      text-secondary-hover: vars.$color-neutral-steel-400,
+      text-secondary-disabled: vars.$color-steel-600,
+      loading-secondary: vars.$color-white,
+
+      stroke-warning-hover: vars.$color-functional-error-soft,
+      surface-warning-hover: vars.$color-functional-error-soft,
+      stroke-warning-focus: vars.$color-white,
+      stroke-warning-focusgap: vars.$color-black,
+      text-warning: vars.$color-black,
+      text-warning-hover: vars.$color-black,
+
+      stroke-danger-hover: vars.$color-functional-error-soft,
+      surface-danger-hover: vars.$color-functional-error-soft,
+      stroke-danger-focus: vars.$color-white,
+      stroke-danger-focusgap: vars.$color-black,
+      text-danger: vars.$color-black,
+      text-danger-hover: vars.$color-black,
+    ),
+  ),
+  hau: (
+    light: (
+      loading-primary: vars.$color-white,
+
+      // Primary inverted.
+      loading-primary-inverted: vars.$color-white,
+      stroke-primary-inverted: vars.$brand-primary,
+      stroke-primary-inverted-active: vars.$color-black,
+      stroke-primary-inverted-hover: vars.$brand-primary-accent,
+      stroke-primary-inverted-focus: vars.$color-white,
+      stroke-primary-inverted-focusgap: vars.$color-black,
+      stroke-primary-inverted-disabled: vars.$color-neutral-steel-400,
+      surface-primary-inverted: vars.$brand-primary,
+      surface-primary-inverted-active: vars.$color-black,
+      surface-primary-inverted-hover: vars.$color-white,
+      surface-primary-inverted-disabled: vars.$color-neutral-steel-100,
+      text-primary-inverted: vars.$brand-foreground,
+      text-primary-inverted-active: vars.$color-white,
+      text-primary-inverted-hover: vars.$color-black,
+      text-primary-inverted-disabled: vars.$color-neutral-steel-400,
+
+      // Secondary inverted.
+      stroke-secondary-inverted: vars.$color-steel-400,
+      stroke-secondary-inverted-active: vars.$color-white,
+      stroke-secondary-inverted-hover: vars.$color-ha-light-brand-blue,
+      stroke-secondary-inverted-focus: vars.$color-white,
+      stroke-secondary-inverted-focusgap: vars.$color-black,
+      stroke-secondary-inverted-disabled: vars.$color-steel-600,
+      surface-secondary-inverted: transparent,
+      surface-secondary-inverted-hover: transparent,
+      text-secondary-inverted: vars.$color-white,
+      text-secondary-inverted-hover: vars.$color-white,
+      text-secondary-inverted-active: vars.$color-white,
+      text-secondary-inverted-disabled: vars.$color-steel-600,
+      loading-secondary-inverted: vars.$color-white,
+
+      stroke-secondary-focus: vars.$color-black,
+      stroke-secondary-focusgap: vars.$color-white,
+    ),
+    dark: (
+      text-secondary-hover: vars.$color-neutral-steel-400,
+    ),
+  ),
+);
+
+:host {
+  @include host-utils.generateHostThemeColors($buttonColors, 'button-');
+}

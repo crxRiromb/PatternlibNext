@@ -44,50 +44,90 @@
 
   /* --- COLORS --- */
   --ppl-color-artic-blue: #{token.$color-artic-blue};
-  --ppl-color-yellow: #{token.$color-yellow};
   --ppl-color-blue: #{token.$color-blue};
   --ppl-color-black: #{token.$color-black};
+  --ppl-color-yellow: #{token.$color-yellow};
   --ppl-color-white: #{token.$color-white};
-  --ppl-color-steel-50: #{token.$color-steel-50};
-  --ppl-color-steel-100: #{token.$color-steel-100};
-  --ppl-color-steel-200: #{token.$color-steel-200};
-  --ppl-color-steel-300: #{token.$color-steel-300};
-  --ppl-color-steel-400: #{token.$color-steel-400};
-  --ppl-color-steel-500: #{token.$color-steel-500};
-  --ppl-color-steel-600: #{token.$color-steel-600};
-  --ppl-color-steel-700: #{token.$color-steel-700};
-  --ppl-color-steel-800: #{token.$color-steel-800};
-  --ppl-color-steel-900: #{token.$color-steel-900};
-  --ppl-color-steel-950: #{token.$color-steel-950};
-  --ppl-color-steel-975: #{token.$color-steel-975};
-  --ppl-color-burgundy-dark: #{token.$color-burgundy-dark};
-  --ppl-color-burgundy-light: #{token.$color-burgundy-light};
-  --ppl-color-clay: #{token.$color-clay};
-  --ppl-color-clay-light: #{token.$color-clay-light};
-  --ppl-color-clay-light-300: #{token.$color-clay-light-300};
-  --ppl-color-clay-dark: #{token.$color-clay-dark};
-  --ppl-color-coolgreen-dark: #{token.$color-coolgreen-dark};
-  --ppl-color-leaf: #{token.$color-leaf};
-  --ppl-color-leaf-light: #{token.$color-leaf-light};
-  --ppl-color-leaf-dark: #{token.$color-leaf-dark};
-  --ppl-color-slate: #{token.$color-slate};
-  --ppl-color-slate-light: #{token.$color-slate-light};
-  --ppl-color-slate-dark: #{token.$color-slate-dark};
-  --ppl-color-ruby: #{token.$color-ruby};
-  --ppl-color-ruby-light: #{token.$color-ruby-light};
-  --ppl-color-ruby-dark: #{token.$color-ruby-dark};
-  --ppl-color-terra: #{token.$color-terra};
-  --ppl-color-terra-light: #{token.$color-terra-light};
-  --ppl-color-terra-dark: #{token.$color-terra-dark};
-  --ppl-color-copper: #{token.$color-copper};
-  --ppl-color-copper-light: #{token.$color-copper-light};
-  --ppl-color-copper-dark: #{token.$color-copper-dark};
-  --ppl-color-warning: #{token.$color-warning};
-  --ppl-color-warning-light: #{token.$color-warning-light};
-  --ppl-color-warning-light-300: #{token.$color-warning-light-300};
-  --ppl-color-success: #{token.$color-success};
-  --ppl-color-success-light: #{token.$color-success-light};
-  --ppl-color-success-light-300: #{token.$color-success-light-300};
-  --ppl-color-alert-dark: #{token.$color-alert-dark};
-  --ppl-color-font-base: #{token.$color-font-base};
+
+  --ppl-color-co-light-yellow: #{token.$color-co-light-yellow};
+  --ppl-color-co-light-background: #{token.$color-co-light-background};
+
+  --ppl-color-co-dark-yellow: #{token.$color-co-dark-yellow};
+  --ppl-color-co-dark-background: #{token.$color-co-dark-background};
+
+  --ppl-color-ha-light-blue: #{token.$color-ha-light-blue};
+  --ppl-color-ha-light-background: #{token.$color-ha-light-background};
+  --ppl-color-ha-light-artic-blue: #{token.$color-ha-light-artic-blue};
+
+  --ppl-color-ha-dark-blue: #{token.$color-ha-dark-blue};
+  --ppl-color-ha-dark-artic-blue: #{token.$color-ha-dark-artic-blue};
+  --ppl-color-ha-dark-background: #{token.$color-ha-dark-background};
+
+  --ppl-color-neutral-steel-50: #{token.$color-neutral-steel-50};
+  --ppl-color-neutral-steel-100: #{token.$color-neutral-steel-100};
+  --ppl-color-neutral-steel-200: #{token.$color-neutral-steel-200};
+  --ppl-color-neutral-steel-300: #{token.$color-neutral-steel-300};
+  --ppl-color-neutral-steel-400: #{token.$color-neutral-steel-400};
+  --ppl-color-neutral-steel-500: #{token.$color-neutral-steel-500};
+  --ppl-color-neutral-steel-600: #{token.$color-neutral-steel-600};
+  --ppl-color-neutral-steel-700: #{token.$color-neutral-steel-700};
+  --ppl-color-neutral-steel-800: #{token.$color-neutral-steel-800};
+  --ppl-color-neutral-steel-900: #{token.$color-neutral-steel-900};
+  --ppl-color-neutral-steel-950: #{token.$color-neutral-steel-950};
+  --ppl-color-neutral-steel-975: #{token.$color-neutral-steel-975};
+
+  --ppl-color-accent-terra-light: #{token.$color-accent-terra-light};
+  --ppl-color-accent-terra-light-soft: #{token.$color-accent-terra-light-soft};
+  --ppl-color-accent-terra-dark: #{token.$color-accent-terra-dark};
+  --ppl-color-accent-terra-dark-soft: #{token.$color-accent-terra-dark-soft};
+
+  --ppl-color-accent-clay-light: #{token.$color-accent-clay-light};
+  --ppl-color-accent-clay-light-soft: #{token.$color-accent-clay-light-soft};
+  --ppl-color-accent-clay-dark: #{token.$color-accent-clay-dark};
+  --ppl-color-accent-clay-dark-soft: #{token.$color-accent-clay-dark-soft};
+
+  --ppl-color-accent-ruby-light: #{token.$color-accent-ruby-light};
+  --ppl-color-accent-ruby-light-soft: #{token.$color-accent-ruby-light-soft};
+  --ppl-color-accent-ruby-dark: #{token.$color-accent-ruby-dark};
+  --ppl-color-accent-ruby-dark-soft: #{token.$color-accent-ruby-dark-soft};
+
+  --ppl-color-accent-leaf-light: #{token.$color-accent-leaf-light};
+  --ppl-color-accent-leaf-light-soft: #{token.$color-accent-leaf-light-soft};
+  --ppl-color-accent-leaf-dark: #{token.$color-accent-leaf-dark};
+  --ppl-color-accent-leaf-dark-soft: #{token.$color-accent-leaf-dark-soft};
+
+  --ppl-color-accent-slate-light: #{token.$color-accent-slate-light};
+  --ppl-color-accent-slate-light-soft: #{token.$color-accent-slate-light-soft};
+  --ppl-color-accent-slate-dark: #{token.$color-accent-slate-dark};
+  --ppl-color-accent-slate-dark-soft: #{token.$color-accent-slate-dark-soft};
+
+  --ppl-color-accent-coolgreen-light: #{token.$color-accent-coolgreen-light};
+  --ppl-color-accent-coolgreen-light-soft: #{token.$color-accent-coolgreen-light-soft};
+  --ppl-color-accent-coolgreen-dark: #{token.$color-accent-coolgreen-dark};
+  --ppl-color-accent-coolgreen-dark-soft: #{token.$color-accent-coolgreen-dark-soft};
+
+  --ppl-color-accent-burgundy-light: #{token.$color-accent-burgundy-light};
+  --ppl-color-accent-burgundy-light-soft: #{token.$color-accent-burgundy-light-soft};
+  --ppl-color-accent-burgundy-dark: #{token.$color-accent-burgundy-dark};
+  --ppl-color-accent-burgundy-dark-soft: #{token.$color-accent-burgundy-dark-soft};
+
+  --ppl-color-accent-copper-light: #{token.$color-accent-copper-light};
+  --ppl-color-accent-copper-light-soft: #{token.$color-accent-copper-light-soft};
+  --ppl-color-accent-copper-dark: #{token.$color-accent-copper-dark};
+  --ppl-color-accent-copper-dark-soft: #{token.$color-accent-copper-dark-soft};
+
+  --ppl-color-functional-error-light: #{token.$color-functional-error-light};
+  --ppl-color-functional-error-light-soft: #{token.$color-functional-error-light-soft};
+  --ppl-color-functional-error-dark: #{token.$color-functional-error-dark};
+  --ppl-color-functional-error-dark-soft: #{token.$color-functional-error-dark-soft};
+
+  --ppl-color-functional-success-light: #{token.$color-functional-success-light};
+  --ppl-color-functional-success-light-soft: #{token.$color-functional-success-light-soft};
+  --ppl-color-functional-success-dark: #{token.$color-functional-success-dark};
+  --ppl-color-functional-success-dark-soft: #{token.$color-functional-success-dark-soft};
+
+  --ppl-color-functional-warning-light: #{token.$color-functional-warning-light};
+  --ppl-color-functional-warning-light-soft: #{token.$color-functional-warning-light-soft};
+  --ppl-color-functional-warning-dark: #{token.$color-functional-warning-dark};
+  --ppl-color-functional-warning-dark-soft: #{token.$color-functional-warning-dark-soft};
 }

@@ -46,7 +46,7 @@
 @mixin font-bold-smaller {
   font-family: #{tokens.$font-text-bold};
   font-size: #{tokens.$font-size-copy-smaller}; /* 14px */
-  font-weight: bold; /* is not set by font-face! */
+  // font-weight: bold; /* is not set by font-face! */
   line-height: #{tokens.$line-height-copy-smaller}; /* 20px */
 }
 
