@@ -5,6 +5,8 @@
 # Abhängigkeiten
 # Gilt für alle Projekte (Lit, Angular, etc.)
 node_modules/
+.yalc/
+yalc.lock
 
 # Build-Ausgaben und temporäre Verzeichnisse
 /dist/
