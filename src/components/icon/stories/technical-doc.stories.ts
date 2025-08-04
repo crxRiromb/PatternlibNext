@@ -25,9 +25,12 @@ export default meta;
 
 type Story = StoryObj;
 
+// Hint:
+// The closing tag for custom elements should be explicit defined.
+
 export const PrimaryStory: Story = {
   render: args => html`
-    <pl-icon alt=${args.alt} iconName=${args.iconName} style="height: 32px; width: 32px;"> </pl-icon>
+    <pl-icon alt=${args.alt} iconName=${args.iconName} style="height: 32px; width: 32px;"></pl-icon>
   `,
   args: {
     alt: 'Global Icon',
@@ -37,7 +40,7 @@ export const PrimaryStory: Story = {
 
 export const SizeStory: Story = {
   render: args => html`
-    <pl-icon alt=${args.alt} iconName=${args.iconName} style="height: 48px; width: 48px;"> </pl-icon>
+    <pl-icon alt=${args.alt} iconName=${args.iconName} style="height: 48px; width: 48px;"></pl-icon>
   `,
   args: {
     alt: 'Global Icon',

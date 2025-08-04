@@ -9,23 +9,11 @@ class PLButtonAngular {
     type = 'button';
     disabled = false;
     static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "20.1.1", ngImport: i0, type: PLButtonAngular, deps: [], target: i0.ɵɵFactoryTarget.Component });
-    static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "20.1.1", type: PLButtonAngular, isStandalone: true, selector: "pl-button-angular", inputs: { label: "label", type: "type", disabled: "disabled" }, ngImport: i0, template: `
-    <pl-button
-      [label]="label"
-      [type]="type"
-      [disabled]="disabled"
-    ></pl-button>
-  `, isInline: true, styles: [":host{display:inline-block}\n"], changeDetection: i0.ChangeDetectionStrategy.OnPush });
+    static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "20.1.1", type: PLButtonAngular, isStandalone: true, selector: "pl-button-angular", inputs: { label: "label", type: "type", disabled: "disabled" }, ngImport: i0, template: ` <pl-button [label]="label" [type]="type" [disabled]="disabled"></pl-button> `, isInline: true, styles: [":host{display:inline-block}\n"], changeDetection: i0.ChangeDetectionStrategy.OnPush });
 }
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.1.1", ngImport: i0, type: PLButtonAngular, decorators: [{
             type: Component,
-            args: [{ selector: 'pl-button-angular', standalone: true, template: `
-    <pl-button
-      [label]="label"
-      [type]="type"
-      [disabled]="disabled"
-    ></pl-button>
-  `, changeDetection: ChangeDetectionStrategy.OnPush, schemas: [CUSTOM_ELEMENTS_SCHEMA], styles: [":host{display:inline-block}\n"] }]
+            args: [{ selector: 'pl-button-angular', standalone: true, template: ` <pl-button [label]="label" [type]="type" [disabled]="disabled"></pl-button> `, changeDetection: ChangeDetectionStrategy.OnPush, schemas: [CUSTOM_ELEMENTS_SCHEMA], styles: [":host{display:inline-block}\n"] }]
         }], propDecorators: { label: [{
                 type: Input
             }], type: [{
