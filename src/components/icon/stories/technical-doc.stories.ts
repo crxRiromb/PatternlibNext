@@ -25,8 +25,20 @@ export default meta;
 
 type Story = StoryObj;
 
-export const Primary: Story = {
-  render: args => html` <pl-icon alt=${args.alt} iconName=${args.iconName} style="height: 32px; width: 32px;" /> `,
+export const PrimaryStory: Story = {
+  render: args => html`
+    <pl-icon alt=${args.alt} iconName=${args.iconName} style="height: 32px; width: 32px;"> </pl-icon>
+  `,
+  args: {
+    alt: 'Global Icon',
+    iconName: 'globe',
+  },
+};
+
+export const SizeStory: Story = {
+  render: args => html`
+    <pl-icon alt=${args.alt} iconName=${args.iconName} style="height: 48px; width: 48px;"> </pl-icon>
+  `,
   args: {
     alt: 'Global Icon',
     iconName: 'globe',

@@ -13,7 +13,7 @@
       "import": "./dist/index.js"
     },
     "./*": {
-      "import": "./dist/*"
+      "import": "./dist/components/*"
     }
   },
   "scripts": {
@@ -35,5 +35,5 @@
     "lit": "^3.1.0"
   },
   "customElements": "custom-elements.json",
-  "yalcSig": "16b2022a3789f7a8733070dd9613d92b"
+  "yalcSig": "1fdafc3477c0b19bf06f7dd4afcd3b25"
 }
