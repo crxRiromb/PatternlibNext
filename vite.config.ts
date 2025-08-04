@@ -12,9 +12,9 @@ export default defineConfig({
         preserveModules: true,
         preserveModulesRoot: 'src',
         entryFileNames: ({ name: fileName }) => {
-          return `${fileName}.js`
+          return `${fileName}.js`;
         },
-      }
-    }
+      },
+    },
   },
 });
