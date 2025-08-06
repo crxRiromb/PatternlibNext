@@ -4,6 +4,7 @@
 $button-themes: (
   'corporate': (
     'light': (
+      // Primary
       'surface': token.$color-co-light-yellow,
       'accent': token.$color-accent-clay-light-soft,
       'focus': token.$color-black,
@@ -22,6 +23,7 @@ $button-themes: (
       'white': token.$color-white,
     ),
     'dark': (
+      // Primary
       'surface': token.$color-co-light-yellow,
       'accent': token.$color-accent-clay-dark,
       'focus': token.$color-white,
@@ -42,6 +44,7 @@ $button-themes: (
   ),
   'hau': (
     'light': (
+      // Primary
       'surface': token.$color-co-light-yellow,
       'accent': token.$color-accent-clay-light-soft,
       'focus': token.$color-black,
@@ -60,6 +63,7 @@ $button-themes: (
       'white': token.$color-white,
     ),
     'dark': (
+      // Primary
       'surface': token.$color-co-light-yellow,
       'accent': token.$color-accent-clay-dark,
       'focus': token.$color-white,

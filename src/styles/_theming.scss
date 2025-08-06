@@ -1,23 +1,23 @@
 @use 'sass:map';
 
-@mixin generate-component-variant-theme($component-name, $variant-name, $variant-config, $theme-palette) {
-  // Gehe durch jede Rolle (background, border, text)
+@mixin generate-component-variant-theme($component, $variant, $variant-config, $theme-palette) {
+  // For all roles (background, border, text, etc.)
   @each $role, $states in $variant-config {
-    // Gehe durch jeden Zustand (default, hover, active)
+    // For each state (default, hover, active, etc.)
     @each $state, $color-role in $states {
       @if map.has-key($theme-palette, $color-role) {
         $color-value: map.get($theme-palette, $color-role);
 
-        // Baue den Variablennamen zusammen. Wenn der Zustand 'default' ist, wird er weggelassen.
+        // If the 'state' is 'default', it is omitted.
         $variable-name: if(
           $state == 'default',
-          '--color-#{$variant-name}-#{$role}',
-          '--color-#{$variant-name}-#{$role}-#{$state}'
+          '--ppl-color-#{$component}-#{$variant}-#{$role}',
+          '--ppl-color-#{$component}-#{$variant}-#{$role}-#{$state}'
         );
 
         #{$variable-name}: #{$color-value};
       } @else {
-        @warn "Color role '#{$color-role}' for component '#{$component-name}' not found.";
+        @warn "Color role '#{$color-role}' for component '#{$component}' not found.";
       }
     }
   }
