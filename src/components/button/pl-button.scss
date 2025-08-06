@@ -5,7 +5,7 @@
 @use '/src/styles/flex-mixins' as flex;
 @use 'pl-button.theme' as theme;
 
-/* Generate all CSS Custom Properties in shadow DOM */
+/* Generate all CSS Custom Properties for this component in the shadow DOM */
 :host {
   display: inline-block;
 
@@ -147,9 +147,11 @@ button {
   background-color: var(--color-secondary-background-disabled);
   border-color: var(--color-secondary-border-disabled);
   color: var(--color-secondary-text-disabled);
+  cursor: not-allowed;
 }
 :host([disabled][variant='error']) button {
   background-color: var(--color-error-background-disabled);
   border-color: var(--color-error-border-disabled);
   color: var(--color-error-text-disabled);
+  cursor: not-allowed;
 }
