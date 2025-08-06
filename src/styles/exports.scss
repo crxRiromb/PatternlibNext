@@ -1,133 +1,133 @@
-@use 'tokens' as token;
+@use 'tokens' as tokens; /* use relative path here */
 
 :root {
   /* --- FONT FAMILIES --- */
-  --ppl-font-text-regular: #{token.$font-text-regular};
-  --ppl-font-text-medium: #{token.$font-text-medium};
-  --ppl-font-text-bold: #{token.$font-text-bold};
-  --ppl-font-head-regular: #{token.$font-head-regular};
-  --ppl-font-head-black: #{token.$font-head-black};
+  --ppl-font-text-regular: #{tokens.$font-text-regular};
+  --ppl-font-text-medium: #{tokens.$font-text-medium};
+  --ppl-font-text-bold: #{tokens.$font-text-bold};
+  --ppl-font-head-regular: #{tokens.$font-head-regular};
+  --ppl-font-head-black: #{tokens.$font-head-black};
 
-  --ppl-font-noto-text: #{token.$font-noto-text-regular};
-  --ppl-font-noto-text-medium: #{token.$font-noto-text-medium};
-  --ppl-font-noto-text-bold: #{token.$font-noto-text-bold};
-  --ppl-font-noto-head-regular: #{token.$font-noto-head-regular};
-  --ppl-font-noto-head-black: #{token.$font-noto-head-black};
+  --ppl-font-noto-text: #{tokens.$font-noto-text-regular};
+  --ppl-font-noto-text-medium: #{tokens.$font-noto-text-medium};
+  --ppl-font-noto-text-bold: #{tokens.$font-noto-text-bold};
+  --ppl-font-noto-head-regular: #{tokens.$font-noto-head-regular};
+  --ppl-font-noto-head-black: #{tokens.$font-noto-head-black};
 
-  --ppl-font-lh-langpick-asia-regular: #{token.$font-lh-langpick-asia-regular};
-  --ppl-font-lh-langpick-asia-bold: #{token.$font-lh-langpick-asia-bold};
+  --ppl-font-lh-langpick-asia-regular: #{tokens.$font-lh-langpick-asia-regular};
+  --ppl-font-lh-langpick-asia-bold: #{tokens.$font-lh-langpick-asia-bold};
 
   /* --- LANGUAGE SPECIFIC OVERRIDES --- */
   &[lang='zh'] {
-    --ppl-font-text-regular: #{token.$font-noto-text-regular};
-    --ppl-font-text-medium: #{token.$font-noto-text-medium};
-    --ppl-font-text-bold: #{token.$font-noto-text-bold};
-    --ppl-font-head-regular: #{token.$font-noto-head-regular};
-    --ppl-font-head-black: #{token.$font-noto-head-black};
+    --ppl-font-text-regular: #{tokens.$font-noto-text-regular};
+    --ppl-font-text-medium: #{tokens.$font-noto-text-medium};
+    --ppl-font-text-bold: #{tokens.$font-noto-text-bold};
+    --ppl-font-head-regular: #{tokens.$font-noto-head-regular};
+    --ppl-font-head-black: #{tokens.$font-noto-head-black};
   }
 
   /* --- FONT SIZES & LINE HEIGHTS --- */
-  --ppl-font-size-copy: #{token.$font-size-copy};
-  --ppl-line-height-copy: #{token.$line-height-copy};
+  --ppl-font-size-copy: #{tokens.$font-size-copy};
+  --ppl-line-height-copy: #{tokens.$line-height-copy};
 
-  --ppl-font-size-copy-small: #{token.$font-size-copy-small};
-  --ppl-line-height-copy-small: #{token.$line-height-copy-small};
+  --ppl-font-size-copy-small: #{tokens.$font-size-copy-small};
+  --ppl-line-height-copy-small: #{tokens.$line-height-copy-small};
 
-  --ppl-font-size-copy-smaller: #{token.$font-size-copy-smaller};
-  --ppl-line-height-copy-smaller: #{token.$line-height-copy-smaller};
+  --ppl-font-size-copy-smaller: #{tokens.$font-size-copy-smaller};
+  --ppl-line-height-copy-smaller: #{tokens.$line-height-copy-smaller};
 
-  --ppl-font-size-copy-extrasmall: #{token.$font-size-copy-extrasmall};
-  --ppl-line-height-copy-extrasmall: #{token.$line-height-copy-extrasmall};
+  --ppl-font-size-copy-extrasmall: #{tokens.$font-size-copy-extrasmall};
+  --ppl-line-height-copy-extrasmall: #{tokens.$line-height-copy-extrasmall};
 
   /* --- MISC --- */
-  --ppl-letter-spacing: #{token.$letter-spacing};
+  --ppl-letter-spacing: #{tokens.$letter-spacing};
 
   /* --- COLORS --- */
-  --ppl-color-artic-blue: #{token.$color-artic-blue};
-  --ppl-color-blue: #{token.$color-blue};
-  --ppl-color-black: #{token.$color-black};
-  --ppl-color-yellow: #{token.$color-yellow};
-  --ppl-color-white: #{token.$color-white};
+  --ppl-color-artic-blue: #{tokens.$color-artic-blue};
+  --ppl-color-blue: #{tokens.$color-blue};
+  --ppl-color-black: #{tokens.$color-black};
+  --ppl-color-yellow: #{tokens.$color-yellow};
+  --ppl-color-white: #{tokens.$color-white};
 
-  --ppl-color-co-light-yellow: #{token.$color-co-light-yellow};
-  --ppl-color-co-light-background: #{token.$color-co-light-background};
+  --ppl-color-co-light-yellow: #{tokens.$color-co-light-yellow};
+  --ppl-color-co-light-background: #{tokens.$color-co-light-background};
 
-  --ppl-color-co-dark-yellow: #{token.$color-co-dark-yellow};
-  --ppl-color-co-dark-background: #{token.$color-co-dark-background};
+  --ppl-color-co-dark-yellow: #{tokens.$color-co-dark-yellow};
+  --ppl-color-co-dark-background: #{tokens.$color-co-dark-background};
 
-  --ppl-color-ha-light-blue: #{token.$color-ha-light-blue};
-  --ppl-color-ha-light-background: #{token.$color-ha-light-background};
-  --ppl-color-ha-light-artic-blue: #{token.$color-ha-light-artic-blue};
+  --ppl-color-ha-light-blue: #{tokens.$color-ha-light-blue};
+  --ppl-color-ha-light-background: #{tokens.$color-ha-light-background};
+  --ppl-color-ha-light-artic-blue: #{tokens.$color-ha-light-artic-blue};
 
-  --ppl-color-ha-dark-blue: #{token.$color-ha-dark-blue};
-  --ppl-color-ha-dark-artic-blue: #{token.$color-ha-dark-artic-blue};
-  --ppl-color-ha-dark-background: #{token.$color-ha-dark-background};
+  --ppl-color-ha-dark-blue: #{tokens.$color-ha-dark-blue};
+  --ppl-color-ha-dark-artic-blue: #{tokens.$color-ha-dark-artic-blue};
+  --ppl-color-ha-dark-background: #{tokens.$color-ha-dark-background};
 
-  --ppl-color-neutral-steel-50: #{token.$color-neutral-steel-50};
-  --ppl-color-neutral-steel-100: #{token.$color-neutral-steel-100};
-  --ppl-color-neutral-steel-200: #{token.$color-neutral-steel-200};
-  --ppl-color-neutral-steel-300: #{token.$color-neutral-steel-300};
-  --ppl-color-neutral-steel-400: #{token.$color-neutral-steel-400};
-  --ppl-color-neutral-steel-500: #{token.$color-neutral-steel-500};
-  --ppl-color-neutral-steel-600: #{token.$color-neutral-steel-600};
-  --ppl-color-neutral-steel-700: #{token.$color-neutral-steel-700};
-  --ppl-color-neutral-steel-800: #{token.$color-neutral-steel-800};
-  --ppl-color-neutral-steel-900: #{token.$color-neutral-steel-900};
-  --ppl-color-neutral-steel-950: #{token.$color-neutral-steel-950};
-  --ppl-color-neutral-steel-975: #{token.$color-neutral-steel-975};
+  --ppl-color-neutral-steel-50: #{tokens.$color-neutral-steel-50};
+  --ppl-color-neutral-steel-100: #{tokens.$color-neutral-steel-100};
+  --ppl-color-neutral-steel-200: #{tokens.$color-neutral-steel-200};
+  --ppl-color-neutral-steel-300: #{tokens.$color-neutral-steel-300};
+  --ppl-color-neutral-steel-400: #{tokens.$color-neutral-steel-400};
+  --ppl-color-neutral-steel-500: #{tokens.$color-neutral-steel-500};
+  --ppl-color-neutral-steel-600: #{tokens.$color-neutral-steel-600};
+  --ppl-color-neutral-steel-700: #{tokens.$color-neutral-steel-700};
+  --ppl-color-neutral-steel-800: #{tokens.$color-neutral-steel-800};
+  --ppl-color-neutral-steel-900: #{tokens.$color-neutral-steel-900};
+  --ppl-color-neutral-steel-950: #{tokens.$color-neutral-steel-950};
+  --ppl-color-neutral-steel-975: #{tokens.$color-neutral-steel-975};
 
-  --ppl-color-accent-terra-light: #{token.$color-accent-terra-light};
-  --ppl-color-accent-terra-light-soft: #{token.$color-accent-terra-light-soft};
-  --ppl-color-accent-terra-dark: #{token.$color-accent-terra-dark};
-  --ppl-color-accent-terra-dark-soft: #{token.$color-accent-terra-dark-soft};
+  --ppl-color-accent-terra-light: #{tokens.$color-accent-terra-light};
+  --ppl-color-accent-terra-light-soft: #{tokens.$color-accent-terra-light-soft};
+  --ppl-color-accent-terra-dark: #{tokens.$color-accent-terra-dark};
+  --ppl-color-accent-terra-dark-soft: #{tokens.$color-accent-terra-dark-soft};
 
-  --ppl-color-accent-clay-light: #{token.$color-accent-clay-light};
-  --ppl-color-accent-clay-light-soft: #{token.$color-accent-clay-light-soft};
-  --ppl-color-accent-clay-dark: #{token.$color-accent-clay-dark};
-  --ppl-color-accent-clay-dark-soft: #{token.$color-accent-clay-dark-soft};
+  --ppl-color-accent-clay-light: #{tokens.$color-accent-clay-light};
+  --ppl-color-accent-clay-light-soft: #{tokens.$color-accent-clay-light-soft};
+  --ppl-color-accent-clay-dark: #{tokens.$color-accent-clay-dark};
+  --ppl-color-accent-clay-dark-soft: #{tokens.$color-accent-clay-dark-soft};
 
-  --ppl-color-accent-ruby-light: #{token.$color-accent-ruby-light};
-  --ppl-color-accent-ruby-light-soft: #{token.$color-accent-ruby-light-soft};
-  --ppl-color-accent-ruby-dark: #{token.$color-accent-ruby-dark};
-  --ppl-color-accent-ruby-dark-soft: #{token.$color-accent-ruby-dark-soft};
+  --ppl-color-accent-ruby-light: #{tokens.$color-accent-ruby-light};
+  --ppl-color-accent-ruby-light-soft: #{tokens.$color-accent-ruby-light-soft};
+  --ppl-color-accent-ruby-dark: #{tokens.$color-accent-ruby-dark};
+  --ppl-color-accent-ruby-dark-soft: #{tokens.$color-accent-ruby-dark-soft};
 
-  --ppl-color-accent-leaf-light: #{token.$color-accent-leaf-light};
-  --ppl-color-accent-leaf-light-soft: #{token.$color-accent-leaf-light-soft};
-  --ppl-color-accent-leaf-dark: #{token.$color-accent-leaf-dark};
-  --ppl-color-accent-leaf-dark-soft: #{token.$color-accent-leaf-dark-soft};
+  --ppl-color-accent-leaf-light: #{tokens.$color-accent-leaf-light};
+  --ppl-color-accent-leaf-light-soft: #{tokens.$color-accent-leaf-light-soft};
+  --ppl-color-accent-leaf-dark: #{tokens.$color-accent-leaf-dark};
+  --ppl-color-accent-leaf-dark-soft: #{tokens.$color-accent-leaf-dark-soft};
 
-  --ppl-color-accent-slate-light: #{token.$color-accent-slate-light};
-  --ppl-color-accent-slate-light-soft: #{token.$color-accent-slate-light-soft};
-  --ppl-color-accent-slate-dark: #{token.$color-accent-slate-dark};
-  --ppl-color-accent-slate-dark-soft: #{token.$color-accent-slate-dark-soft};
+  --ppl-color-accent-slate-light: #{tokens.$color-accent-slate-light};
+  --ppl-color-accent-slate-light-soft: #{tokens.$color-accent-slate-light-soft};
+  --ppl-color-accent-slate-dark: #{tokens.$color-accent-slate-dark};
+  --ppl-color-accent-slate-dark-soft: #{tokens.$color-accent-slate-dark-soft};
 
-  --ppl-color-accent-coolgreen-light: #{token.$color-accent-coolgreen-light};
-  --ppl-color-accent-coolgreen-light-soft: #{token.$color-accent-coolgreen-light-soft};
-  --ppl-color-accent-coolgreen-dark: #{token.$color-accent-coolgreen-dark};
-  --ppl-color-accent-coolgreen-dark-soft: #{token.$color-accent-coolgreen-dark-soft};
+  --ppl-color-accent-coolgreen-light: #{tokens.$color-accent-coolgreen-light};
+  --ppl-color-accent-coolgreen-light-soft: #{tokens.$color-accent-coolgreen-light-soft};
+  --ppl-color-accent-coolgreen-dark: #{tokens.$color-accent-coolgreen-dark};
+  --ppl-color-accent-coolgreen-dark-soft: #{tokens.$color-accent-coolgreen-dark-soft};
 
-  --ppl-color-accent-burgundy-light: #{token.$color-accent-burgundy-light};
-  --ppl-color-accent-burgundy-light-soft: #{token.$color-accent-burgundy-light-soft};
-  --ppl-color-accent-burgundy-dark: #{token.$color-accent-burgundy-dark};
-  --ppl-color-accent-burgundy-dark-soft: #{token.$color-accent-burgundy-dark-soft};
+  --ppl-color-accent-burgundy-light: #{tokens.$color-accent-burgundy-light};
+  --ppl-color-accent-burgundy-light-soft: #{tokens.$color-accent-burgundy-light-soft};
+  --ppl-color-accent-burgundy-dark: #{tokens.$color-accent-burgundy-dark};
+  --ppl-color-accent-burgundy-dark-soft: #{tokens.$color-accent-burgundy-dark-soft};
 
-  --ppl-color-accent-copper-light: #{token.$color-accent-copper-light};
-  --ppl-color-accent-copper-light-soft: #{token.$color-accent-copper-light-soft};
-  --ppl-color-accent-copper-dark: #{token.$color-accent-copper-dark};
-  --ppl-color-accent-copper-dark-soft: #{token.$color-accent-copper-dark-soft};
+  --ppl-color-accent-copper-light: #{tokens.$color-accent-copper-light};
+  --ppl-color-accent-copper-light-soft: #{tokens.$color-accent-copper-light-soft};
+  --ppl-color-accent-copper-dark: #{tokens.$color-accent-copper-dark};
+  --ppl-color-accent-copper-dark-soft: #{tokens.$color-accent-copper-dark-soft};
 
-  --ppl-color-functional-error-light: #{token.$color-functional-error-light};
-  --ppl-color-functional-error-light-soft: #{token.$color-functional-error-light-soft};
-  --ppl-color-functional-error-dark: #{token.$color-functional-error-dark};
-  --ppl-color-functional-error-dark-soft: #{token.$color-functional-error-dark-soft};
+  --ppl-color-functional-error-light: #{tokens.$color-functional-error-light};
+  --ppl-color-functional-error-light-soft: #{tokens.$color-functional-error-light-soft};
+  --ppl-color-functional-error-dark: #{tokens.$color-functional-error-dark};
+  --ppl-color-functional-error-dark-soft: #{tokens.$color-functional-error-dark-soft};
 
-  --ppl-color-functional-success-light: #{token.$color-functional-success-light};
-  --ppl-color-functional-success-light-soft: #{token.$color-functional-success-light-soft};
-  --ppl-color-functional-success-dark: #{token.$color-functional-success-dark};
-  --ppl-color-functional-success-dark-soft: #{token.$color-functional-success-dark-soft};
+  --ppl-color-functional-success-light: #{tokens.$color-functional-success-light};
+  --ppl-color-functional-success-light-soft: #{tokens.$color-functional-success-light-soft};
+  --ppl-color-functional-success-dark: #{tokens.$color-functional-success-dark};
+  --ppl-color-functional-success-dark-soft: #{tokens.$color-functional-success-dark-soft};
 
-  --ppl-color-functional-warning-light: #{token.$color-functional-warning-light};
-  --ppl-color-functional-warning-light-soft: #{token.$color-functional-warning-light-soft};
-  --ppl-color-functional-warning-dark: #{token.$color-functional-warning-dark};
-  --ppl-color-functional-warning-dark-soft: #{token.$color-functional-warning-dark-soft};
+  --ppl-color-functional-warning-light: #{tokens.$color-functional-warning-light};
+  --ppl-color-functional-warning-light-soft: #{tokens.$color-functional-warning-light-soft};
+  --ppl-color-functional-warning-dark: #{tokens.$color-functional-warning-dark};
+  --ppl-color-functional-warning-dark-soft: #{tokens.$color-functional-warning-dark-soft};
 }

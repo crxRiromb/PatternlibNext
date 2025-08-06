@@ -1,0 +1,23 @@
+@mixin generateHostThemeColors($colors, $prefix: '') {
+  $defaultMode: 'light';
+  @include generateHostDefault($colors, $prefix);
+
+  @each $theme, $map in map-remove($colors, default) {
+    &[data-theme='#{$theme}'],
+    &[theme='#{$theme}'] {
+      @each $mode, $map2 in map-get($colors, $theme) {
+        @if $mode == $defaultMode {
+          @each $var, $val in map-get($map, $mode) {
+            --#{$prefix}#{$var}: #{$val};
+          }
+        } @else {
+          &[data-mode='#{$mode}'] {
+            @each $var, $val in map-get($map, $mode) {
+              --#{$prefix}#{$var}: #{$val};
+            }
+          }
+        }
+      }
+    }
+  }
+}

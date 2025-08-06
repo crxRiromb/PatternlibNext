@@ -1,0 +1,12 @@
+@use 'sass:map';
+
+@mixin generate-component-variant-theme($component-name, $variant-name, $variant-config, $theme-palette) {
+  @each $variable-suffix, $color-role in $variant-config {
+    @if map.has-key($theme-palette, $color-role) {
+      $color-value: map.get($theme-palette, $color-role);
+      --_pl-#{$component-name}-#{$variant-name}-#{$variable-suffix}: #{$color-value};
+    } @else {
+      @warn "Farbrolle '#{$color-role}' für Komponente '#{$component-name}' nicht gefunden.";
+    }
+  }
+}

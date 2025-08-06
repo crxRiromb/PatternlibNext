@@ -1,0 +1,148 @@
+@use '../../styles/tokens' as token;
+
+/* Themes defines every color used in the button component */
+$button-themes: (
+  'corporate': (
+    'light': (
+      'surface': token.$color-co-light-yellow,
+      'accent': token.$color-accent-clay-light-soft,
+      'focus': token.$color-black,
+      'disabled-surface': token.$color-neutral-steel-200,
+      'disabled-border': token.$color-neutral-steel-400,
+      'disabled-onsurface': token.$color-neutral-steel-800,
+      // Secondary
+      'secondary-hover-onsurface': token.$color-neutral-steel-700,
+      'secondary-disabled-border': token.$color-neutral-steel-400,
+      'secondary-disabled-onsurface': token.$color-neutral-steel-800,
+      // Error
+      'error-surface': token.$color-functional-error-light,
+      'error-accent': token.$color-accent-ruby-light,
+      // Neutral
+      'black': token.$color-black,
+      'white': token.$color-white,
+    ),
+    'dark': (
+      'surface': token.$color-co-light-yellow,
+      'accent': token.$color-accent-clay-dark,
+      'focus': token.$color-white,
+      'disabled-surface': token.$color-neutral-steel-900,
+      'disabled-border': token.$color-neutral-steel-600,
+      'disabled-onsurface': token.$color-neutral-steel-200,
+      // Secondary
+      'secondary-hover-onsurface': token.$color-neutral-steel-400,
+      'secondary-disabled-border': token.$color-neutral-steel-600,
+      'secondary-disabled-onsurface': token.$color-neutral-steel-200,
+      // Error
+      'error-surface': token.$color-functional-error-dark,
+      'error-accent': token.$color-functional-error-dark-soft,
+      // Neutral
+      'black': token.$color-black,
+      'white': token.$color-white,
+    ),
+  ),
+  'hau': (
+    'light': (
+      'surface': token.$color-co-light-yellow,
+      'accent': token.$color-accent-clay-light-soft,
+      'focus': token.$color-black,
+      'disabled-surface': token.$color-neutral-steel-200,
+      'disabled-border': token.$color-neutral-steel-400,
+      'disabled-onsurface': token.$color-neutral-steel-800,
+      // Secondary
+      'secondary-hover-onsurface': token.$color-neutral-steel-700,
+      'secondary-disabled-border': token.$color-neutral-steel-400,
+      'secondary-disabled-onsurface': token.$color-neutral-steel-800,
+      // Error
+      'error-surface': token.$color-functional-error-light,
+      'error-accent': token.$color-accent-ruby-light,
+      // Neutral
+      'black': token.$color-black,
+      'white': token.$color-white,
+    ),
+    'dark': (
+      'surface': token.$color-co-light-yellow,
+      'accent': token.$color-accent-clay-dark,
+      'focus': token.$color-white,
+      'disabled-surface': token.$color-neutral-steel-900,
+      'disabled-border': token.$color-neutral-steel-600,
+      'disabled-onsurface': token.$color-neutral-steel-200,
+      // Secondary
+      'secondary-hover-onsurface': token.$color-neutral-steel-400,
+      'secondary-disabled-border': token.$color-neutral-steel-600,
+      'secondary-disabled-onsurface': token.$color-neutral-steel-200,
+      // Error
+      'error-surface': token.$color-functional-error-dark,
+      'error-accent': token.$color-functional-error-dark-soft,
+      // Neutral
+      'black': token.$color-black,
+      'white': token.$color-white,
+    ),
+  ),
+);
+
+/* The Variants define the different variants of the button component */
+$button-variants: (
+  'primary': (
+    // default
+    'background': 'surface',
+    'border': 'surface',
+    'text': 'black',
+    // hover
+    'background-hover': 'accent',
+    'border-hover': 'accent',
+    'text-hover': 'black',
+    // active
+    'background-active': 'black',
+    'border-active': 'black',
+    'text-active': 'white',
+    // disabled
+    'background-disabled': 'disabled-surface',
+    'border-disabled': 'disabled-border',
+    'text-disabled': 'disabled-onsurface',
+    // misc
+    'border-focus': 'black',
+    'loading': 'black',
+  ),
+  'secondary': (
+    // default
+    'background': 'white',
+    'border': 'black',
+    'text': 'black',
+    // hover
+    'background-hover': 'white',
+    'border-hover': 'secondary-hover-onsurface',
+    'text-hover': 'secondary-hover-onsurface',
+    // active
+    'background-active': 'white',
+    'border-active': 'black',
+    'text-active': 'black',
+    // disabled
+    'background-disabled': 'white',
+    'border-disabled': 'secondary-disabled-border',
+    'text-disabled': 'secondary-disabled-onsurface',
+    // misc
+    'border-focus': 'black',
+    'loading': 'black',
+  ),
+  'error': (
+    // default
+    'background': 'error-surface',
+    'border': 'error-surface',
+    'text': 'white',
+    // hover
+    'background-hover': 'error-accent',
+    'border-hover': 'error-accent',
+    'text-hover': 'white',
+    // active
+    'background-active': 'black',
+    'border-active': 'black',
+    'text-active': 'white',
+    // disabled
+    'background-disabled': 'disabled-surface',
+    'border-disabled': 'disabled-border',
+    'text-disabled': 'disabled-onsurface',
+    // misc
+    'border-focus': 'black',
+    'loading': 'white',
+  ),
+);

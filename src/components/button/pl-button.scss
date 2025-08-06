@@ -1,6 +1,9 @@
-@use '/src/styles/reset';
-@use '/src/styles/mixins.scss' as mixins;
-@use '/src/styles/mixins-flex.scss' as flex;
+@use 'sass:map';
+@use '/src/styles/reset-styles';
+@use '/src/styles/theming';
+@use '/src/styles/base-mixins' as base;
+@use '/src/styles/flex-mixins' as flex;
+@use 'pl-button.theme' as theme;
 
 :host {
   display: inline-block;
@@ -13,7 +16,7 @@
 }
 
 button {
-  @include mixins.font-bold-smaller;
+  @include base.font-bold-smaller;
   text-transform: uppercase;
 
   @include flex.flex-center;
