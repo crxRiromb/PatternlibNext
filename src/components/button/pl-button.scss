@@ -6,48 +6,50 @@
 @use '/src/styles/base-mixins' as base;
 @use '/src/styles/flex-mixins' as flex;
 
+$component: 'pl-button';
+
 /* Generate all CSS Custom Properties for this component in the shadow DOM */
 :host {
   display: inline-block;
 
   // Fallback theme
   $theme-palette: map.get(theme.$button-themes, 'corporate', 'light');
-  @each $variant-name, $variant-config in theme.$button-variants {
-    @include theming.generate-component-variant-theme('button', $variant-name, $variant-config, $theme-palette);
+  @each $variant, $variant-config in theme.$button-variants {
+    @include theming.generate-component-variant-theme($component, $variant, $variant-config, $theme-palette);
   }
 }
 
 :host-context([data-theme='corporate'][data-mode='dark']) {
   $theme-palette: map.get(theme.$button-themes, 'corporate', 'dark');
-  @each $variant-name, $variant-config in theme.$button-variants {
-    @include theming.generate-component-variant-theme('button', $variant-name, $variant-config, $theme-palette);
+  @each $variant, $variant-config in theme.$button-variants {
+    @include theming.generate-component-variant-theme($component, $variant, $variant-config, $theme-palette);
   }
 }
 :host-context([data-theme='hau'][data-mode='light']) {
   $theme-palette: map.get(theme.$button-themes, 'hau', 'light');
-  @each $variant-name, $variant-config in theme.$button-variants {
-    @include theming.generate-component-variant-theme('button', $variant-name, $variant-config, $theme-palette);
+  @each $variant, $variant-config in theme.$button-variants {
+    @include theming.generate-component-variant-theme($component, $variant, $variant-config, $theme-palette);
   }
 }
 :host-context([data-theme='hau'][data-mode='dark']) {
   $theme-palette: map.get(theme.$button-themes, 'hau', 'dark');
-  @each $variant-name, $variant-config in theme.$button-variants {
-    @include theming.generate-component-variant-theme('button', $variant-name, $variant-config, $theme-palette);
+  @each $variant, $variant-config in theme.$button-variants {
+    @include theming.generate-component-variant-theme($component, $variant, $variant-config, $theme-palette);
   }
 }
 
 /* --- Variant - Primary --- */
 button {
-  --current-bg: var(--color-primary-background);
-  --current-border: var(--color-primary-border);
-  --current-text: var(--color-primary-text);
-  --current-bg-hover: var(--color-primary-background-hover);
-  --current-border-hover: var(--color-primary-border-hover);
-  --current-text-hover: var(--color-primary-text-hover);
-  --current-bg-active: var(--color-primary-background-active);
-  --current-border-active: var(--color-primary-border-active);
-  --current-text-active: var(--color-primary-text-active);
-  --current-border-focus: var(--color-primary-border-focus);
+  --current-bg: var(--color-pl-button-primary-background);
+  --current-border: var(--color-pl-button-primary-border);
+  --current-text: var(--color-pl-button-primary-text);
+  --current-bg-hover: var(--color-pl-button-primary-background-hover);
+  --current-border-hover: var(--color-pl-button-primary-border-hover);
+  --current-text-hover: var(--color-pl-button-primary-text-hover);
+  --current-bg-active: var(--color-pl-button-primary-background-active);
+  --current-border-active: var(--color-pl-button-primary-border-active);
+  --current-text-active: var(--color-pl-button-primary-text-active);
+  --current-border-focus: var(--color-pl-button-primary-border-focus);
 
   @include base.font-bold-smaller;
   text-transform: uppercase;
@@ -84,16 +86,16 @@ button {
 
 /* --- Variant - Secondary,Error --- */
 :host([variant='secondary']) button {
-  --current-bg: var(--color-secondary-background);
-  --current-border: var(--color-secondary-border);
-  --current-text: var(--color-secondary-text);
-  --current-bg-hover: var(--color-secondary-background-hover);
-  --current-border-hover: var(--color-secondary-border-hover);
-  --current-text-hover: var(--color-secondary-text-hover);
-  --current-bg-active: var(--color-secondary-background-active);
-  --current-border-active: var(--color-secondary-border-active);
-  --current-text-active: var(--color-secondary-text-active);
-  --current-border-focus: var(--color-secondary-border-focus);
+  --current-bg: var(--color-pl-button-secondary-background);
+  --current-border: var(--color-pl-button-secondary-border);
+  --current-text: var(--color-pl-button-secondary-text);
+  --current-bg-hover: var(--color-pl-button-secondary-background-hover);
+  --current-border-hover: var(--color-pl-button-secondary-border-hover);
+  --current-text-hover: var(--color-pl-button-secondary-text-hover);
+  --current-bg-active: var(--color-pl-button-secondary-background-active);
+  --current-border-active: var(--color-pl-button-secondary-border-active);
+  --current-text-active: var(--color-pl-button-secondary-text-active);
+  --current-border-focus: var(--color-pl-button-secondary-border-focus);
   &:hover {
     background-color: var(--current-bg-hover);
     border-color: var(--current-border-hover);
@@ -110,16 +112,16 @@ button {
   }
 }
 :host([variant='error']) button {
-  --current-bg: var(--color-error-background);
-  --current-border: var(--color-error-border);
-  --current-text: var(--color-error-text);
-  --current-bg-hover: var(--color-error-background-hover);
-  --current-border-hover: var(--color-error-border-hover);
-  --current-text-hover: var(--color-error-text-hover);
-  --current-bg-active: var(--color-error-background-active);
-  --current-border-active: var(--color-error-border-active);
-  --current-text-active: var(--color-error-text-active);
-  --current-border-focus: var(--color-error-border-focus);
+  --current-bg: var(--color-pl-button-error-background);
+  --current-border: var(--color-pl-button-error-border);
+  --current-text: var(--color-pl-button-error-text);
+  --current-bg-hover: var(--color-pl-button-error-background-hover);
+  --current-border-hover: var(--color-pl-button-error-border-hover);
+  --current-text-hover: var(--color-pl-button-error-text-hover);
+  --current-bg-active: var(--color-pl-button-error-background-active);
+  --current-border-active: var(--color-pl-button-error-border-active);
+  --current-text-active: var(--color-pl-button-error-text-active);
+  --current-border-focus: var(--color-pl-button-error-border-focus);
   &:hover {
     background-color: var(--current-bg-hover);
     border-color: var(--current-border-hover);
@@ -138,20 +140,20 @@ button {
 
 /* --- State - Disabled --- */
 :host([disabled][variant='primary']) button {
-  background-color: var(--color-primary-background-disabled);
-  border-color: var(--color-primary-border-disabled);
-  color: var(--color-primary-text-disabled);
+  background-color: var(--color-pl-button-primary-background-disabled);
+  border-color: var(--color-pl-button-primary-border-disabled);
+  color: var(--color-pl-button-primary-text-disabled);
   cursor: not-allowed;
 }
 :host([disabled][variant='secondary']) button {
-  background-color: var(--color-secondary-background-disabled);
-  border-color: var(--color-secondary-border-disabled);
-  color: var(--color-secondary-text-disabled);
+  background-color: var(--color-pl-button-secondary-background-disabled);
+  border-color: var(--color-pl-button-secondary-border-disabled);
+  color: var(--color-pl-button-secondary-text-disabled);
   cursor: not-allowed;
 }
 :host([disabled][variant='error']) button {
-  background-color: var(--color-error-background-disabled);
-  border-color: var(--color-error-border-disabled);
-  color: var(--color-error-text-disabled);
+  background-color: var(--color-pl-button-error-background-disabled);
+  border-color: var(--color-pl-button-error-border-disabled);
+  color: var(--color-pl-button-error-text-disabled);
   cursor: not-allowed;
 }
