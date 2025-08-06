@@ -5,19 +5,17 @@
 @use '/src/styles/flex-mixins' as flex;
 @use 'pl-button.theme' as theme;
 
-// --- 1. THEMEN-PALETTE GENERIEREN ---
-// Dieser Block erzeugt alle notwendigen CSS Custom Properties im Shadow DOM der Komponente.
-// Er reagiert nur auf Attribute, die direkt am Host-Element (<pl-button>) gesetzt sind.
+/* Generate all CSS Custom Properties in shadow DOM */
 :host {
   display: inline-block;
 
-  // Lege ein Standard-Theme (Corporate Light) als Fallback fest.
+  // Default
   $theme-palette: map.get(theme.$button-themes, 'corporate', 'light');
   @each $variant-name, $variant-config in theme.$button-variants {
     @include theming.generate-component-variant-theme('button', $variant-name, $variant-config, $theme-palette);
   }
 
-  // Überschreibe die Palette, wenn Attribute direkt am Host gesetzt sind.
+  // Override the palette when attributes are set directly on the host.
   &[data-theme='corporate'][data-mode='dark'] {
     $theme-palette: map.get(theme.$button-themes, 'corporate', 'dark');
     @each $variant-name, $variant-config in theme.$button-variants {
@@ -38,13 +36,19 @@
   }
 }
 
-:host([disabled]) button {
-  background-color: #cccccc;
-  color: #666666;
-  cursor: not-allowed;
-}
-
+/* --- Variant - Primary --- */
 button {
+  --current-bg: var(--color-primary-background);
+  --current-border: var(--color-primary-border);
+  --current-text: var(--color-primary-text);
+  --current-bg-hover: var(--color-primary-background-hover);
+  --current-border-hover: var(--color-primary-border-hover);
+  --current-text-hover: var(--color-primary-text-hover);
+  --current-bg-active: var(--color-primary-background-active);
+  --current-border-active: var(--color-primary-border-active);
+  --current-text-active: var(--color-primary-text-active);
+  --current-border-focus: var(--color-primary-border-focus);
+
   @include base.font-bold-smaller;
   text-transform: uppercase;
 
@@ -54,12 +58,98 @@ button {
   padding-right: 36px;
   border: 1px solid transparent;
   border-radius: 0;
-  background-color: #ffd000;
-  // background-color: blue;
   color: black;
   cursor: pointer;
+
+  background-color: var(--current-bg);
+  border: 1px solid var(--current-border);
+  color: var(--current-text);
+  // background-color: blue; /* for testing */
+
+  &:hover {
+    background-color: var(--current-bg-hover);
+    border-color: var(--current-border-hover);
+    color: var(--current-text-hover);
+  }
+  &:active {
+    background-color: var(--current-bg-active);
+    border-color: var(--current-border-active);
+    color: var(--current-text-active);
+  }
+  &:focus-visible {
+    outline: 3px solid var(--current-border-focus);
+    outline-offset: -3px;
+  }
 }
 
-button:hover {
-  background-color: #eb6f24;
+/* --- Variant - Secondary,Error --- */
+:host([variant='secondary']) button {
+  --current-bg: var(--color-secondary-background);
+  --current-border: var(--color-secondary-border);
+  --current-text: var(--color-secondary-text);
+  --current-bg-hover: var(--color-secondary-background-hover);
+  --current-border-hover: var(--color-secondary-border-hover);
+  --current-text-hover: var(--color-secondary-text-hover);
+  --current-bg-active: var(--color-secondary-background-active);
+  --current-border-active: var(--color-secondary-border-active);
+  --current-text-active: var(--color-secondary-text-active);
+  --current-border-focus: var(--color-secondary-border-focus);
+  &:hover {
+    background-color: var(--current-bg-hover);
+    border-color: var(--current-border-hover);
+    color: var(--current-text-hover);
+  }
+  &:active {
+    background-color: var(--current-bg-active);
+    border-color: var(--current-border-active);
+    color: var(--current-text-active);
+  }
+  &:focus-visible {
+    outline: 3px solid var(--current-border-focus);
+    outline-offset: -3px;
+  }
+}
+:host([variant='error']) button {
+  --current-bg: var(--color-error-background);
+  --current-border: var(--color-error-border);
+  --current-text: var(--color-error-text);
+  --current-bg-hover: var(--color-error-background-hover);
+  --current-border-hover: var(--color-error-border-hover);
+  --current-text-hover: var(--color-error-text-hover);
+  --current-bg-active: var(--color-error-background-active);
+  --current-border-active: var(--color-error-border-active);
+  --current-text-active: var(--color-error-text-active);
+  --current-border-focus: var(--color-error-border-focus);
+  &:hover {
+    background-color: var(--current-bg-hover);
+    border-color: var(--current-border-hover);
+    color: var(--current-text-hover);
+  }
+  &:active {
+    background-color: var(--current-bg-active);
+    border-color: var(--current-border-active);
+    color: var(--current-text-active);
+  }
+  &:focus-visible {
+    outline: 3px solid var(--current-border-focus);
+    outline-offset: -3px;
+  }
+}
+
+/* --- State - Disabled --- */
+:host([disabled][variant='primary']) button {
+  background-color: var(--color-primary-background-disabled);
+  border-color: var(--color-primary-border-disabled);
+  color: var(--color-primary-text-disabled);
+  cursor: not-allowed;
+}
+:host([disabled][variant='secondary']) button {
+  background-color: var(--color-secondary-background-disabled);
+  border-color: var(--color-secondary-border-disabled);
+  color: var(--color-secondary-text-disabled);
+}
+:host([disabled][variant='error']) button {
+  background-color: var(--color-error-background-disabled);
+  border-color: var(--color-error-border-disabled);
+  color: var(--color-error-text-disabled);
 }

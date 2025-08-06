@@ -6,6 +6,12 @@ import fontStyles from '/src/styles/fonts.css?inline';
 @customElement('pl-button')
 export class PlButton extends LitElement {
   /**
+   * Whether the button is disabled.
+   */
+  @property({ type: Boolean, reflect: true })
+  disabled = false;
+
+  /**
    * The label for the button.
    */
   @property({ type: String, reflect: true })
@@ -15,13 +21,14 @@ export class PlButton extends LitElement {
    * The type of the button.
    */
   @property({ type: String, reflect: true })
-  type: 'button' | 'submit' | 'reset' = 'button';
+  type: 'button' | 'submit' = 'button';
 
   /**
-   * Whether the button is disabled.
+   * The variant of the button.
+   * Can be 'primary', 'secondary', or 'error'.
    */
-  @property({ type: Boolean, reflect: true })
-  disabled = false;
+  @property({ type: String, reflect: true })
+  variant: 'primary' | 'secondary' | 'error' = 'primary';
 
   static styles = css`
     ${unsafeCSS(fontStyles)}

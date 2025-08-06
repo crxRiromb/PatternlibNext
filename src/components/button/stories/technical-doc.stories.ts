@@ -7,6 +7,11 @@ const meta: Meta = {
   component: 'pl-button',
   tags: ['autodocs'],
   argTypes: {
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the button when true',
+      defaultValue: false,
+    },
     label: {
       control: 'text',
       description: 'Text displayed on the button',
@@ -14,14 +19,15 @@ const meta: Meta = {
     },
     type: {
       control: { type: 'select' },
-      options: ['button', 'submit', 'reset'],
+      options: ['button', 'submit'],
       description: 'Type of the button',
       defaultValue: 'button',
     },
-    disabled: {
-      control: 'boolean',
-      description: 'Disables the button when true',
-      defaultValue: false,
+    variant: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary', 'error'],
+      description: 'Visual style variant of the button',
+      defaultValue: 'primary',
     },
   },
 };
@@ -30,32 +36,51 @@ export default meta;
 
 type Story = StoryObj;
 
-// Hint:
-// The closing tag for custom elements should be explicit defined.
+const DefaultExample = args => {
+  // Hint: the closing tag for custom elements should be explicitly defined.
+  return html`<pl-button
+    ?disabled=${args.disabled}
+    label=${args.label}
+    type=${args.type}
+    variant=${args.variant}
+  ></pl-button>`;
+};
 
 export const PrimaryStory: Story = {
-  render: args => html`<pl-button label=${args.label} ?disabled=${args.disabled} type=${args.type}></pl-button>`,
+  render: DefaultExample,
+  name: 'Primary (default)',
   args: {
     disabled: false,
     label: 'Label',
     type: 'button',
+    variant: 'primary',
   },
 };
 
 export const DisabledStory: Story = {
-  render: args => html`<pl-button label=${args.label} ?disabled=${args.disabled} type=${args.type}></pl-button>`,
+  render: DefaultExample,
+  name: 'Disabled',
   args: {
+    ...PrimaryStory.args,
     disabled: true,
     label: 'Disabled',
-    type: 'button',
   },
 };
 
-export const SlottedLabelStory: Story = {
-  render: args => html` <pl-button type=${args.type} ?disabled=${args.disabled}> ${args.label} </pl-button> `,
+export const SecondaryStory: Story = {
+  render: DefaultExample,
+  name: 'Secondary',
   args: {
-    disabled: false,
-    label: 'Slotted Label',
-    type: 'button',
+    ...PrimaryStory.args,
+    variant: 'secondary',
+  },
+};
+
+export const ErrorStory: Story = {
+  render: DefaultExample,
+  name: 'Error',
+  args: {
+    ...PrimaryStory.args,
+    variant: 'error',
   },
 };
