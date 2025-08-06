@@ -1,38 +1,38 @@
 @use 'sass:map';
-@use '/src/styles/reset-styles';
 @use '/src/styles/theming';
+@use 'pl-button.theme' as theme;
+
+@use '/src/styles/reset-styles';
 @use '/src/styles/base-mixins' as base;
 @use '/src/styles/flex-mixins' as flex;
-@use 'pl-button.theme' as theme;
 
 /* Generate all CSS Custom Properties for this component in the shadow DOM */
 :host {
   display: inline-block;
 
-  // Default
+  // Fallback theme
   $theme-palette: map.get(theme.$button-themes, 'corporate', 'light');
   @each $variant-name, $variant-config in theme.$button-variants {
     @include theming.generate-component-variant-theme('button', $variant-name, $variant-config, $theme-palette);
   }
+}
 
-  // Override the palette when attributes are set directly on the host.
-  &[data-theme='corporate'][data-mode='dark'] {
-    $theme-palette: map.get(theme.$button-themes, 'corporate', 'dark');
-    @each $variant-name, $variant-config in theme.$button-variants {
-      @include theming.generate-component-variant-theme('button', $variant-name, $variant-config, $theme-palette);
-    }
+:host-context([data-theme='corporate'][data-mode='dark']) {
+  $theme-palette: map.get(theme.$button-themes, 'corporate', 'dark');
+  @each $variant-name, $variant-config in theme.$button-variants {
+    @include theming.generate-component-variant-theme('button', $variant-name, $variant-config, $theme-palette);
   }
-  &[data-theme='hau'][data-mode='light'] {
-    $theme-palette: map.get(theme.$button-themes, 'hau', 'light');
-    @each $variant-name, $variant-config in theme.$button-variants {
-      @include theming.generate-component-variant-theme('button', $variant-name, $variant-config, $theme-palette);
-    }
+}
+:host-context([data-theme='hau'][data-mode='light']) {
+  $theme-palette: map.get(theme.$button-themes, 'hau', 'light');
+  @each $variant-name, $variant-config in theme.$button-variants {
+    @include theming.generate-component-variant-theme('button', $variant-name, $variant-config, $theme-palette);
   }
-  &[data-theme='hau'][data-mode='dark'] {
-    $theme-palette: map.get(theme.$button-themes, 'hau', 'dark');
-    @each $variant-name, $variant-config in theme.$button-variants {
-      @include theming.generate-component-variant-theme('button', $variant-name, $variant-config, $theme-palette);
-    }
+}
+:host-context([data-theme='hau'][data-mode='dark']) {
+  $theme-palette: map.get(theme.$button-themes, 'hau', 'dark');
+  @each $variant-name, $variant-config in theme.$button-variants {
+    @include theming.generate-component-variant-theme('button', $variant-name, $variant-config, $theme-palette);
   }
 }
 
