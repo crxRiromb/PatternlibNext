@@ -80,8 +80,88 @@ $button-themes: (
   ),
 );
 
-/* The Variants define the different variants of the button component */
+/*
+  Structure:
+  Variants: primary, secondary, error,...
+  Role:     background, border, text, ...
+  State:    default, hover, active, disabled
+*/
 $button-variants: (
+  'primary': (
+    'background': (
+      'default': 'surface',
+      'hover': 'accent',
+      'active': 'black',
+      'disabled': 'disabled-surface',
+    ),
+    'border': (
+      'default': 'surface',
+      'hover': 'accent',
+      'active': 'black',
+      'disabled': 'disabled-border',
+      'focus': 'focus',
+    ),
+    'text': (
+      'default': 'black',
+      'hover': 'black',
+      'active': 'white',
+      'disabled': 'disabled-onsurface',
+    ),
+    'loading': (
+      'default': 'black',
+    ),
+  ),
+  'secondary': (
+    'background': (
+      'default': 'white',
+      'hover': 'white',
+      'active': 'white',
+      'disabled': 'white',
+    ),
+    'border': (
+      'default': 'black',
+      'hover': 'secondary-hover-onsurface',
+      'active': 'black',
+      'disabled': 'secondary-disabled-border',
+      'focus': 'focus',
+    ),
+    'text': (
+      'default': 'black',
+      'hover': 'secondary-hover-onsurface',
+      'active': 'black',
+      'disabled': 'secondary-disabled-onsurface',
+    ),
+    'loading': (
+      'default': 'black',
+    ),
+  ),
+  'error': (
+    'background': (
+      'default': 'error-surface',
+      'hover': 'error-accent',
+      'active': 'black',
+      'disabled': 'disabled-surface',
+    ),
+    'border': (
+      'default': 'error-surface',
+      'hover': 'error-accent',
+      'active': 'black',
+      'disabled': 'disabled-border',
+      'focus': 'focus',
+    ),
+    'text': (
+      'default': 'white',
+      'hover': 'white',
+      'active': 'white',
+      'disabled': 'disabled-onsurface',
+    ),
+    'loading': (
+      'default': 'white',
+    ),
+  ),
+);
+
+$button-variants2: (
   'primary': (
     // default
     'background': 'surface',
