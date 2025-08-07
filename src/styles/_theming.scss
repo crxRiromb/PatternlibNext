@@ -11,8 +11,8 @@
         // If the 'state' is 'default', it is omitted.
         $variable-name: if(
           $state == 'default',
-          '--ppl-color-#{$component}-#{$variant}-#{$role}',
-          '--ppl-color-#{$component}-#{$variant}-#{$role}-#{$state}'
+          '--color-#{$component}-#{$variant}-#{$role}',
+          '--color-#{$component}-#{$variant}-#{$role}-#{$state}'
         );
 
         #{$variable-name}: #{$color-value};
