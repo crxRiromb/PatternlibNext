@@ -3,6 +3,10 @@ import { customElement, property } from 'lit/decorators.js';
 import buttonStyles from './pl-button.scss?inline';
 import fontStyles from '/src/styles/fonts.css?inline';
 
+/**
+ * A button component that can be themed.
+ * @csspart button - The styleable native button element inside the component.
+ */
 @customElement('pl-button')
 export class PlButton extends LitElement {
   /**
@@ -37,7 +41,13 @@ export class PlButton extends LitElement {
 
   render() {
     return html`
-      <button type=${this.type} ?disabled=${this.disabled} @click=${this._handleClick}>
+      <button
+        data-testid="button"
+        part="button"
+        type=${this.type}
+        ?disabled=${this.disabled}
+        @click=${this._handleClick}
+      >
         ${this.label ? html`${this.label}` : html`<slot></slot>`}
       </button>
     `;
