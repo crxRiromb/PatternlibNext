@@ -9,24 +9,29 @@ $button-themes: (
       'onsurface': token.$color-black,
       'focus': token.$color-black,
       // Hover
-      'hover-surface': token.$color-accent-clay-light-soft,
+      'surface-hover': token.$color-accent-clay-light-soft,
       // Active
-      'active-surface': token.$color-black,
-      'active-onsurface': token.$color-white,
+      'surface-active': token.$color-black,
+      'onsurface-active': token.$color-white,
       // Disabled
-      'disabled-surface': token.$color-neutral-steel-200,
-      'disabled-border': token.$color-neutral-steel-400,
-      'disabled-onsurface': token.$color-neutral-steel-800,
+      'surface-disabled': token.$color-neutral-steel-200,
+      'border-disabled': token.$color-neutral-steel-400,
+      'onsurface-disabled': token.$color-neutral-steel-800,
       // Secondary
-      'secondary-hover-onsurface': token.$color-neutral-steel-700,
-      'secondary-disabled-border': token.$color-neutral-steel-400,
-      'secondary-disabled-onsurface': token.$color-neutral-steel-800,
+      'secondary-onsurface': token.$color-black,
+      'secondary-onsurface-hover': token.$color-neutral-steel-700,
+      'secondary-onsurface-disabled': token.$color-neutral-steel-800,
+      'secondary-border': token.$color-black,
+      'secondary-border-disabled': token.$color-neutral-steel-400,
       // Error
       'error-surface': token.$color-functional-error-light,
-      'error-accent': token.$color-accent-ruby-light,
+      'error-surface-hover': token.$color-accent-ruby-light,
+      'error-surface-active': token.$color-black,
+      'error-onsurface': token.$color-white,
       // Neutral
       'black': token.$color-black,
       'white': token.$color-white,
+      'transparent': token.$color-transparent,
     ),
     'dark': (
       // Primary
@@ -34,24 +39,29 @@ $button-themes: (
       'onsurface': token.$color-black,
       'focus': token.$color-white,
       // Hover
-      'hover-surface': token.$color-accent-clay-dark,
+      'surface-hover': token.$color-accent-clay-dark,
       // Active
-      'active-surface': token.$color-white,
-      'active-onsurface': token.$color-black,
+      'surface-active': token.$color-white,
+      'onsurface-active': token.$color-black,
       // Disabled
-      'disabled-surface': token.$color-neutral-steel-900,
-      'disabled-border': token.$color-neutral-steel-600,
-      'disabled-onsurface': token.$color-neutral-steel-200,
+      'surface-disabled': token.$color-neutral-steel-900,
+      'border-disabled': token.$color-neutral-steel-600,
+      'onsurface-disabled': token.$color-neutral-steel-200,
       // Secondary
-      'secondary-hover-onsurface': token.$color-neutral-steel-400,
-      'secondary-disabled-border': token.$color-neutral-steel-600,
-      'secondary-disabled-onsurface': token.$color-neutral-steel-200,
+      'secondary-onsurface': token.$color-white,
+      'secondary-onsurface-hover': token.$color-neutral-steel-400,
+      'secondary-onsurface-disabled': token.$color-neutral-steel-200,
+      'secondary-border': token.$color-white,
+      'secondary-border-disabled': token.$color-neutral-steel-600,
       // Error
       'error-surface': token.$color-functional-error-dark,
-      'error-accent': token.$color-functional-error-dark-soft,
+      'error-surface-hover': token.$color-functional-error-dark-soft,
+      'error-surface-active': token.$color-white,
+      'error-onsurface': token.$color-black,
       // Neutral
       'black': token.$color-black,
       'white': token.$color-white,
+      'transparent': token.$color-transparent,
     ),
   ),
   'hau': (
@@ -61,24 +71,29 @@ $button-themes: (
       'onsurface': token.$color-white,
       'focus': token.$color-black,
       // Hover
-      'hover-surface': token.$color-ha-light-artic-blue,
+      'surface-hover': token.$color-ha-light-artic-blue,
       // Active
-      'active-surface': token.$color-black,
-      'active-onsurface': token.$color-white,
+      'surface-active': token.$color-black,
+      'onsurface-active': token.$color-white,
       // Disabled
-      'disabled-surface': token.$color-neutral-steel-200,
-      'disabled-border': token.$color-neutral-steel-400,
-      'disabled-onsurface': token.$color-neutral-steel-800,
+      'surface-disabled': token.$color-neutral-steel-200,
+      'border-disabled': token.$color-neutral-steel-400,
+      'onsurface-disabled': token.$color-neutral-steel-800,
       // Secondary
-      'secondary-hover-onsurface': token.$color-neutral-steel-700,
-      'secondary-disabled-border': token.$color-neutral-steel-400,
-      'secondary-disabled-onsurface': token.$color-neutral-steel-800,
+      'secondary-onsurface': token.$color-ha-light-artic-blue,
+      'secondary-onsurface-hover': token.$color-neutral-steel-700,
+      'secondary-onsurface-disabled': token.$color-neutral-steel-800,
+      'secondary-border': token.$color-ha-light-artic-blue,
+      'secondary-border-disabled': token.$color-neutral-steel-400,
       // Error
       'error-surface': token.$color-functional-error-light,
-      'error-accent': token.$color-accent-ruby-light,
+      'error-surface-hover': token.$color-accent-ruby-light,
+      'error-surface-active': token.$color-black,
+      'error-onsurface': token.$color-white,
       // Neutral
       'black': token.$color-black,
       'white': token.$color-white,
+      'transparent': token.$color-transparent,
     ),
     'dark': (
       // Primary
@@ -86,24 +101,29 @@ $button-themes: (
       'onsurface': token.$color-white,
       'focus': token.$color-white,
       // Hover
-      'hover-surface': token.$color-ha-dark-artic-blue,
+      'surface-hover': token.$color-ha-dark-artic-blue,
       // Active
-      'active-surface': token.$color-white,
-      'active-onsurface': token.$color-black,
+      'surface-active': token.$color-white,
+      'onsurface-active': token.$color-black,
       // Disabled
-      'disabled-surface': token.$color-neutral-steel-900,
-      'disabled-border': token.$color-neutral-steel-600,
-      'disabled-onsurface': token.$color-neutral-steel-200,
+      'surface-disabled': token.$color-neutral-steel-900,
+      'border-disabled': token.$color-neutral-steel-600,
+      'onsurface-disabled': token.$color-neutral-steel-200,
       // Secondary
-      'secondary-hover-onsurface': token.$color-neutral-steel-400,
-      'secondary-disabled-border': token.$color-neutral-steel-600,
-      'secondary-disabled-onsurface': token.$color-neutral-steel-200,
+      'secondary-onsurface': token.$color-white,
+      'secondary-onsurface-hover': token.$color-neutral-steel-400,
+      'secondary-onsurface-disabled': token.$color-neutral-steel-200,
+      'secondary-border': token.$color-white,
+      'secondary-border-disabled': token.$color-neutral-steel-600,
       // Error
       'error-surface': token.$color-functional-error-dark,
-      'error-accent': token.$color-functional-error-dark-soft,
+      'error-surface-hover': token.$color-functional-error-dark-soft,
+      'error-surface-active': token.$color-white,
+      'error-onsurface': token.$color-black,
       // Neutral
       'black': token.$color-black,
       'white': token.$color-white,
+      'transparent': token.$color-transparent,
     ),
   ),
 );
@@ -118,22 +138,22 @@ $button-variants: (
   'primary': (
     'background': (
       'default': 'surface',
-      'hover': 'hover-surface',
-      'active': 'active-surface',
-      'disabled': 'disabled-surface',
+      'hover': 'surface-hover',
+      'active': 'surface-active',
+      'disabled': 'surface-disabled',
     ),
     'border': (
       'default': 'surface',
-      'hover': 'hover-surface',
-      'active': 'active-surface',
-      'disabled': 'disabled-border',
+      'hover': 'surface-hover',
+      'active': 'surface-active',
+      'disabled': 'border-disabled',
       'focus': 'focus',
     ),
     'text': (
       'default': 'onsurface',
       'hover': 'onsurface',
-      'active': 'active-onsurface',
-      'disabled': 'disabled-onsurface',
+      'active': 'onsurface-active',
+      'disabled': 'onsurface-disabled',
     ),
     'loading': (
       'default': 'black',
@@ -141,23 +161,23 @@ $button-variants: (
   ),
   'secondary': (
     'background': (
-      'default': 'white',
-      'hover': 'white',
-      'active': 'white',
-      'disabled': 'white',
+      'default': 'transparent',
+      'hover': 'transparent',
+      'active': 'transparent',
+      'disabled': 'transparent',
     ),
     'border': (
-      'default': 'black',
-      'hover': 'secondary-hover-onsurface',
+      'default': 'secondary-border',
+      'hover': 'secondary-onsurface-hover',
       'active': 'black',
-      'disabled': 'secondary-disabled-border',
+      'disabled': 'secondary-border-disabled',
       'focus': 'focus',
     ),
     'text': (
-      'default': 'onsurface',
-      'hover': 'secondary-hover-onsurface',
-      'active': 'black',
-      'disabled': 'secondary-disabled-onsurface',
+      'default': 'secondary-onsurface',
+      'hover': 'secondary-onsurface-hover',
+      'active': 'secondary-onsurface',
+      'disabled': 'secondary-onsurface-disabled',
     ),
     'loading': (
       'default': 'black',
@@ -166,22 +186,22 @@ $button-variants: (
   'error': (
     'background': (
       'default': 'error-surface',
-      'hover': 'error-accent',
-      'active': 'black',
-      'disabled': 'disabled-surface',
+      'hover': 'error-surface-hover',
+      'active': 'error-surface-active',
+      'disabled': 'surface-disabled',
     ),
     'border': (
       'default': 'error-surface',
-      'hover': 'error-accent',
-      'active': 'black',
-      'disabled': 'disabled-border',
+      'hover': 'error-surface-hover',
+      'active': 'error-surface-active',
+      'disabled': 'border-disabled',
       'focus': 'focus',
     ),
     'text': (
-      'default': 'white',
-      'hover': 'white',
-      'active': 'white',
-      'disabled': 'disabled-onsurface',
+      'default': 'error-onsurface',
+      'hover': 'error-onsurface',
+      'active': 'error-onsurface',
+      'disabled': 'onsurface-disabled',
     ),
     'loading': (
       'default': 'white',

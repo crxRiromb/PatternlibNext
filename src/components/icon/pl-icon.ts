@@ -24,7 +24,7 @@ export class PlIcon extends LitElement {
   render() {
     const src = iconMap[this.iconName] || iconMap.default;
 
-    return html` <img src=${src} alt=${this.alt} /> `;
+    return html`<img src=${src} alt=${this.alt} />`;
   }
 }
 

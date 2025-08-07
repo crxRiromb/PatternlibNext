@@ -55,7 +55,7 @@ button {
   @include base.font-bold-smaller;
   text-transform: uppercase;
 
-  @include flex.flex-center;
+  @include flex.center-center;
   height: 48px;
   padding-left: 36px;
   padding-right: 36px;

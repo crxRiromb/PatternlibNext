@@ -47,17 +47,6 @@ const DefaultExample = args => {
   ></pl-button>`;
 };
 
-const ThemeExample = args => {
-  return html`<pl-button
-    data-theme=${args.dataTheme}
-    data-mode=${args.dataMode}
-    ?disabled=${args.disabled}
-    label=${args.label}
-    type=${args.type}
-    variant=${args.variant}
-  ></pl-button>`;
-};
-
 export const PrimaryStory: Story = {
   render: DefaultExample,
   name: 'Primary (default)',
@@ -94,46 +83,5 @@ export const ErrorStory: Story = {
   args: {
     ...PrimaryStory.args,
     variant: 'error',
-  },
-};
-
-export const CoDarkStory: Story = {
-  render: ThemeExample,
-  name: 'Corporate dark',
-  args: {
-    ...PrimaryStory.args,
-    dataTheme: 'corporate',
-    dataMode: 'dark',
-  },
-};
-
-export const CoDisabledDarkStory: Story = {
-  render: ThemeExample,
-  name: 'Corporate disabled dark',
-  args: {
-    ...PrimaryStory.args,
-    dataTheme: 'corporate',
-    dataMode: 'dark',
-    disabled: true,
-  },
-};
-
-export const HauLightDefaultStory: Story = {
-  render: ThemeExample,
-  name: 'Hau light',
-  args: {
-    ...PrimaryStory.args,
-    dataTheme: 'hau',
-    dataMode: 'light',
-  },
-};
-
-export const HauDarkDefaultStory: Story = {
-  render: ThemeExample,
-  name: 'Hau dark',
-  args: {
-    ...PrimaryStory.args,
-    dataTheme: 'hau',
-    dataMode: 'dark',
   },
 };
