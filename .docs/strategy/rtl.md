@@ -26,36 +26,37 @@
 
 ## 2. Layout & Abstände (CSS)
   ### Inline Axis
-    +----------------------+---------------------------+--------------------------+--------------------------+
-    | Purpose              | Logical Property          | LTR Behavior             | RTL Behavior             |
-    +----------------------+---------------------------+--------------------------+--------------------------+
-    | INLINE AXIS (Direction-sensitive, e.g., horizontal)                                                   |
-    +----------------------+---------------------------+--------------------------+--------------------------+
-    | Sizing               | inline-size               | width                    | width                    |
-    | Margin Start         | margin-inline-start       | margin-left              | margin-right             |
-    | Margin End           | margin-inline-end         | margin-right             | margin-left              |
-    | Padding Start        | padding-inline-start      | padding-left             | padding-right            |
-    | Padding End          | padding-inline-end        | padding-right            | padding-left             |
-    +----------------------+---------------------------+--------------------------+--------------------------+
-    | Border Start         | border-inline-start       | border-left              | border-right             |
-    | Border End           | border-inline-end         | border-right             | border-left              |
-    | Border Top Start Radius     | border-start-start-radius | border-top-left-radius     | border-top-right-radius    |
-    | Border Top End Radius       | border-start-end-radius   | border-top-right-radius    | border-top-left-radius     |
-    | Border Bottom Start Radius  | border-end-start-radius   | border-bottom-left-radius  | border-bottom-right-radius |
-    | Border Bottom End Radius    | border-end-end-radius     | border-bottom-right-radius | border-bottom-left-radius  |
-    +----------------------+---------------------------+--------------------------+--------------------------+
-    | Position Start       | inset-inline-start        | left                     | right                    |
-    | Position End         | inset-inline-end          | right                    | left                     |
-    +----------------------+---------------------------+--------------------------+--------------------------+
-    | Text Align           | text-align: start         | text-align: left         | text-align: right        |
-    | Text Align           | text-align: end           | text-align: right        | text-align: left         |
-    +----------------------+---------------------------+--------------------------+--------------------------+
+    +-------------------------------+-----------------------------+--------------------------+----------------------------+
+    | Purpose                       | Logical Property            | LTR Behavior             | RTL Behavior               |
+    +-------------------------------+-----------------------------+--------------------------+----------------------------+
+    | INLINE AXIS (Direction-sensitive, e.g., horizontal)                                                                 |
+    +-------------------------------+-----------------------------+--------------------------+----------------------------+
+    | Sizing                        | inline-size                 | width                    | width                      |
+    | Margin Start                  | margin-inline-start         | margin-left              | margin-right               |
+    | Margin End                    | margin-inline-end           | margin-right             | margin-left                |
+    | Padding Start                 | padding-inline-start        | padding-left             | padding-right              |
+    | Padding End                   | padding-inline-end          | padding-right            | padding-left               |
+    +-------------------------------+-----------------------------+--------------------------+----------------------------+
+    | Border Start                  | border-inline-start         | border-left              | border-right               |
+    | Border End                    | border-inline-end           | border-right             | border-left                |
+    | Border Top Start Radius       | border-start-start-radius   | border-top-left-radius   | border-top-right-radius    |
+    | Border Top End Radius         | border-start-end-radius     | border-top-right-radius  | border-top-left-radius     |
+    | Border Bottom Start Radius    | border-end-start-radius     | border-bottom-left-radius| border-bottom-right-radius |
+    | Border Bottom End Radius      | border-end-end-radius       | border-bottom-right-radius| border-bottom-left-radius |
+    +-------------------------------+-----------------------------+--------------------------+----------------------------+
+    | Position Start                | inset-inline-start          | left                     | right                      |
+    | Position End                  | inset-inline-end            | right                    | left                       |
+    +-------------------------------+-----------------------------+--------------------------+----------------------------+
+    | Text Align (start)            | text-align: start           | text-align: left         | text-align: right          |
+    | Text Align (end)              | text-align: end             | text-align: right        | text-align: left           |
+    +-------------------------------+-----------------------------+--------------------------+----------------------------+
+
 
   ### Block Axis
     +----------------------+---------------------------+--------------------------+--------------------------+
     | Purpose              | Logical Property          | LTR Behavior             | RTL Behavior             |
     +----------------------+---------------------------+--------------------------+--------------------------+
-    | BLOCK AXIS (Direction-insensitive, e.g., vertical)                                                    |
+    | BLOCK AXIS (Direction-insensitive, e.g., vertical)                                                     |
     +----------------------+---------------------------+--------------------------+--------------------------+
     | Sizing               | block-size                | height                   | height                   |
     | Margin Start         | margin-block-start        | margin-top               | margin-top               |

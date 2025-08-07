@@ -6,8 +6,14 @@ $button-themes: (
     'light': (
       // Primary
       'surface': token.$color-co-light-yellow,
-      'accent': token.$color-accent-clay-light-soft,
+      'onsurface': token.$color-black,
       'focus': token.$color-black,
+      // Hover
+      'hover-surface': token.$color-accent-clay-light-soft,
+      // Active
+      'active-surface': token.$color-black,
+      'active-onsurface': token.$color-white,
+      // Disabled
       'disabled-surface': token.$color-neutral-steel-200,
       'disabled-border': token.$color-neutral-steel-400,
       'disabled-onsurface': token.$color-neutral-steel-800,
@@ -25,8 +31,14 @@ $button-themes: (
     'dark': (
       // Primary
       'surface': token.$color-co-light-yellow,
-      'accent': token.$color-accent-clay-dark,
+      'onsurface': token.$color-black,
       'focus': token.$color-white,
+      // Hover
+      'hover-surface': token.$color-accent-clay-dark,
+      // Active
+      'active-surface': token.$color-white,
+      'active-onsurface': token.$color-black,
+      // Disabled
       'disabled-surface': token.$color-neutral-steel-900,
       'disabled-border': token.$color-neutral-steel-600,
       'disabled-onsurface': token.$color-neutral-steel-200,
@@ -45,9 +57,15 @@ $button-themes: (
   'hau': (
     'light': (
       // Primary
-      'surface': token.$color-co-light-yellow,
-      'accent': token.$color-accent-clay-light-soft,
+      'surface': token.$color-ha-light-blue,
+      'onsurface': token.$color-white,
       'focus': token.$color-black,
+      // Hover
+      'hover-surface': token.$color-ha-light-artic-blue,
+      // Active
+      'active-surface': token.$color-black,
+      'active-onsurface': token.$color-white,
+      // Disabled
       'disabled-surface': token.$color-neutral-steel-200,
       'disabled-border': token.$color-neutral-steel-400,
       'disabled-onsurface': token.$color-neutral-steel-800,
@@ -64,9 +82,15 @@ $button-themes: (
     ),
     'dark': (
       // Primary
-      'surface': token.$color-co-light-yellow,
-      'accent': token.$color-accent-clay-dark,
+      'surface': token.$color-ha-light-blue,
+      'onsurface': token.$color-white,
       'focus': token.$color-white,
+      // Hover
+      'hover-surface': token.$color-ha-dark-artic-blue,
+      // Active
+      'active-surface': token.$color-white,
+      'active-onsurface': token.$color-black,
+      // Disabled
       'disabled-surface': token.$color-neutral-steel-900,
       'disabled-border': token.$color-neutral-steel-600,
       'disabled-onsurface': token.$color-neutral-steel-200,
@@ -94,21 +118,21 @@ $button-variants: (
   'primary': (
     'background': (
       'default': 'surface',
-      'hover': 'accent',
-      'active': 'black',
+      'hover': 'hover-surface',
+      'active': 'active-surface',
       'disabled': 'disabled-surface',
     ),
     'border': (
       'default': 'surface',
-      'hover': 'accent',
-      'active': 'black',
+      'hover': 'hover-surface',
+      'active': 'active-surface',
       'disabled': 'disabled-border',
       'focus': 'focus',
     ),
     'text': (
-      'default': 'black',
-      'hover': 'black',
-      'active': 'white',
+      'default': 'onsurface',
+      'hover': 'onsurface',
+      'active': 'active-onsurface',
       'disabled': 'disabled-onsurface',
     ),
     'loading': (
@@ -130,7 +154,7 @@ $button-variants: (
       'focus': 'focus',
     ),
     'text': (
-      'default': 'black',
+      'default': 'onsurface',
       'hover': 'secondary-hover-onsurface',
       'active': 'black',
       'disabled': 'secondary-disabled-onsurface',
