@@ -4,7 +4,7 @@
  */
 @use '/src/styles/tokens' as tokens;
 
-$font-familiy-ltr: 'Arial', sans-serif;
+$font-familiy-rtl: 'Arial', sans-serif;
 
 /* Regular fonts LTR/RTL */
 @mixin font-text-bidi {
@@ -12,7 +12,7 @@ $font-familiy-ltr: 'Arial', sans-serif;
   font-size: #{tokens.$font-size-copy}; /* 18px */
   line-height: #{tokens.$line-height-copy}; /* 28px */
   &:dir(rtl) {
-    font-family: $font-familiy-ltr;
+    font-family: $font-familiy-rtl;
   }
 }
 @mixin font-text-small-bidi {
@@ -20,7 +20,7 @@ $font-familiy-ltr: 'Arial', sans-serif;
   font-size: #{tokens.$font-size-copy-small}; /* 16px */
   line-height: #{tokens.$line-height-copy-small}; /* 24px */
   &:dir(rtl) {
-    font-family: $font-familiy-ltr;
+    font-family: $font-familiy-rtl;
   }
 }
 @mixin font-text-smaller-bidi {
@@ -28,7 +28,7 @@ $font-familiy-ltr: 'Arial', sans-serif;
   font-size: #{tokens.$font-size-copy-smaller}; /* 14px */
   line-height: #{tokens.$line-height-copy-smaller}; /* 20px */
   &:dir(rtl) {
-    font-family: $font-familiy-ltr;
+    font-family: $font-familiy-rtl;
   }
 }
 @mixin font-text-extrasmall-bidi {
@@ -36,7 +36,7 @@ $font-familiy-ltr: 'Arial', sans-serif;
   font-size: #{tokens.$font-size-copy-extrasmall}; /* 12px */
   line-height: #{tokens.$line-height-copy-extrasmall}; /* 16px */
   &:dir(rtl) {
-    font-family: $font-familiy-ltr;
+    font-family: $font-familiy-rtl;
   }
 }
 /* Bold fonts LTR/RTL */
@@ -45,7 +45,7 @@ $font-familiy-ltr: 'Arial', sans-serif;
   font-size: #{tokens.$font-size-copy}; /* 18px */
   line-height: #{tokens.$line-height-copy}; /* 28px */
   &:dir(rtl) {
-    font-family: $font-familiy-ltr;
+    font-family: $font-familiy-rtl;
   }
 }
 @mixin font-bold-small-bidi {
@@ -53,7 +53,7 @@ $font-familiy-ltr: 'Arial', sans-serif;
   font-size: #{tokens.$font-size-copy-small}; /* 16px */
   line-height: #{tokens.$line-height-copy-small}; /* 24px */
   &:dir(rtl) {
-    font-family: $font-familiy-ltr;
+    font-family: $font-familiy-rtl;
   }
 }
 @mixin font-bold-smaller-bidi {
@@ -62,7 +62,7 @@ $font-familiy-ltr: 'Arial', sans-serif;
   font-weight: bold; /* is not set by font-face! */
   line-height: #{tokens.$line-height-copy-smaller}; /* 20px */
   &:dir(rtl) {
-    font-family: $font-familiy-ltr;
+    font-family: $font-familiy-rtl;
     font-size: 16px;
   }
 }
@@ -71,7 +71,7 @@ $font-familiy-ltr: 'Arial', sans-serif;
   font-size: #{tokens.$font-size-copy-extrasmall}; /* 12px */
   line-height: #{tokens.$line-height-copy-extrasmall}; /* 16px */
   &:dir(rtl) {
-    font-family: $font-familiy-ltr;
+    font-family: $font-familiy-rtl;
   }
 }
 
