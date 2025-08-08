@@ -85,3 +85,16 @@ export const ErrorStory: Story = {
     variant: 'error',
   },
 };
+
+export const RtlStory: Story = {
+  render: DefaultExample,
+  name: 'Right-to-Left (RTL)',
+  args: {
+    ...PrimaryStory.args,
+    label: 'هذا هو عنوان الزر', // Arabisch für "Dies ist der Titel des Buttons"
+  },
+  decorators: [
+    // Decorator wraps the story in a div with a RTL context
+    Story => html`<div dir="rtl">${Story()}</div>`,
+  ],
+};

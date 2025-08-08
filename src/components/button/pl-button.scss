@@ -52,13 +52,12 @@ button {
   --current-text-active: var(--color-pl-button-primary-text-active);
   --current-border-focus: var(--color-pl-button-primary-border-focus);
 
-  @include base.font-bold-smaller;
+  @include base.font-bold-smaller-bidi;
   text-transform: uppercase;
 
   @include flex.center-center;
   height: 48px;
-  padding-left: 36px;
-  padding-right: 36px;
+  padding-inline: 36px;
   border: 1px solid transparent;
   border-radius: 0;
   color: black;

@@ -1,56 +1,119 @@
-@use '/src/styles/tokens' as tokens;
-
 /*
  * File is defined as partial, which means it won't be compiled into CSS directly
  * It's intended to be used as a building block for the component styles.
  */
+@use '/src/styles/tokens' as tokens;
 
-/* Regular fonts */
+$font-familiy-ltr: 'Arial', sans-serif;
+
+/* Regular fonts LTR/RTL */
+@mixin font-text-bidi {
+  font-family: #{tokens.$font-text-regular};
+  font-size: #{tokens.$font-size-copy}; /* 18px */
+  line-height: #{tokens.$line-height-copy}; /* 28px */
+  &:dir(rtl) {
+    font-family: $font-familiy-ltr;
+  }
+}
+@mixin font-text-small-bidi {
+  font-family: #{tokens.$font-text-regular};
+  font-size: #{tokens.$font-size-copy-small}; /* 16px */
+  line-height: #{tokens.$line-height-copy-small}; /* 24px */
+  &:dir(rtl) {
+    font-family: $font-familiy-ltr;
+  }
+}
+@mixin font-text-smaller-bidi {
+  font-family: #{tokens.$font-text-regular};
+  font-size: #{tokens.$font-size-copy-smaller}; /* 14px */
+  line-height: #{tokens.$line-height-copy-smaller}; /* 20px */
+  &:dir(rtl) {
+    font-family: $font-familiy-ltr;
+  }
+}
+@mixin font-text-extrasmall-bidi {
+  font-family: #{tokens.$font-text-regular};
+  font-size: #{tokens.$font-size-copy-extrasmall}; /* 12px */
+  line-height: #{tokens.$line-height-copy-extrasmall}; /* 16px */
+  &:dir(rtl) {
+    font-family: $font-familiy-ltr;
+  }
+}
+/* Bold fonts LTR/RTL */
+@mixin font-bold-bidi {
+  font-family: #{tokens.$font-text-bold};
+  font-size: #{tokens.$font-size-copy}; /* 18px */
+  line-height: #{tokens.$line-height-copy}; /* 28px */
+  &:dir(rtl) {
+    font-family: $font-familiy-ltr;
+  }
+}
+@mixin font-bold-small-bidi {
+  font-family: #{tokens.$font-text-bold};
+  font-size: #{tokens.$font-size-copy-small}; /* 16px */
+  line-height: #{tokens.$line-height-copy-small}; /* 24px */
+  &:dir(rtl) {
+    font-family: $font-familiy-ltr;
+  }
+}
+@mixin font-bold-smaller-bidi {
+  font-family: #{tokens.$font-text-bold};
+  font-size: #{tokens.$font-size-copy-smaller}; /* 14px */
+  font-weight: bold; /* is not set by font-face! */
+  line-height: #{tokens.$line-height-copy-smaller}; /* 20px */
+  &:dir(rtl) {
+    font-family: $font-familiy-ltr;
+    font-size: 16px;
+  }
+}
+@mixin font-bold-extrasmall-bidi {
+  font-family: #{tokens.$font-text-bold};
+  font-size: #{tokens.$font-size-copy-extrasmall}; /* 12px */
+  line-height: #{tokens.$line-height-copy-extrasmall}; /* 16px */
+  &:dir(rtl) {
+    font-family: $font-familiy-ltr;
+  }
+}
+
+/* Regular fonts LTR */
 @mixin font-text {
   font-family: #{tokens.$font-text-regular};
   font-size: #{tokens.$font-size-copy}; /* 18px */
   line-height: #{tokens.$line-height-copy}; /* 28px */
 }
-
 @mixin font-text-small {
   font-family: #{tokens.$font-text-regular};
   font-size: #{tokens.$font-size-copy-small}; /* 16px */
   line-height: #{tokens.$line-height-copy-small}; /* 24px */
 }
-
 @mixin font-text-smaller {
   font-family: #{tokens.$font-text-regular};
   font-size: #{tokens.$font-size-copy-smaller}; /* 14px */
   line-height: #{tokens.$line-height-copy-smaller}; /* 20px */
 }
-
 @mixin font-text-extrasmall {
   font-family: #{tokens.$font-text-regular};
   font-size: #{tokens.$font-size-copy-extrasmall}; /* 12px */
   line-height: #{tokens.$line-height-copy-extrasmall}; /* 16px */
 }
-
-/* Bold fonts */
+/* Bold fonts LTR */
 @mixin font-bold {
   font-family: #{tokens.$font-text-bold};
   font-size: #{tokens.$font-size-copy}; /* 18px */
   line-height: #{tokens.$line-height-copy}; /* 28px */
 }
-
 @mixin font-bold-small {
   font-family: #{tokens.$font-text-bold};
   font-size: #{tokens.$font-size-copy-small}; /* 16px */
   line-height: #{tokens.$line-height-copy-small}; /* 24px */
 }
-
 @mixin font-bold-smaller {
   font-family: #{tokens.$font-text-bold};
   font-size: #{tokens.$font-size-copy-smaller}; /* 14px */
   // font-weight: bold; /* is not set by font-face! */
   line-height: #{tokens.$line-height-copy-smaller}; /* 20px */
 }
-
-@mixin font-bold-extra-small {
+@mixin font-bold-extrasmall {
   font-family: #{tokens.$font-text-bold};
   font-size: #{tokens.$font-size-copy-extrasmall}; /* 12px */
   line-height: #{tokens.$line-height-copy-extrasmall}; /* 16px */
