@@ -8,6 +8,25 @@ setCustomElementsManifest(customElements);
 // Decorator-Function
 const withGlobals = (Story, context) => {
   const { direction, theme, mode } = context.globals;
+
+  // Liebherr color: steel-975 (#202326)
+  const isDark = mode === 'dark';
+  const backgroundColor = isDark ? '#202326' : '#FFFFFF';
+  const textColor = isDark ? '#FFFFFF' : '#000000';
+
+  // Style rules in preview-head.html
+  // to style the preview container for light and dark mode
+  const modeStyleRules = `
+    .docs-story {
+      background-color: ${backgroundColor};
+      color: ${textColor};
+    }
+  `;
+  const styleTag = document.querySelector('#story-theme-style');
+  if (styleTag) {
+    styleTag.innerHTML = modeStyleRules;
+  }
+
   return html` <div dir=${direction} data-theme=${theme} data-mode=${mode}>${Story()}</div> `;
 };
 
@@ -17,10 +36,11 @@ const preview: Preview = {
     // Theme switch
     theme: {
       name: 'Theme',
-      description: 'Global theme for components',
+      description: 'Switch global theme for components',
       defaultValue: 'corporate',
       toolbar: {
-        icon: 'paintbrush',
+        icon: 'home',
+        // icon: 'star',
         items: [
           { value: 'corporate', title: 'Corporate' },
           { value: 'hau', title: 'HAU' },
@@ -32,7 +52,7 @@ const preview: Preview = {
     // Mode switch
     mode: {
       name: 'Mode',
-      description: 'Color mode for components',
+      description: 'Switch color mode for components',
       defaultValue: 'light',
       toolbar: {
         icon: 'mirror',
@@ -47,7 +67,7 @@ const preview: Preview = {
     // Direction switch
     direction: {
       name: 'Direction',
-      description: 'Direction for layout',
+      description: 'Switch direction RTL/LTR',
       defaultValue: 'ltr',
       toolbar: {
         icon: 'globe',
@@ -65,6 +85,10 @@ const preview: Preview = {
 
   // Parameters
   parameters: {
+    // Disable default backgrounds toolbar buttons (grid, dark-mode)
+    backgrounds: {
+      disable: true,
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
