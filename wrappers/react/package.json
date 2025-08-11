@@ -24,9 +24,9 @@
     "@lit/react": "^1.0.8"
   },
   "peerDependencies": {
-    "@liebherr2/plnext": "0.0.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "@liebherr2/plnext": "0.0.1"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",

@@ -1,7 +1,7 @@
 {
   "name": "@liebherr2/angularnext",
   "version": "0.0.1",
-  "description": "Angular Wrapper für @liebherr2/plnext.",
+  "description": "Angular wrapper library für @liebherr2/plnext.",
   "peerDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",
