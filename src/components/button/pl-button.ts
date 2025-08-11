@@ -20,7 +20,7 @@ interface PlButtonState {
  *
  * @slot - The default slot for the button's text (an alternative to the `label` attribute).
  *
- * @event pl-click - Fired when the user clicks the button. Contains no `detail` data.
+ * @event pl-button-click - Fired when the user clicks the button. Contains no `detail` data.
  *
  * @csspart button - The native `<button>` element inside the component.
  */
@@ -97,13 +97,13 @@ export class PlButton extends PlBase {
   }
 
   render() {
-    console.log(
-      'Rendering PlButton with RTL/Light/Dark/Id:',
-      this.isRTL(),
-      this.isLightMode(),
-      this.isDarkMode(),
-      IdUtils.generateId()
-    );
+    // console.log(
+    //   'Rendering PlButton with RTL/Light/Dark/Id:',
+    //   this.isRTL(),
+    //   this.isLightMode(),
+    //   this.isDarkMode(),
+    //   IdUtils.generateId()
+    // );
 
     return html`
       <button
@@ -124,7 +124,7 @@ export class PlButton extends PlBase {
       event.stopPropagation();
       return;
     }
-    this._emitEvent('pl-click');
+    this._emitEvent('pl-button-click');
   }
 }
 

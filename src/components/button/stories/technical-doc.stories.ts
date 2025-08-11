@@ -39,11 +39,16 @@ type Story = StoryObj;
 // Hint: the closing tag for custom elements should be explicitly defined.
 
 const DefaultExample = args => {
+  const handleButtonClick = event => {
+    console.log('[pl-button] click event:', event);
+  };
+
   return html`<pl-button
     ?disabled=${args.disabled}
     label=${args.label}
     type=${args.type}
     variant=${args.variant}
+    @pl-button-click=${handleButtonClick}
   ></pl-button>`;
 };
 
