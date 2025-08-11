@@ -1,6 +1,6 @@
 # TypeScript
 
-## Error: Variable never read
+## TypeScript 'Variable never read' error downgraded to ESLint warning
 
 This issue is downgraded in importance to a warning.
 

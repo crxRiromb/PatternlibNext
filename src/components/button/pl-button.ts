@@ -5,7 +5,8 @@ import { PlBase } from '../base/pl-base';
 import buttonStyles from './pl-button.scss?inline';
 import fontStyles from '/src/styles/fonts.css?inline';
 
-export interface PlButtonState {
+export type PlButtonClickEvent = CustomEvent<void>;
+interface PlButtonState {
   isLoading: boolean;
   disabled: boolean;
   label: string;
@@ -26,6 +27,7 @@ export interface PlButtonState {
 @customElement('pl-button')
 export class PlButton extends PlBase {
   /** @internal */
+  @state()
   private _state: PlButtonState = {
     isLoading: false,
     disabled: false,
@@ -39,21 +41,21 @@ export class PlButton extends PlBase {
    * @type {boolean}
    */
   @property({ type: Boolean, reflect: true })
-  disabled = false;
+  disabled?: boolean;
 
   /**
    * The label for the button.
    * @type {string}
    */
   @property({ type: String, reflect: true })
-  label = '';
+  label?: string;
 
   /**
    * The type of the button.
    * @type {'button' | 'submit'}
    */
   @property({ type: String, reflect: true })
-  type: 'button' | 'submit' = 'button';
+  type?: 'button' | 'submit';
 
   /**
    * The variant of the button.
@@ -61,12 +63,38 @@ export class PlButton extends PlBase {
    * @type {string}
    */
   @property({ type: String, reflect: true })
-  variant: 'primary' | 'secondary' | 'error' = 'primary';
+  variant?: 'primary' | 'secondary' | 'error';
 
   static styles = css`
     ${unsafeCSS(fontStyles)}
     ${unsafeCSS(buttonStyles)}
   `;
+
+  /*
+   * Called between changes with attributes and render()
+   */
+  willUpdate(changedProperties: Map<string, unknown>) {
+    const newState: Partial<PlButtonState> = {};
+
+    // update for the internal state.
+    if (changedProperties.has('disabled')) {
+      newState.disabled = this.disabled ?? this._state.disabled;
+    }
+    if (changedProperties.has('label')) {
+      newState.label = this.label ?? this._state.label;
+    }
+    if (changedProperties.has('type')) {
+      newState.type = this.type ?? this._state.type;
+    }
+    if (changedProperties.has('variant')) {
+      newState.variant = this.variant ?? this._state.variant;
+    }
+
+    // trigger change detection
+    if (Object.keys(newState).length > 0) {
+      this._state = { ...this._state, ...newState };
+    }
+  }
 
   render() {
     console.log(
@@ -81,28 +109,30 @@ export class PlButton extends PlBase {
       <button
         data-testid="button"
         part="button"
-        type=${this.type}
-        ?disabled=${this.disabled}
+        type=${this._state.type}
+        ?disabled=${this._state.disabled || this._state.isLoading}
         @click=${this._handleClick}
       >
-        ${this.label ? html`${this.label}` : html`<slot></slot>`}
+        ${this._state.label ? html`${this._state.label}` : html`<slot></slot>`}
       </button>
     `;
   }
 
   private _handleClick(event: MouseEvent) {
-    if (this.disabled) {
+    if (this._state.disabled) {
       event.preventDefault();
       event.stopPropagation();
       return;
     }
-    const customClickEvent = new CustomEvent('pl-click', { bubbles: true, composed: true });
-    this.dispatchEvent(customClickEvent);
+    this._emitEvent('pl-click');
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
     'pl-button': PlButton;
+  }
+  interface HTMLElementEventMap {
+    'pl-button-click': PlButtonClickEvent;
   }
 }

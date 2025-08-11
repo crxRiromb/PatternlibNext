@@ -1,10 +1,11 @@
-import { LitElement, html, css, unsafeCSS } from 'lit';
+import { css, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import iconStyles from './pl-icon.scss?raw';
+import { PlBase } from '../base/pl-base';
 import { iconMap } from './icon-map';
+import iconStyles from './pl-icon.scss?raw';
 
 @customElement('pl-icon')
-export class PlIcon extends LitElement {
+export class PlIcon extends PlBase {
   /**
    * The alternative text for the icon.
    */

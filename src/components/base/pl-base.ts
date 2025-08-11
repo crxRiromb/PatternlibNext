@@ -36,4 +36,18 @@ export class PlBase extends LitElement {
   public isRTL(): boolean {
     return getComputedStyle(this).direction === 'rtl';
   }
+
+  /**
+   * Emits a custom event from the component.
+   * @param eventName - The name of the event to emit.
+   * @param detail - Optional detail object to include with the event.
+   */
+  protected _emitEvent<T>(eventName: string, detail?: T) {
+    const event = new CustomEvent<T>(eventName, {
+      detail,
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(event);
+  }
 }

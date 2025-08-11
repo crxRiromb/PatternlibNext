@@ -1,10 +1,11 @@
-import { LitElement, html, css, unsafeCSS } from 'lit';
+import { css, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { map } from 'lit/directives/map.js';
+import { PlBase } from '../base/pl-base';
 import itemlistStyles from './pl-itemlist.scss?raw';
 
 @customElement('pl-itemlist')
-export class PlItemlist extends LitElement {
+export class PlItemlist extends PlBase {
   /**
    * The label for the item list headline.
    */
