@@ -1,0 +1,47 @@
+import React, { useEffect, useRef, useImperativeHandle } from 'react';
+
+interface PlButtonElement extends HTMLElement {
+  disabled?: boolean;
+  label: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  type?: 'button' | 'submit';
+}
+
+interface PlButtonProps {
+  disabled?: boolean;
+  label: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  type?: 'button' | 'submit';
+  onClick?: (event: CustomEvent) => void;
+  children?: React.ReactNode;
+  ref?: React.Ref<PlButtonElement>;
+}
+
+export const PlButton = ({ label, variant, disabled, onClick, children, ref }: PlButtonProps) => {
+  const internalRef = useRef<PlButtonElement>(null);
+
+  // Leite das externe ref sauber an das interne DOM-Element weiter.
+  // Das ist sauberer als ein zusätzlicher useEffect.
+  useImperativeHandle(ref, () => internalRef.current!, []);
+
+  useEffect(() => {
+    const element = internalRef.current;
+    if (!element) return;
+    element.label = label;
+    if (variant) element.variant = variant;
+    if (disabled !== undefined) element.disabled = disabled;
+  }, [label, variant, disabled]);
+
+  useEffect(() => {
+    const element = internalRef.current;
+    if (!element || !onClick) return;
+
+    const handleEvent = (event: Event) => onClick(event as CustomEvent);
+    const eventName = 'pl-click';
+
+    element.addEventListener(eventName, handleEvent);
+    return () => element.removeEventListener(eventName, handleEvent);
+  }, [onClick]);
+
+  return <pl-button ref={internalRef}>{children}</pl-button>;
+};

@@ -97,13 +97,13 @@ export class PlButton extends PlBase {
   }
 
   render() {
-    // console.log(
-    //   'Rendering PlButton with RTL/Light/Dark/Id:',
-    //   this.isRTL(),
-    //   this.isLightMode(),
-    //   this.isDarkMode(),
-    //   IdUtils.generateId()
-    // );
+    console.log(
+      'Rendering PlButton with RTL/Light/Dark/Id:',
+      this.isRTL(),
+      this.isLightMode(),
+      this.isDarkMode(),
+      IdUtils.generateId()
+    );
 
     return html`
       <button

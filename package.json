@@ -12,6 +12,7 @@
     ".": {
       "import": "./dist/index.js"
     },
+    "./react-types": "./dist/custom-elements.d.ts",
     "./styles/exports.css": "./dist/styles/exports.css",
     "./styles/fonts.css": "./dist/styles/fonts.css",
     "./*": {
@@ -20,7 +21,7 @@
   },
   "scripts": {
     "analyze": "cem analyze",
-    "build": "vite build && tsc --emitDeclarationOnly && npm run build:styles",
+    "build": "vite build && tsc --emitDeclarationOnly && npm run build:styles && node scripts/generate-react-types.mjs",
     "build:styles": "sass src/styles/exports.scss dist/styles/exports.css --no-source-map && sass src/styles/fonts.css dist/styles/fonts.css --no-source-map",
     "build:watch": "vite build --watch",
     "build-storybook": "storybook build",
@@ -47,8 +48,8 @@
     "@storybook/addon-toolbars": "^9.0.8",
     "@storybook/web-components-vite": "^9.0.17",
     "@types/node": "^20.11.17",
-    "@typescript-eslint/eslint-plugin": "^6.19.0",
-    "@typescript-eslint/parser": "^6.19.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
     "@web/dev-server": "^0.4.2",
     "@web/test-runner": "^0.18.0",
     "eslint": "^8.56.0",
