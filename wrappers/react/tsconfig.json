@@ -25,6 +25,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "node_modules/@liebherr2/plnext/react-types"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
