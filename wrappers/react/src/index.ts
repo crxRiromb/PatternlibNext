@@ -1,1 +1,1 @@
-export * from './components/PlButton';
+export * from './button/PlButton';

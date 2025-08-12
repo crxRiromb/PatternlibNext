@@ -7,8 +7,6 @@ export const PlButton = createComponent({
   tagName: 'pl-button',
   elementClass: PlButtonWebComponent,
   events: {
-    // Hier mappen wir React Prop-Namen auf die echten Event-Namen
-    // aus der Web Component.
-    onClick: 'pl-click',
+    onClick: 'pl-button-click',
   },
 });

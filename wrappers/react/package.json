@@ -12,9 +12,9 @@
   },
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/reactnext.es.js",
-      "require": "./dist/reactnext.umd.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/reactnext.umd.js"
     }
   },
   "files": [

@@ -1,28 +1,42 @@
 {
   "compilerOptions": {
+    /* Grundkonfiguration */
     "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "ESNext",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "declaration": true,
+    "rootDir": "./src",
+    "esModuleInterop": true,
+
+    /* Deklarationsdateien */
     "declarationMap": true,
     "sourceMap": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true,
+
+    /* Lit-spezifische Anforderungen */
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
-    "composite": true,
-    "types": ["node"],
+
+    /* Modulauflösung für Vite */
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true /* new */,
+
+    /* Code-Qualität */
+    "strict": true,
+    "skipLibCheck": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": false /* downgrade 'Variable never read' to 'warning' */,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Typ-Deklarationen erzeugen */
+    "declaration": true,
+    "declarationDir": "./dist",
+    "emitDeclarationOnly": true,
+
+    /* Aliase für Importe */
     "baseUrl": "./",
     "paths": {
       "@src/*": ["src/*"]
-    },
-    "noUnusedLocals": false // downgrade 'Variable never read' to 'warning'
+    }
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist", "src/**/*.stories.ts"]
