@@ -2,6 +2,8 @@ import './app.css';
 import '@liebherr/patternlib/dist/patternlib/patternlib.css';
 import '@liebherr/patternlib/www/assets/css/patternlib-fonts.css';
 
+// import '@liebherr2/plnext/button/pl-button.js';
+
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 
 import type { Route } from './+types/root';

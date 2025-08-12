@@ -55,6 +55,10 @@ export function Header() {
       navigate('/breadcrumb');
     };
 
+    const handlePl4IntegrationClick = () => {
+      navigate('/pl4integration');
+    };
+
     return (
       <PatternlibMainNavigationPortal>
         <PatternlibMainNavigationItemPortal>Home</PatternlibMainNavigationItemPortal>
@@ -63,6 +67,9 @@ export function Header() {
         <PatternlibMainNavigationItemPortal onClick={handleModalClick}>Modal</PatternlibMainNavigationItemPortal>
         <PatternlibMainNavigationItemPortal onClick={handleBreadcrumbClick}>
           Breadcrumb
+        </PatternlibMainNavigationItemPortal>
+        <PatternlibMainNavigationItemPortal onClick={handlePl4IntegrationClick}>
+          Pl4Integration
         </PatternlibMainNavigationItemPortal>
       </PatternlibMainNavigationPortal>
     );
