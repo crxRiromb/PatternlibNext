@@ -3,11 +3,15 @@ import path from 'path';
 
 export default defineConfig({
   build: {
+    /* Library mode configuration */
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       formats: ['es'],
     },
+
+    /* Rollup options */
     rollupOptions: {
+      external: [/^lit/],
       output: {
         preserveModules: true,
         preserveModulesRoot: 'src',
