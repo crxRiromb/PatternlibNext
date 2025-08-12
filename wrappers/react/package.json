@@ -1,12 +1,13 @@
 {
   "name": "@liebherr2/reactnext",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "React wrapper library für @liebherr2/plnext.",
   "module": "./dist/reactnext.es.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
+    "yalc:publish": "npm run build && yalc publish --push",
     "lint": "eslint .",
     "prepublishOnly": "npm run build"
   },
