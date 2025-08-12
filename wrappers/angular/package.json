@@ -4,7 +4,7 @@
   "description": "Angular wrapper library für @liebherr2/plnext.",
   "scripts": {
     "build": "ng-packagr -p ng-package.json",
-    "yalc:publish": "npm run build && yalc publish",
+    "yalc:publish": "npm run build && yalc publish --push",
     "yalc:watch": "nodemon --watch src --watch ../../dist --ext ts,html,css,scss,js,d.ts --exec \"npm run yalc:publish\""
   },
   "peerDependencies": {

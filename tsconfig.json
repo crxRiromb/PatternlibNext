@@ -1,38 +1,33 @@
 {
   "compilerOptions": {
-    /* Grundkonfiguration */
+    // Module system
     "target": "ES2022",
     "module": "ESNext",
+    "moduleResolution": "bundler",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "rootDir": "./src",
-    "esModuleInterop": true,
+    "resolveJsonModule": true,
 
-    /* Deklarationsdateien */
-    "declarationMap": true,
-    "sourceMap": true,
-
-    /* Lit-spezifische Anforderungen */
+    /* Lit-specific requirements */
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
 
-    /* Modulauflösung für Vite */
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true /* new */,
-
-    /* Code-Qualität */
-    "strict": true,
-    "skipLibCheck": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": false /* downgrade 'Variable never read' to 'warning' */,
-    "noFallthroughCasesInSwitch": true,
-
-    /* Typ-Deklarationen erzeugen */
+    /* Type declarations */
     "declaration": true,
     "declarationDir": "./dist",
     "emitDeclarationOnly": true,
 
-    /* Aliase für Importe */
+    /* Code quality */
+    "strict": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": false /* downgrade 'Variable never read' to ESlint 'warning' */,
+    "noUnusedParameters": true,
+
+    /* Source maps */
+    "declarationMap": true,
+    "sourceMap": true,
+
+    /* Dev helper & aliases */
+    "skipLibCheck": true,
     "baseUrl": "./",
     "paths": {
       "@src/*": ["src/*"]
