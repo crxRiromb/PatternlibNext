@@ -1,33 +1,38 @@
 # Liebherr2 Patternlib Next
 
-## yalc global installieren
+## 1. First setup
 
+1. Install PNPM globally (if not already installed)
 ```bash
-npm install -g yalc
+npm install -g pnpm
 ```
 
-## Single Build 
+2. Delete all `node_modules` folders and `package-lock.json` files
 
-```bash
-npm install
-npm run build
-```
-
-## Watch Build + Publish via Yalc
-
+3. npm dependencies in root
 ```bash
 npm install
-npm yalc:watch
 ```
 
-## Build+Open Storybook
+4. other dependencies in all packages
+```bash
+pnpm install
+```
+
+## 2. Build of Lit Projekt
+
+```bash
+pnpm --filter @liebherr2/plnext run build
+```
+
+## 3. Build+Open Storybook
 
 ```bash
 npm run storybook
 ```
 
-## Command Archive
+## 4. Command Archive - pnpm
 
 ```bash
-yalc publish --push
+pnpm m ls
 ```

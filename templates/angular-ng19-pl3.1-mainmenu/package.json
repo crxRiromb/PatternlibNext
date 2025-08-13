@@ -3,13 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "start:nowatch": "ng serve --watch=false",
-    "start:watch:win": "nodemon --watch src --watch ../../angular-wrapper/dist --exec \"restart-dev-server.bat\"",
-    "start:watch": "nodemon --watch src --watch ../../angular-wrapper --ext ts,html,css,scss,js,d.ts --exec \"npm i && npm run start:nowatch\"",
+    "dev": "ng serve",
     "build": "ng build",
-    "test": "ng test",
-    "watch": "ng build --watch --configuration development"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -24,8 +20,8 @@
     "@angular/router": "^19.2.0",
     "@liebherr/patternlib": "3.1.5",
     "@liebherr/patternlib-angular": "3.1.5",
-    "@liebherr2/angularnext": "0.0.1",
-    "@liebherr2/plnext": "0.0.1",
+    "@liebherr2/angularnext": "workspace:*",
+    "@liebherr2/plnext": "workspace:*",
     "@ngneat/transloco": "^6.0.4",
     "@ngx-translate/core": "~15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
@@ -51,6 +47,6 @@
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
     "prettier": "^3.4.2",
-    "typescript": "~5.7.2"
+    "typescript": "^5.3.3"
   }
 }
