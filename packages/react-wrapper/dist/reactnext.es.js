@@ -13,21 +13,21 @@ const $t = /* @__PURE__ */ new Set(["children", "localName", "ref", "style", "cl
     a !== void 0 ? d === void 0 ? (c.set(l, d = { handleEvent: a }), i.addEventListener(l, d)) : d.handleEvent = a : d !== void 0 && (c.delete(l), i.removeEventListener(l, d));
   })(n, s, e);
 }, _t = ({ react: n, tagName: t, elementClass: e, events: r, displayName: o }) => {
-  const s = new Set(Object.keys(r ?? {})), i = n.forwardRef((l, a) => {
+  const s = new Set(Object.keys(r ?? {})), i = n.forwardRef(((l, a) => {
     const c = n.useRef(/* @__PURE__ */ new Map()), d = n.useRef(null), u = {}, f = {};
     for (const [p, h] of Object.entries(l)) $t.has(p) ? u[p === "className" ? "class" : p] = h : s.has(p) || p in e.prototype ? f[p] = h : u[p] = h;
-    return n.useLayoutEffect(() => {
+    return n.useLayoutEffect((() => {
       if (d.current === null) return;
       const p = /* @__PURE__ */ new Map();
       for (const h in f) et(d.current, h, l[h], c.current.get(h), r), c.current.delete(h), p.set(h, l[h]);
       for (const [h, gt] of c.current) et(d.current, h, void 0, gt, r);
       c.current = p;
-    }), n.useLayoutEffect(() => {
+    })), n.useLayoutEffect((() => {
       d.current?.removeAttribute("defer-hydration");
-    }, []), u.suppressHydrationWarning = !0, n.createElement(t, { ...u, ref: n.useCallback((p) => {
+    }), []), u.suppressHydrationWarning = !0, n.createElement(t, { ...u, ref: n.useCallback(((p) => {
       d.current = p, typeof a == "function" ? a(p) : a !== null && (a.current = p);
-    }, [a]) });
-  });
+    }), [a]) });
+  }));
   return i.displayName = o ?? e.name, i;
 };
 /**
@@ -55,14 +55,14 @@ let bt = class {
   }
 };
 const O = (n) => new bt(typeof n == "string" ? n : n + "", void 0, q), V = (n, ...t) => {
-  const e = n.length === 1 ? n[0] : t.reduce((r, o, s) => r + ((i) => {
+  const e = n.length === 1 ? n[0] : t.reduce(((r, o, s) => r + ((i) => {
     if (i._$cssResult$ === !0) return i.cssText;
     if (typeof i == "number") return i;
     throw Error("Value passed to 'css' function must be a 'css' function result: " + i + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
-  })(o) + n[s + 1], n[0]);
+  })(o) + n[s + 1]), n[0]);
   return new bt(e, n, q);
 }, xt = (n, t) => {
-  if (W) n.adoptedStyleSheets = t.map((e) => e instanceof CSSStyleSheet ? e : e.styleSheet);
+  if (W) n.adoptedStyleSheets = t.map(((e) => e instanceof CSSStyleSheet ? e : e.styleSheet));
   else for (const e of t) {
     const r = document.createElement("style"), o = R.litNonce;
     o !== void 0 && r.setAttribute("nonce", o), r.textContent = e.cssText, n.appendChild(r);
@@ -173,7 +173,7 @@ let A = class extends HTMLElement {
     super(), this._$Ep = void 0, this.isUpdatePending = !1, this.hasUpdated = !1, this._$Em = null, this._$Ev();
   }
   _$Ev() {
-    this._$ES = new Promise((t) => this.enableUpdating = t), this._$AL = /* @__PURE__ */ new Map(), this._$E_(), this.requestUpdate(), this.constructor.l?.forEach((t) => t(this));
+    this._$ES = new Promise(((t) => this.enableUpdating = t)), this._$AL = /* @__PURE__ */ new Map(), this._$E_(), this.requestUpdate(), this.constructor.l?.forEach(((t) => t(this)));
   }
   addController(t) {
     (this._$EO ??= /* @__PURE__ */ new Set()).add(t), this.renderRoot !== void 0 && this.isConnected && t.hostConnected?.();
@@ -191,12 +191,12 @@ let A = class extends HTMLElement {
     return xt(t, this.constructor.elementStyles), t;
   }
   connectedCallback() {
-    this.renderRoot ??= this.createRenderRoot(), this.enableUpdating(!0), this._$EO?.forEach((t) => t.hostConnected?.());
+    this.renderRoot ??= this.createRenderRoot(), this.enableUpdating(!0), this._$EO?.forEach(((t) => t.hostConnected?.()));
   }
   enableUpdating(t) {
   }
   disconnectedCallback() {
-    this._$EO?.forEach((t) => t.hostDisconnected?.());
+    this._$EO?.forEach(((t) => t.hostDisconnected?.()));
   }
   attributeChangedCallback(t, e, r) {
     this._$AK(t, r);
@@ -257,7 +257,7 @@ let A = class extends HTMLElement {
     let t = !1;
     const e = this._$AL;
     try {
-      t = this.shouldUpdate(e), t ? (this.willUpdate(e), this._$EO?.forEach((r) => r.hostUpdate?.()), this.update(e)) : this._$EM();
+      t = this.shouldUpdate(e), t ? (this.willUpdate(e), this._$EO?.forEach(((r) => r.hostUpdate?.())), this.update(e)) : this._$EM();
     } catch (r) {
       throw t = !1, this._$EM(), r;
     }
@@ -266,7 +266,7 @@ let A = class extends HTMLElement {
   willUpdate(t) {
   }
   _$AE(t) {
-    this._$EO?.forEach((e) => e.hostUpdated?.()), this.hasUpdated || (this.hasUpdated = !0, this.firstUpdated(t)), this.updated(t);
+    this._$EO?.forEach(((e) => e.hostUpdated?.())), this.hasUpdated || (this.hasUpdated = !0, this.firstUpdated(t)), this.updated(t);
   }
   _$EM() {
     this._$AL = /* @__PURE__ */ new Map(), this.isUpdatePending = !1;
@@ -281,7 +281,7 @@ let A = class extends HTMLElement {
     return !0;
   }
   update(t) {
-    this._$Eq &&= this._$Eq.forEach((e) => this._$ET(e, this[e])), this._$EM();
+    this._$Eq &&= this._$Eq.forEach(((e) => this._$ET(e, this[e]))), this._$EM();
   }
   updated(t) {
   }
@@ -605,9 +605,9 @@ let G = class extends P {
  * SPDX-License-Identifier: BSD-3-Clause
  */
 const Q = (n) => (t, e) => {
-  e !== void 0 ? e.addInitializer(() => {
+  e !== void 0 ? e.addInitializer((() => {
     customElements.define(n, t);
-  }) : customElements.define(n, t);
+  })) : customElements.define(n, t);
 };
 /**
  * @license
@@ -726,7 +726,7 @@ const pt = {
   search: "https://assets-cdn.liebherr.com/assets/api/313d8c9e-622d-4ab8-984d-4d1bf88ec9ab/original/test-search-icon.svg",
   // fallback icon
   default: "https://assets-cdn.liebherr.com/assets/api/313d8c9e-622d-4ab8-984d-4d1bf88ec9ab/original/test-search-icon.svg"
-}, Qt = `@use '/src/styles/flex-mixins' as flex;
+}, Qt = `@use '@styles/styles/flex-mixins' as flex;
 
 :host {
   display: inline-block;

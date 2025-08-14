@@ -43,7 +43,8 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.2",
     "@open-wc/testing": "^4.0.0",
-    "sass": "^1.71.1"
+    "sass": "^1.71.1",
+    "typescript": "~5.8.0"
   },
   "customElements": "custom-elements.json"
 }
