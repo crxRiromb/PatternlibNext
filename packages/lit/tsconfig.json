@@ -27,6 +27,7 @@
     "sourceMap": true,
 
     /* Dev helper & aliases */
+    "rootDir": "./src",
     "skipLibCheck": true,
     "baseUrl": "./",
     "paths": {

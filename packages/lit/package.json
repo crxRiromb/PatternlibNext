@@ -11,14 +11,16 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./custom-elements.json": "./custom-elements.json",
     "./react-types": "./dist/custom-elements.d.ts",
     "./styles/exports.css": "./dist/styles/exports.css",
     "./styles/fonts.css": "./dist/styles/fonts.css",
-    "./*": {
-      "import": "./dist/components/*"
+    "./components/*": {
+      "import": "./dist/components/*",
+      "types": "./dist/components/*"
     }
   },
   "scripts": {

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
 import { createRef, ref } from "lit/directives/ref.js";
-import type { PlItemlist } from "../../../../packages/lit/src/components/itemlist/pl-itemlist.ts";
-import "../../../../packages/lit/src/components/itemlist/pl-itemlist.ts";
+import type { PlItemlist } from "@liebherr2/plnext/components/itemlist/pl-itemlist.d.ts";
+import "@liebherr2/plnext/components/itemlist/pl-itemlist.js";
 
 const meta: Meta = {
   title: "Komponenten/Itemlist",

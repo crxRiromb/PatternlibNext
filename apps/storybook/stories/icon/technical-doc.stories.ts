@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/web-components-vite";
 import { html } from "lit";
-import "../../../../packages/lit/src/components/icon/pl-icon.ts";
+import "@liebherr2/plnext/components/icon/pl-icon.js";
 
 const meta: Meta = {
   title: "Komponenten/Icon",

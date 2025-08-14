@@ -6,19 +6,29 @@ const meta: Meta = {
   title: "Komponenten/Button",
   component: "pl-button",
   tags: ["autodocs"],
-  // argTypes werden stark vereinfacht. Storybook liest die meisten Infos
-  // aus deiner custom-elements.json und leitet die Controls ab.
   argTypes: {
-    variant: {
-      control: { type: "select" },
-      options: ["primary", "secondary", "error"],
+    disabled: {
+      control: "boolean",
+      description: "Disables the button when true",
+      defaultValue: false,
+    },
+    label: {
+      control: "text",
+      description: "Text displayed on the button",
+      defaultValue: "Button",
     },
     type: {
       control: { type: "select" },
       options: ["button", "submit"],
+      description: "Type of the button",
+      defaultValue: "button",
     },
-    // Events werden jetzt über "actions" gehandhabt
-    onClick: { action: "pl-button-click" },
+    variant: {
+      control: { type: "select" },
+      options: ["primary", "secondary", "error"],
+      description: "Visual style variant of the button",
+      defaultValue: "primary",
+    },
   },
 };
 
@@ -26,48 +36,70 @@ export default meta;
 
 type Story = StoryObj;
 
-// Für einfache Komponenten braucht man keine extra "render"-Funktion mehr.
-// Storybook rendert die Komponente automatisch mit den "args".
+// Hint: the closing tag for custom elements should be explicitly defined.
 
-export const Primary: Story = {
+const DefaultExample = (args) => {
+  const handleButtonClick = (event) => {
+    console.log("[pl-button] click event:", event);
+  };
+
+  return html`<pl-button
+    ?disabled=${args.disabled}
+    label=${args.label}
+    type=${args.type}
+    variant=${args.variant}
+    @pl-button-click=${handleButtonClick}
+  ></pl-button>`;
+};
+
+export const PrimaryStory: Story = {
+  render: DefaultExample,
   name: "Primary (default)",
   args: {
-    label: "Primary Button",
-    variant: "primary",
     disabled: false,
+    label: "Label",
     type: "button",
+    variant: "primary",
   },
 };
 
-export const Secondary: Story = {
+export const DisabledStory: Story = {
+  render: DefaultExample,
+  name: "Disabled",
   args: {
-    ...Primary.args,
-    label: "Secondary Button",
+    ...PrimaryStory.args,
+    disabled: true,
+    label: "Disabled",
+  },
+};
+
+export const SecondaryStory: Story = {
+  render: DefaultExample,
+  name: "Secondary",
+  args: {
+    ...PrimaryStory.args,
     variant: "secondary",
   },
 };
 
-export const Disabled: Story = {
+export const ErrorStory: Story = {
+  render: DefaultExample,
+  name: "Error",
   args: {
-    ...Primary.args,
-    label: "Disabled Button",
-    disabled: true,
-  },
-};
-
-export const Error: Story = {
-  args: {
-    ...Primary.args,
-    label: "Error Button",
+    ...PrimaryStory.args,
     variant: "error",
   },
 };
 
-export const Rtl: Story = {
+export const RtlStory: Story = {
+  render: DefaultExample,
   name: "Right-to-Left (RTL)",
   args: {
-    ...Primary.args,
-    label: "هذا هو عنوان الزر",
+    ...PrimaryStory.args,
+    label: "هذا هو عنوان الزر", // Arabisch für "Dies ist der Titel des Buttons"
   },
-  decorators: [(Story) => html`<div dir="rtl">${Story()}</div>`],
+  decorators: [
+    // Decorator wraps the story in a div with a RTL context
+    (Story) => html`<div dir="rtl">${Story()}</div>`,
+  ],
 };
