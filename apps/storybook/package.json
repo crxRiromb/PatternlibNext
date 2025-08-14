@@ -6,9 +6,7 @@
     "build": "storybook build"
   },
   "devDependencies": {
-    "@liebherr2/plnext": "workspace:*",
-    "@liebherr2/reactnext": "workspace:*",
-    "@liebherr2/angularnext": "workspace:*",
+    "@liebherr2/plnext": "0.0.1",
     "@storybook/addon-docs": "^9.0.17",
     "@storybook/addon-toolbars": "^9.0.8",
     "@storybook/web-components-vite": "^9.0.17",

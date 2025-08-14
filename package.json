@@ -1,5 +1,5 @@
 {
-  "name": "pl-monorepo",
+  "name": "pl-root",
   "private": true,
   "scripts": {
     "build": "pnpm -r --stream build",
@@ -25,10 +25,5 @@
     "rimraf": "^6.0.1",
     "typescript": "~5.8.0",
     "vite": "^7.0.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "typescript": "~5.8.0"
-    }
   }
 }

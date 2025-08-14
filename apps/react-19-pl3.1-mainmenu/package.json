@@ -11,8 +11,8 @@
   "dependencies": {
     "@liebherr/patternlib": "^3.1.6",
     "@liebherr/patternlib-react": "^3.1.6",
-    "@liebherr2/plnext": "workspace:*",
-    "@liebherr2/reactnext": "workspace:*",
+    "@liebherr2/plnext": "0.0.1",
+    "@liebherr2/reactnext": "0.0.1",
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
     "isbot": "^5.1.27",
