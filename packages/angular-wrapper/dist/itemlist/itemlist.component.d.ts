@@ -1,0 +1,21 @@
+import "@liebherr2/plnext/components/itemlist/pl-itemlist.js";
+import * as i0 from "@angular/core";
+/**
+ * Angular component wrapper for the `pl-itemlist` web component.
+ * This component allows you to display a list of items with a headline.
+ */
+export declare class PlItemlistAngular {
+    /**
+     * The headline for the list. Passed as an attribute.
+     */
+    headlineLabel: string;
+    /**
+     * The array of items to display. Passed as a property.
+     */
+    data: {
+        key: string;
+        value: string;
+    }[];
+    static ɵfac: i0.ɵɵFactoryDeclaration<PlItemlistAngular, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<PlItemlistAngular, "pl-itemlist-angular", never, { "headlineLabel": { "alias": "headlineLabel"; "required": false; }; "data": { "alias": "data"; "required": false; }; }, {}, never, never, true, never>;
+}

@@ -6,8 +6,8 @@
     "dev:lit": "pnpm --filter @liebherr2/plnext dev",
     "dev:react-wrapper": "pnpm --filter @liebherr2/reactnext dev",
     "dev:angular-wrapper": "pnpm --filter @liebherr2/angularnext dev",
-    "dev:react-app": "pnpm --filter react-19-pl3.1-mainmenu dev",
-    "dev:angular-app": "pnpm --filter angular-standalone-mainmenu dev",
+    "dev:react-react-19-pl3.1-mainmenu": "pnpm --filter react-19-pl3.1-mainmenu dev",
+    "dev:angular-ng19-pl3.1-mainmenu": "pnpm --filter angular-ng19-pl3.1-mainmenu dev",
     "dev:storybook": "pnpm --filter storybook dev",
     "lint": "pnpm -r lint",
     "format": "prettier --write ."
@@ -23,12 +23,12 @@
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
-    "typescript": "^5.3.3",
+    "typescript": "~5.8.0",
     "vite": "^7.0.0"
   },
   "pnpm": {
     "overrides": {
-      "typescript": "^5.8.4"
+      "typescript": "~5.8.0"
     }
   }
 }

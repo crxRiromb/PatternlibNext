@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { PatternlibAngularCommonModule, PatternlibAngularFormsModule } from '@liebherr/patternlib-angular';
 import { TranslocoModule } from '@ngneat/transloco';
-import { PLButtonAngular, PLIconAngular, PlItemlistAngular } from '@liebherr2/angularnext';
+import { PLButtonAngular } from '@liebherr2/angularnext';
+// import { PLButtonAngular, PLIconAngular, PlItemlistAngular } from '@liebherr2/angularnext';
 
 @Component({
   selector: 'app-pl4integration',
@@ -15,8 +16,8 @@ import { PLButtonAngular, PLIconAngular, PlItemlistAngular } from '@liebherr2/an
     PatternlibAngularCommonModule,
     PatternlibAngularFormsModule,
     PLButtonAngular,
-    PLIconAngular,
-    PlItemlistAngular,
+    // PLIconAngular,
+    // PlItemlistAngular,
   ],
 })
 export class PL4IntegrationComponent {

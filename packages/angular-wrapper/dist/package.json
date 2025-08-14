@@ -2,24 +2,29 @@
   "name": "@liebherr2/angularnext",
   "version": "0.0.1",
   "description": "Angular wrapper library für @liebherr2/plnext.",
+  "types": "./dist/index.d.ts",
+  "module": "fesm2022/liebherr2-angularnext.mjs",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./dist/fesm2022/liebherr2-angularnext.mjs",
+      "default": "./fesm2022/liebherr2-angularnext.mjs"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
   "peerDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",
-    "@liebherr2/plnext": "0.0.1"
+    "@liebherr2/plnext": "workspace:*"
   },
-  "module": "fesm2022/liebherr2-angularnext.mjs",
   "typings": "index.d.ts",
-  "exports": {
-    "./package.json": {
-      "default": "./package.json"
-    },
-    ".": {
-      "types": "./index.d.ts",
-      "default": "./fesm2022/liebherr2-angularnext.mjs"
-    }
-  },
-  "sideEffects": false,
-  "dependencies": {
-    "tslib": "^2.3.0"
-  }
+  "sideEffects": false
 }

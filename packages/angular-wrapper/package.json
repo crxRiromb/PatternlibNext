@@ -6,16 +6,29 @@
     "build": "ng-packagr -p ng-package.json",
     "dev": "nodemon --watch src --ext ts,html,scss --exec \"pnpm run build\""
   },
+  "types": "./dist/index.d.ts",
+  "module": "./dist/fesm2022/liebherr2-angularnext.mjs",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/fesm2022/liebherr2-angularnext.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
-    "@liebherr2/plnext": "workspace:*"
+    "tslib": "^2.3.0"
   },
   "peerDependencies": {
     "@angular/common": "^19.0.0",
-    "@angular/core": "^19.0.0"
+    "@angular/core": "^19.0.0",
+    "@liebherr2/plnext": "workspace:*"
   },
   "devDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",
-    "ng-packagr": "^19.0.0"
+    "ng-packagr": "^19.0.0",
+    "typescript": "^5.8.4"
   }
 }
