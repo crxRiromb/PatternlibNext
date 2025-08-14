@@ -1,0 +1,18 @@
+const n = `@use '@styles/styles/flex-mixins' as flex;
+
+:host {
+  display: inline-block;
+  color: black;
+  width: 24px;
+  height: 24px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+`;
+export {
+  n as default
+};

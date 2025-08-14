@@ -1,6 +1,9 @@
 packages:
-  - '.'
-  - 'wrappers/angular'
-  - 'wrappers/react'
-  - 'templates/angular-ng19-pl3.1-mainmenu'
-  - 'templates/react-19-pl3.1-mainmenu'
+  # Libraries
+  - 'packages/lit'
+  - 'packages/angular-wrapper'
+  - 'packages/react-wrapper'
+  # Apps
+  - 'apps/storybook'
+  - 'apps/angular-ng19-pl3.1-mainmenu'
+  - 'apps/react-19-pl3.1-mainmenu'

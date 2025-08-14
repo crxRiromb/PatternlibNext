@@ -1,0 +1,116 @@
+/*
+ * File is defined as partial, which means it won't be compiled into CSS directly
+ * It's intended to be used as a building block for the component styles.
+ */
+/* --- FONT FAMILIES --- */
+/* --- LANG PICKER FONT FAMILIES --- */
+/* --- FONT SIZES & LINE HEIGHTS --- */
+/* --- MISC --- */
+/* --- COLORS --- */
+/* use relative path here */
+:root {
+  /* --- FONT FAMILIES --- */
+  --ppl-font-text-regular: LiebherrText-Regular, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+  --ppl-font-text-medium: LiebherrText-Medium, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+  --ppl-font-text-bold: LiebherrText-Bold, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+  --ppl-font-head-regular: LiebherrHead-Regular, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+  --ppl-font-head-black: LiebherrHead-Black, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+  --ppl-font-noto-text: NotoSansSC-Regular, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+  --ppl-font-noto-text-medium: NotoSansSC-Medium, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+  --ppl-font-noto-text-bold: NotoSansSC-Bold, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+  --ppl-font-noto-head-regular: NotoSansSC-Light, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+  --ppl-font-noto-head-black: NotoSansSC-Black, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+  --ppl-font-lh-langpick-asia-regular: LH-LangPick-Asia-Regular, -apple-system, BlinkMacSystemFont, sans-serif;
+  --ppl-font-lh-langpick-asia-bold: LH-LangPick-Asia-Bold, -apple-system, BlinkMacSystemFont, sans-serif;
+  /* --- LANGUAGE SPECIFIC OVERRIDES --- */
+  /* --- FONT SIZES & LINE HEIGHTS --- */
+  --ppl-font-size-copy: 18px;
+  --ppl-line-height-copy: 28px;
+  --ppl-font-size-copy-small: 16px;
+  --ppl-line-height-copy-small: 24px;
+  --ppl-font-size-copy-smaller: 14px;
+  --ppl-line-height-copy-smaller: 20px;
+  --ppl-font-size-copy-extrasmall: 12px;
+  --ppl-line-height-copy-extrasmall: 16px;
+  /* --- MISC --- */
+  --ppl-letter-spacing: 0.78px;
+  /* --- COLORS --- */
+  --ppl-color-artic-blue: #003057;
+  --ppl-color-blue: #2779c4;
+  --ppl-color-black: #000000;
+  --ppl-color-yellow: #ffd000;
+  --ppl-color-white: #ffffff;
+  --ppl-color-co-light-yellow: #ffd000;
+  --ppl-color-co-light-background: #ffffff;
+  --ppl-color-co-dark-yellow: #ffd000;
+  --ppl-color-co-dark-background: #202326;
+  --ppl-color-ha-light-blue: #2779c4;
+  --ppl-color-ha-light-background: #ffffff;
+  --ppl-color-ha-light-artic-blue: #003057;
+  --ppl-color-ha-dark-blue: #2779c4;
+  --ppl-color-ha-dark-artic-blue: #164870;
+  --ppl-color-ha-dark-background: #202326;
+  --ppl-color-neutral-steel-50: #f9fafb;
+  --ppl-color-neutral-steel-100: #f0f3f6;
+  --ppl-color-neutral-steel-200: #e5e8ed;
+  --ppl-color-neutral-steel-300: #d3d8dd;
+  --ppl-color-neutral-steel-400: #bdc4ca;
+  --ppl-color-neutral-steel-500: #9ea4ab;
+  --ppl-color-neutral-steel-600: #888e94;
+  --ppl-color-neutral-steel-700: #6b7278;
+  --ppl-color-neutral-steel-800: #51585d;
+  --ppl-color-neutral-steel-900: #353a40;
+  --ppl-color-neutral-steel-950: #282c30;
+  --ppl-color-neutral-steel-975: #202326;
+  --ppl-color-accent-terra-light: #846554;
+  --ppl-color-accent-terra-light-soft: #aa8d6d;
+  --ppl-color-accent-terra-dark: #aa8d6d;
+  --ppl-color-accent-terra-dark-soft: #d1b795;
+  --ppl-color-accent-clay-light: #b0542e;
+  --ppl-color-accent-clay-light-soft: #eb6f24;
+  --ppl-color-accent-clay-dark: #f89939;
+  --ppl-color-accent-clay-dark-soft: #ffc385;
+  --ppl-color-accent-ruby-light: #ad0b37;
+  --ppl-color-accent-ruby-light-soft: #e34858;
+  --ppl-color-accent-ruby-dark: #e34858;
+  --ppl-color-accent-ruby-dark-soft: #f56e7c;
+  --ppl-color-accent-leaf-light: #33825e;
+  --ppl-color-accent-leaf-light-soft: #2ea675;
+  --ppl-color-accent-leaf-dark: #2ea675;
+  --ppl-color-accent-leaf-dark-soft: #5dbf90;
+  --ppl-color-accent-slate-light: #3b6579;
+  --ppl-color-accent-slate-light-soft: #5789a4;
+  --ppl-color-accent-slate-dark: #5789a4;
+  --ppl-color-accent-slate-dark-soft: #8bb2c2;
+  --ppl-color-accent-coolgreen-light: #006b5e;
+  --ppl-color-accent-coolgreen-light-soft: #008379;
+  --ppl-color-accent-coolgreen-dark: #008379;
+  --ppl-color-accent-coolgreen-dark-soft: #99d0bc;
+  --ppl-color-accent-burgundy-light: #7b1947;
+  --ppl-color-accent-burgundy-light-soft: #b81962;
+  --ppl-color-accent-burgundy-dark: #cf1c6e;
+  --ppl-color-accent-burgundy-dark-soft: #e0639c;
+  --ppl-color-accent-copper-light: #ab634c;
+  --ppl-color-accent-copper-light-soft: #d47e64;
+  --ppl-color-accent-copper-dark: #ea8b6f;
+  --ppl-color-accent-copper-dark-soft: #f0c2a4;
+  --ppl-color-functional-error-light: #e52828;
+  --ppl-color-functional-error-light-soft: #f06969;
+  --ppl-color-functional-error-dark: #ff7070;
+  --ppl-color-functional-error-dark-soft: #ffa3a3;
+  --ppl-color-functional-success-light: #398713;
+  --ppl-color-functional-success-light-soft: #58a649;
+  --ppl-color-functional-success-dark: #73d95f;
+  --ppl-color-functional-success-dark-soft: #acf49f;
+  --ppl-color-functional-warning-light: #b0542e;
+  --ppl-color-functional-warning-light-soft: #e3a735;
+  --ppl-color-functional-warning-dark: #f89939;
+  --ppl-color-functional-warning-dark-soft: #ffc385;
+}
+:root[lang=zh] {
+  --ppl-font-text-regular: NotoSansSC-Regular, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+  --ppl-font-text-medium: NotoSansSC-Medium, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+  --ppl-font-text-bold: NotoSansSC-Bold, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+  --ppl-font-head-regular: NotoSansSC-Light, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+  --ppl-font-head-black: NotoSansSC-Black, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
+}

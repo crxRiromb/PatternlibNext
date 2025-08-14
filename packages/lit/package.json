@@ -1,0 +1,47 @@
+{
+  "name": "@liebherr2/plnext",
+  "version": "0.0.1",
+  "description": "Web-Komponenten-Bibliothek basierend auf Lit.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "custom-elements.json"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./custom-elements.json": "./custom-elements.json",
+    "./react-types": "./dist/custom-elements.d.ts",
+    "./styles/exports.css": "./dist/styles/exports.css",
+    "./styles/fonts.css": "./dist/styles/fonts.css",
+    "./*": {
+      "import": "./dist/components/*"
+    }
+  },
+  "scripts": {
+    "analyze": "cem analyze",
+    "build": "vite build && tsc --emitDeclarationOnly && pnpm run build:styles",
+    "build:styles": "sass src/styles/exports.scss dist/styles/exports.css --no-source-map && sass src/styles/fonts.css dist/styles/fonts.css --no-source-map",
+    "dev": "nodemon --watch src --ext ts,scss --exec \"pnpm run build\"",
+    "format": "prettier --write \"src/**/*.{js,ts,json,md,html,css,scss}\"",
+    "format:check": "prettier --check \"src/**/*.{js,ts,json,md,html,css,scss}\"",
+    "lint": "eslint 'src/**/*.ts'",
+    "prebuild": "pnpm run analyze",
+    "serve": "web-dev-server --node-resolve --open",
+    "test": "web-test-runner 'dist/test/**/*.test.js' --node-resolve"
+  },
+  "dependencies": {
+    "lit": "^3.1.3",
+    "lit-element": "^3.1.3",
+    "lit-html": "^3.1.3"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.10.2",
+    "@open-wc/testing": "^4.0.0",
+    "sass": "^1.71.1"
+  },
+  "customElements": "custom-elements.json"
+}
