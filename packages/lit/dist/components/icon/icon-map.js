@@ -7,3 +7,4 @@ const s = {
 export {
   s as iconMap
 };
+//# sourceMappingURL=icon-map.js.map

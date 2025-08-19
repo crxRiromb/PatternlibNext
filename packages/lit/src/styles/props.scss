@@ -1,0 +1,134 @@
+@use './tokens' as t; /* use relative path here */
+
+:root {
+  /* --- FONT FAMILIES --- */
+  --ppl-font-text-regular: #{t.$font-text-regular};
+  --ppl-font-text-medium: #{t.$font-text-medium};
+  --ppl-font-text-bold: #{t.$font-text-bold};
+  --ppl-font-head-regular: #{t.$font-head-regular};
+  --ppl-font-head-black: #{t.$font-head-black};
+
+  --ppl-font-noto-text: #{t.$font-noto-text-regular};
+  --ppl-font-noto-text-medium: #{t.$font-noto-text-medium};
+  --ppl-font-noto-text-bold: #{t.$font-noto-text-bold};
+  --ppl-font-noto-head-regular: #{t.$font-noto-head-regular};
+  --ppl-font-noto-head-black: #{t.$font-noto-head-black};
+
+  --ppl-font-lh-langpick-asia-regular: #{t.$font-lh-langpick-asia-regular};
+  --ppl-font-lh-langpick-asia-bold: #{t.$font-lh-langpick-asia-bold};
+
+  /* --- FONT SIZES & LINE HEIGHTS --- */
+  --ppl-font-size-copy: #{t.$font-size-copy};
+  --ppl-line-height-copy: #{t.$line-height-copy};
+
+  --ppl-font-size-copy-small: #{t.$font-size-copy-small};
+  --ppl-line-height-copy-small: #{t.$line-height-copy-small};
+
+  --ppl-font-size-copy-smaller: #{t.$font-size-copy-smaller};
+  --ppl-line-height-copy-smaller: #{t.$line-height-copy-smaller};
+
+  --ppl-font-size-copy-extrasmall: #{t.$font-size-copy-extrasmall};
+  --ppl-line-height-copy-extrasmall: #{t.$line-height-copy-extrasmall};
+
+  /* --- MISC --- */
+  --ppl-letter-spacing: #{t.$letter-spacing};
+
+  /* --- COLORS --- */
+  --ppl-color-artic-blue: #{t.$color-artic-blue};
+  --ppl-color-blue: #{t.$color-blue};
+  --ppl-color-black: #{t.$color-black};
+  --ppl-color-yellow: #{t.$color-yellow};
+  --ppl-color-white: #{t.$color-white};
+
+  --ppl-color-co-light-yellow: #{t.$color-co-light-yellow};
+  --ppl-color-co-light-background: #{t.$color-co-light-background};
+
+  --ppl-color-co-dark-yellow: #{t.$color-co-dark-yellow};
+  --ppl-color-co-dark-background: #{t.$color-co-dark-background};
+
+  --ppl-color-ha-light-blue: #{t.$color-ha-light-blue};
+  --ppl-color-ha-light-background: #{t.$color-ha-light-background};
+  --ppl-color-ha-light-artic-blue: #{t.$color-ha-light-artic-blue};
+
+  --ppl-color-ha-dark-blue: #{t.$color-ha-dark-blue};
+  --ppl-color-ha-dark-artic-blue: #{t.$color-ha-dark-artic-blue};
+  --ppl-color-ha-dark-background: #{t.$color-ha-dark-background};
+
+  --ppl-color-neutral-steel-50: #{t.$color-neutral-steel-50};
+  --ppl-color-neutral-steel-100: #{t.$color-neutral-steel-100};
+  --ppl-color-neutral-steel-200: #{t.$color-neutral-steel-200};
+  --ppl-color-neutral-steel-300: #{t.$color-neutral-steel-300};
+  --ppl-color-neutral-steel-400: #{t.$color-neutral-steel-400};
+  --ppl-color-neutral-steel-500: #{t.$color-neutral-steel-500};
+  --ppl-color-neutral-steel-600: #{t.$color-neutral-steel-600};
+  --ppl-color-neutral-steel-700: #{t.$color-neutral-steel-700};
+  --ppl-color-neutral-steel-800: #{t.$color-neutral-steel-800};
+  --ppl-color-neutral-steel-900: #{t.$color-neutral-steel-900};
+  --ppl-color-neutral-steel-950: #{t.$color-neutral-steel-950};
+  --ppl-color-neutral-steel-975: #{t.$color-neutral-steel-975};
+
+  --ppl-color-accent-terra-light: #{t.$color-accent-terra-light};
+  --ppl-color-accent-terra-light-soft: #{t.$color-accent-terra-light-soft};
+  --ppl-color-accent-terra-dark: #{t.$color-accent-terra-dark};
+  --ppl-color-accent-terra-dark-soft: #{t.$color-accent-terra-dark-soft};
+
+  --ppl-color-accent-clay-light: #{t.$color-accent-clay-light};
+  --ppl-color-accent-clay-light-soft: #{t.$color-accent-clay-light-soft};
+  --ppl-color-accent-clay-dark: #{t.$color-accent-clay-dark};
+  --ppl-color-accent-clay-dark-soft: #{t.$color-accent-clay-dark-soft};
+
+  --ppl-color-accent-ruby-light: #{t.$color-accent-ruby-light};
+  --ppl-color-accent-ruby-light-soft: #{t.$color-accent-ruby-light-soft};
+  --ppl-color-accent-ruby-dark: #{t.$color-accent-ruby-dark};
+  --ppl-color-accent-ruby-dark-soft: #{t.$color-accent-ruby-dark-soft};
+
+  --ppl-color-accent-leaf-light: #{t.$color-accent-leaf-light};
+  --ppl-color-accent-leaf-light-soft: #{t.$color-accent-leaf-light-soft};
+  --ppl-color-accent-leaf-dark: #{t.$color-accent-leaf-dark};
+  --ppl-color-accent-leaf-dark-soft: #{t.$color-accent-leaf-dark-soft};
+
+  --ppl-color-accent-slate-light: #{t.$color-accent-slate-light};
+  --ppl-color-accent-slate-light-soft: #{t.$color-accent-slate-light-soft};
+  --ppl-color-accent-slate-dark: #{t.$color-accent-slate-dark};
+  --ppl-color-accent-slate-dark-soft: #{t.$color-accent-slate-dark-soft};
+
+  --ppl-color-accent-coolgreen-light: #{t.$color-accent-coolgreen-light};
+  --ppl-color-accent-coolgreen-light-soft: #{t.$color-accent-coolgreen-light-soft};
+  --ppl-color-accent-coolgreen-dark: #{t.$color-accent-coolgreen-dark};
+  --ppl-color-accent-coolgreen-dark-soft: #{t.$color-accent-coolgreen-dark-soft};
+
+  --ppl-color-accent-burgundy-light: #{t.$color-accent-burgundy-light};
+  --ppl-color-accent-burgundy-light-soft: #{t.$color-accent-burgundy-light-soft};
+  --ppl-color-accent-burgundy-dark: #{t.$color-accent-burgundy-dark};
+  --ppl-color-accent-burgundy-dark-soft: #{t.$color-accent-burgundy-dark-soft};
+
+  --ppl-color-accent-copper-light: #{t.$color-accent-copper-light};
+  --ppl-color-accent-copper-light-soft: #{t.$color-accent-copper-light-soft};
+  --ppl-color-accent-copper-dark: #{t.$color-accent-copper-dark};
+  --ppl-color-accent-copper-dark-soft: #{t.$color-accent-copper-dark-soft};
+
+  --ppl-color-functional-error-light: #{t.$color-functional-error-light};
+  --ppl-color-functional-error-light-soft: #{t.$color-functional-error-light-soft};
+  --ppl-color-functional-error-dark: #{t.$color-functional-error-dark};
+  --ppl-color-functional-error-dark-soft: #{t.$color-functional-error-dark-soft};
+
+  --ppl-color-functional-success-light: #{t.$color-functional-success-light};
+  --ppl-color-functional-success-light-soft: #{t.$color-functional-success-light-soft};
+  --ppl-color-functional-success-dark: #{t.$color-functional-success-dark};
+  --ppl-color-functional-success-dark-soft: #{t.$color-functional-success-dark-soft};
+
+  --ppl-color-functional-warning-light: #{t.$color-functional-warning-light};
+  --ppl-color-functional-warning-light-soft: #{t.$color-functional-warning-light-soft};
+  --ppl-color-functional-warning-dark: #{t.$color-functional-warning-dark};
+  --ppl-color-functional-warning-dark-soft: #{t.$color-functional-warning-dark-soft};
+}
+
+/* --- LANGUAGE SPECIFIC OVERRIDES --- */
+:root:lang(zh),
+:root[lang|='zh'] {
+  --ppl-font-text-regular: #{t.$font-noto-text-regular};
+  --ppl-font-text-medium: #{t.$font-noto-text-medium};
+  --ppl-font-text-bold: #{t.$font-noto-text-bold};
+  --ppl-font-head-regular: #{t.$font-noto-head-regular};
+  --ppl-font-head-black: #{t.$font-noto-head-black};
+}

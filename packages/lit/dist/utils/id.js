@@ -13,3 +13,4 @@ class r {
 export {
   r as IdUtils
 };
+//# sourceMappingURL=id.js.map

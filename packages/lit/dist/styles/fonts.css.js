@@ -2,3 +2,4 @@ const e = '@font-face{font-family:LiebherrText-Regular;font-weight:400;font-disp
 export {
   e as default
 };
+//# sourceMappingURL=fonts.css.js.map

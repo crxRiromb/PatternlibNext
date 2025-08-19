@@ -31,7 +31,8 @@
     "skipLibCheck": true,
     "baseUrl": "./",
     "paths": {
-      "@src/*": ["src/*"]
+      "@src/*": ["src/*"],
+      "@styles/*": ["src/styles/*"]
     }
   },
   "include": ["src/**/*.ts"],

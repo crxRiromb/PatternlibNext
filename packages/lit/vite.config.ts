@@ -8,9 +8,12 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'src/index.ts'),
       formats: ['es'],
     },
+    sourcemap: true,
+    emptyOutDir: true,
 
     /* Rollup options */
     rollupOptions: {
+      /* Lit as shared runtime */
       external: [/^lit/],
       output: {
         preserveModules: true,

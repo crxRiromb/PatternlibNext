@@ -1,4 +1,4 @@
-import { unsafeCSS as h, css as u, html as o } from "lit";
+import { html as o, unsafeCSS as h, css as u } from "lit";
 import { property as n, customElement as f } from "lit/decorators.js";
 import { map as d } from "lit/directives/map.js";
 import { PlBase as b } from "../base/pl-base.js";
@@ -39,3 +39,4 @@ t = m([
 export {
   t as PlItemlist
 };
+//# sourceMappingURL=pl-itemlist.js.map

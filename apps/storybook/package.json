@@ -6,12 +6,10 @@
     "build": "storybook build"
   },
   "devDependencies": {
-    "@liebherr2/plnext": "0.0.1",
+    "@liebherr2/plnext": "file:../../packages/lit/liebherr2-plnext-0.0.1.tgz",
     "@storybook/addon-docs": "^9.0.17",
     "@storybook/addon-toolbars": "^9.0.8",
     "@storybook/web-components-vite": "^9.0.17",
-    "lit": "^3.1.3",
-    "lit-html": "^3.1.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "storybook": "^9.0.17"

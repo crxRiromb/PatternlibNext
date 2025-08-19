@@ -22,7 +22,6 @@
   --ppl-font-noto-head-black: NotoSansSC-Black, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
   --ppl-font-lh-langpick-asia-regular: LH-LangPick-Asia-Regular, -apple-system, BlinkMacSystemFont, sans-serif;
   --ppl-font-lh-langpick-asia-bold: LH-LangPick-Asia-Bold, -apple-system, BlinkMacSystemFont, sans-serif;
-  /* --- LANGUAGE SPECIFIC OVERRIDES --- */
   /* --- FONT SIZES & LINE HEIGHTS --- */
   --ppl-font-size-copy: 18px;
   --ppl-line-height-copy: 28px;
@@ -107,7 +106,10 @@
   --ppl-color-functional-warning-dark: #f89939;
   --ppl-color-functional-warning-dark-soft: #ffc385;
 }
-:root[lang=zh] {
+
+/* --- LANGUAGE SPECIFIC OVERRIDES --- */
+:root:lang(zh),
+:root[lang|=zh] {
   --ppl-font-text-regular: NotoSansSC-Regular, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
   --ppl-font-text-medium: NotoSansSC-Medium, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
   --ppl-font-text-bold: NotoSansSC-Bold, -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;

@@ -1,13 +1,17 @@
 {
   "name": "@liebherr2/plnext",
   "version": "0.0.1",
-  "description": "Web-Komponenten-Bibliothek basierend auf Lit.",
+  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "custom-elements.json"
+  ],
+  "sideEffects": [
+    "*.css",
+    "*.scss"
   ],
   "exports": {
     ".": {
@@ -16,7 +20,7 @@
     },
     "./custom-elements.json": "./custom-elements.json",
     "./react-types": "./dist/custom-elements.d.ts",
-    "./styles/exports.css": "./dist/styles/exports.css",
+    "./styles/props.css": "./dist/styles/props.css",
     "./styles/fonts.css": "./dist/styles/fonts.css",
     "./components/*": {
       "import": "./dist/components/*",
@@ -25,20 +29,23 @@
   },
   "scripts": {
     "analyze": "cem analyze",
-    "build": "vite build && tsc --emitDeclarationOnly && pnpm run build:styles",
-    "build:styles": "sass src/styles/exports.scss dist/styles/exports.css --no-source-map && sass src/styles/fonts.css dist/styles/fonts.css --no-source-map",
-    "dev": "nodemon --watch src --ext ts,scss --exec \"pnpm run build\"",
+    "prebuild": "npm run analyze",
+    "prepack": "rimraf dist && npm run build",
+    "build": "vite build && tsc --emitDeclarationOnly && npm run build:styles",
+    "build:styles": "sass src/styles/props.scss dist/styles/props.css --no-source-map && sass src/styles/fonts.css dist/styles/fonts.css --no-source-map",
+    "dev": "concurrently -k -n VITE,TSC,SASS \"vite build --watch\" \"tsc --emitDeclarationOnly -w\" \"npm:dev:styles\"",
+    "dev:styles": "chokidar \"src/**/*.scss\" -c \"npm run build:styles\"",
     "format": "prettier --write \"src/**/*.{js,ts,json,md,html,css,scss}\"",
     "format:check": "prettier --check \"src/**/*.{js,ts,json,md,html,css,scss}\"",
-    "lint": "eslint 'src/**/*.ts'",
-    "prebuild": "pnpm run analyze",
+    "lint": "eslint \"src/**/*.ts\"",
     "serve": "web-dev-server --node-resolve --open",
-    "test": "web-test-runner 'dist/test/**/*.test.js' --node-resolve"
+    "test": "web-test-runner \"dist/test/**/*.test.js\" --node-resolve"
+  },
+  "peerDependencies": {
+    "lit": "^3"
   },
   "dependencies": {
-    "lit": "^3.1.3",
-    "lit-element": "^3.1.3",
-    "lit-html": "^3.1.3"
+    "lit": "^3"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.2",

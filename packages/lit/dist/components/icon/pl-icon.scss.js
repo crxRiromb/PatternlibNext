@@ -1,18 +1,19 @@
-const n = `@use '@styles/styles/flex-mixins' as flex;
-
-:host {
-  display: inline-block;
-  color: black;
-  width: 24px;
-  height: 24px;
-}
-
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
+const n = `@use '@styles/styles/flex-mixins' as flex;\r
+\r
+:host {\r
+  display: inline-block;\r
+  color: black;\r
+  width: 24px;\r
+  height: 24px;\r
+}\r
+\r
+img {\r
+  width: 100%;\r
+  height: 100%;\r
+  object-fit: contain;\r
+}\r
 `;
 export {
   n as default
 };
+//# sourceMappingURL=pl-icon.scss.js.map

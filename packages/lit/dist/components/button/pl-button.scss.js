@@ -2,3 +2,4 @@ const r = "*,*:before,*:after{box-sizing:border-box;margin:0;padding:0}img,pictu
 export {
   r as default
 };
+//# sourceMappingURL=pl-button.scss.js.map
