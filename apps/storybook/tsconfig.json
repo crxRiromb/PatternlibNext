@@ -7,7 +7,7 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "types": ["vite/client", "@storybook/types"],
+    "types": ["vite/client"],
     "baseUrl": "."
   },
   "include": [".storybook/**/*", "src/**/*", "stories/**/*", "src/env.d.ts"],

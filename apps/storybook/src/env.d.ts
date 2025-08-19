@@ -1,8 +1,3 @@
-declare module "*.json?raw" {
-  const content: string;
-  export default content;
-}
-
 declare module "*.css?inline" {
   const cssText: string;
   export default cssText;
