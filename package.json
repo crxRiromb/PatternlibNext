@@ -2,14 +2,7 @@
   "name": "pl-root",
   "private": true,
   "scripts": {
-    "build": "pnpm -r --stream build",
-    "dev:lit": "pnpm --filter @liebherr2/plnext dev",
-    "dev:react-wrapper": "pnpm --filter @liebherr2/reactnext dev",
-    "dev:angular-wrapper": "pnpm --filter @liebherr2/angularnext dev",
-    "dev:react-react-19-pl3.1-mainmenu": "pnpm --filter react-19-pl3.1-mainmenu dev",
-    "dev:angular-ng19-pl3.1-mainmenu": "pnpm --filter angular-ng19-pl3.1-mainmenu dev",
-    "dev:storybook": "pnpm --filter storybook dev",
-    "lint": "pnpm -r lint",
+    "lint": "eslint \"{packages,apps}/**/*.{ts,tsx,js,jsx}\"",
     "format": "prettier --write ."
   },
   "devDependencies": {
