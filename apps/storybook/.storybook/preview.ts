@@ -1,7 +1,11 @@
-import customElements from "@liebherr2/plnext/custom-elements.json" with { type: "json" };
-import type { Preview } from "@storybook/web-components-vite";
-import { setCustomElementsManifest } from "@storybook/web-components-vite";
+import type { Preview } from "@storybook/web-components";
+import { setCustomElementsManifest } from "@storybook/web-components";
 import { html } from "lit";
+
+// load custom-elements.json from env CEM_RAW (set in main.ts)
+// @ts-ignore
+const cemRaw = process.env.CEM_RAW;
+const customElements = cemRaw ? JSON.parse(cemRaw) : {};
 
 setCustomElementsManifest(customElements);
 

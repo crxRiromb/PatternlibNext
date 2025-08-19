@@ -34,7 +34,7 @@
     "build": "vite build && tsc --emitDeclarationOnly && npm run build:styles",
     "build:styles": "sass src/styles/props.scss dist/styles/props.css --no-source-map && sass src/styles/fonts.css dist/styles/fonts.css --no-source-map",
     "dev": "concurrently -k -n VITE,TSC,SASS \"vite build --watch\" \"tsc --emitDeclarationOnly -w\" \"npm:dev:styles\"",
-    "dev:styles": "chokidar \"src/**/*.scss\" -c \"npm run build:styles\"",
+    "dev:styles": "nodemon --watch src --ext scss --exec \"npm run build:styles\"",
     "format": "prettier --write \"src/**/*.{js,ts,json,md,html,css,scss}\"",
     "format:check": "prettier --check \"src/**/*.{js,ts,json,md,html,css,scss}\"",
     "lint": "eslint \"src/**/*.ts\"",
@@ -50,7 +50,7 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.2",
     "@open-wc/testing": "^4.0.0",
-    "sass": "^1.71.1",
+    "sass": "^1",
     "typescript": "~5.8.0"
   },
   "customElements": "custom-elements.json"

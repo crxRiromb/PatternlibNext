@@ -2,7 +2,7 @@
  * File is defined as partial, which means it won't be compiled into CSS directly
  * It's intended to be used as a building block for the component styles.
  */
-@use '/src/styles/tokens' as tokens;
+@use '@styles/tokens' as tokens;
 
 $font-familiy-rtl: 'Arial', sans-serif;
 

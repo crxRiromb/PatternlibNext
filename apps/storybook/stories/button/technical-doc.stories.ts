@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/web-components-vite";
+import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import "@liebherr2/plnext/components/button/pl-button.js";
 

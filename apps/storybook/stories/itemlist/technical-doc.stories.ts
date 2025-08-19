@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/web-components-vite";
+import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
 import { createRef, ref } from "lit/directives/ref.js";
 import type { PlItemlist } from "@liebherr2/plnext/components/itemlist/pl-itemlist.d.ts";
