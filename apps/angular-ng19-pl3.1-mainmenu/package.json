@@ -2,12 +2,15 @@
   "name": "angular-ng19-pl3.1-mainmenu",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "dev": "ng serve",
     "build": "ng build",
+    "build:tgz": "npm run build:ci -w @liebherr2/plnext && npm run build:ci -w @liebherr2/angularnext && prepare:dev-tgz",
+    "dev": "ng serve",
+    "dev:prod": "ng serve --configuration=production",
+    "dev:tgz": "ng serve --configuration=development-tgz",
+    "ng": "ng",
     "test": "ng test",
     "prepare:dev": "npm pkg set dependencies.@liebherr2/plnext=\"file:../../packages/lit\" && npm pkg set dependencies.@liebherr2/angularnext=\"file:../../packages/angular-wrapper\" && npm install",
-    "prepare:ci": "npm pkg set dependencies.@liebherr2/plnext=\"file:../../packages/lit/liebherr2-plnext-0.0.1.tgz\" && npm pkg set dependencies.@liebherr2/angularnext=\"file:../../packages/angular-wrapper/liebherr2-angularnext-0.0.1.tgz\" && npm ci"
+    "prepare:dev:tgz": "npm pkg set dependencies.@liebherr2/plnext=\"file:../../packages/lit/liebherr2-plnext-0.0.1.tgz\" && npm pkg set dependencies.@liebherr2/angularnext=\"file:../../packages/angular-wrapper/liebherr2-angularnext-0.0.1.tgz\" && npm install"
   },
   "private": true,
   "dependencies": {

@@ -51,12 +51,30 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "./src/environments/environment.ts",
+                  "with": "./src/environments/environment.prod.ts"
+                }
+              ]
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "scripts": []
+            },
+            "development-tgz": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "./src/environments/environment.ts",
+                  "with": "./src/environments/environment.tgz.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -69,6 +87,9 @@
             },
             "development": {
               "buildTarget": "angular-standalone-mainmenu:build:development"
+            },
+            "development-tgz": {
+              "buildTarget": "angular-standalone-mainmenu:build:development-tgz"
             }
           },
           "defaultConfiguration": "development"
