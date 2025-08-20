@@ -1,5 +1,5 @@
 {
-  "name": "pl-root",
+  "name": "@liebherr2/plroot",
   "private": true,
   "scripts": {
     "lint": "eslint \"{packages,apps}/**/*.{ts,tsx,js,jsx}\"",
