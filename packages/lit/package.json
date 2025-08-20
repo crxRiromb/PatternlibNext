@@ -9,7 +9,12 @@
     "dist",
     "custom-elements.json"
   ],
-  "sideEffects": true,
+  "sideEffects": [
+    "*.css",
+    "*.scss",
+    "dist/index.js",
+    "dist/components/**/*.js"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
