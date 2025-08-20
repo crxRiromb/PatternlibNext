@@ -1,16 +1,16 @@
 # Angular Template
 
-## Build and Run
+## Test App Dev Mode + Packages tgz
+
+This configuration allows you to test the application in development mode while using the local packages from the `tgz` files.
 
 ```bash
-yalc link @liebherr2/plnext
-yalc link @liebherr2/angularnext
-npm install
-npm run serve
+remove node_modules + package-lock.json
+npm run prepare:dev:tgz
+npm run dev:tgz
 ```
 
-    "@liebherr2/angularnext": "file:../../packages/angular-wrapper/liebherr2-angularnext-0.0.1.tgz",
-    "@liebherr2/plnext": "file:../../packages/lit/liebherr2-plnext-0.0.1.tgz",
+## Archiv (remove later)
 
 /_ Alias _/
 "baseUrl": "./",

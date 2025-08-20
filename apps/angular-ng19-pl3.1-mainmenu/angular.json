@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-standalone-mainmenu": {
+    "angular-ng19-pl3.1-mainmenu": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-standalone-mainmenu",
+            "outputPath": "dist/angular-ng19-pl3.1-mainmenu",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -63,7 +63,7 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
-              "scripts": []
+              "scripts": ["src/load-web-components-outside-zonejs.ts"]
             },
             "development-tgz": {
               "optimization": false,
@@ -83,13 +83,13 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-standalone-mainmenu:build:production"
+              "buildTarget": "angular-ng19-pl3.1-mainmenu:build:production"
             },
             "development": {
-              "buildTarget": "angular-standalone-mainmenu:build:development"
+              "buildTarget": "angular-ng19-pl3.1-mainmenu:build:development"
             },
             "development-tgz": {
-              "buildTarget": "angular-standalone-mainmenu:build:development-tgz"
+              "buildTarget": "angular-ng19-pl3.1-mainmenu:build:development-tgz"
             }
           },
           "defaultConfiguration": "development"

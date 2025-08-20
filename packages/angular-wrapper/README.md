@@ -1,35 +1,18 @@
-# Angular Wrapper for Liebherr2 Patternlib Next
+# Liebherr2 Angular Wrapper Next
 
-"dev": "nodemon --watch src --watch ../../packages/lit/dist --ext ts,html,scss,js,css --exec \"npm run build\"",
+## Build in Dev Mode with file watch
 
-## package.json
-
-```json
-  "types": "./dist/index.d.ts",
-  "module": "./dist/fesm2022/liebherr2-angularnext.mjs",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/fesm2022/liebherr2-angularnext.mjs"
-    }
-  },
-  "files": [
-    "dist"
-  ],
+```bash
+npm i
+npm run dev
 ```
 
-```javascript
-(function () {
-  const originalDefine = customElements.define;
-  customElements.define = function (name, constructor, options) {
-    if (name === "pl-button") {
-      console.log(
-        'Treffer! Jemand versucht "pl-button" zu registrieren. Pausiere...',
-      );
-      debugger; // Hält die Ausführung an dieser Stelle an
-    }
-    originalDefine.call(this, name, constructor, options);
-  };
-  console.log('Spion für "pl-button" ist jetzt aktiv.');
-})();
+## Build tarball archive (tgz)
+
+1. build dist folder
+2. create tgz file
+
+```bash
+npm i
+npm run build:ci
 ```

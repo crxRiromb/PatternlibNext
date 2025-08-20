@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "storybook build"
+    "build:ci": "storybook build"
   },
   "devDependencies": {
     "@liebherr2/plnext": "file:../../packages/lit",

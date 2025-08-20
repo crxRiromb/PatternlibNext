@@ -11,18 +11,28 @@
 - Dependency of projects are managed via Tarballs (npm pack) instead of Symlinks (npm link).
 - For Storybook Vite alias for the Lit source (hot-reload) are used during development, while wrappers/apps continue to consume the packed artifacts.
 
-# Liebherr2 Patternlib Next
+## Development Workflow
 
-npm link @liebherr2/plnext
-npm link @liebherr2/plnext @liebherr2/reactnext
-npm link @liebherr2/plnext @liebherr2/angularnext
+### Dev Lit Component + Storybook
 
-## Remove old 'npm link' references
+- Terminal 1
 
-npm unlink --global @liebherr2/angularnext
-npm unlink --global @liebherr2/plnext
-npm unlink --global @liebherr2/reactnext
+```bash
+# call from root folder
+npm run dev:lit
+```
 
-npm unlink --no-save @liebherr2/plnext
-npm unlink --no-save @liebherr2/reactnext
-npm unlink --no-save @liebherr2/angularnext
+- Terminal 1
+
+```bash
+# call from root folder
+npm run dev:lit
+```
+
+### Dev Angular App + Evaluate static Lit Components (no HMR)
+
+```bash
+# call from root folder
+npm run build:packages:ci-ng
+npm run dev:app:ng
+```

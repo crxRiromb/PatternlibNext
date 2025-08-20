@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "build": "ng build",
-    "build:tgz": "npm run build:ci -w @liebherr2/plnext && npm run build:ci -w @liebherr2/angularnext && prepare:dev-tgz",
     "dev": "ng serve",
     "dev:prod": "ng serve --configuration=production",
     "dev:tgz": "ng serve --configuration=development-tgz",
