@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    // Module system
+    /*  Module system */
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "bundler",

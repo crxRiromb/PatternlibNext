@@ -11,7 +11,9 @@
   ],
   "sideEffects": [
     "*.css",
-    "*.scss"
+    "*.scss",
+    "dist/index.js",
+    "dist/components/**/*.js"
   ],
   "exports": {
     ".": {
@@ -29,15 +31,15 @@
   },
   "scripts": {
     "analyze": "cem analyze",
-    "prebuild": "npm run analyze",
-    "prepack": "rimraf dist && npm run build",
-    "build": "vite build && tsc --emitDeclarationOnly && npm run build:styles",
+    "build": "rimraf dist && npm run analyze && vite build && tsc --emitDeclarationOnly && npm run build:styles && node ../scripts/copy-files.js package.json dist && node ../scripts/copy-files.js custom-elements.json dist",
+    "build:ci": "npm run build && npm run pack",
     "build:styles": "sass src/styles/props.scss dist/styles/props.css --no-source-map && sass src/styles/fonts.css dist/styles/fonts.css --no-source-map",
     "dev": "concurrently -k -n VITE,TSC,SASS \"vite build --watch\" \"tsc --emitDeclarationOnly -w\" \"npm:dev:styles\"",
     "dev:styles": "nodemon --watch src --ext scss --exec \"npm run build:styles\"",
     "format": "prettier --write \"src/**/*.{js,ts,json,md,html,css,scss}\"",
     "format:check": "prettier --check \"src/**/*.{js,ts,json,md,html,css,scss}\"",
     "lint": "eslint \"src/**/*.ts\"",
+    "pack": "cd dist && npm pack && cd .. && node ../scripts/move-files.js dist/*.tgz .",
     "serve": "web-dev-server --node-resolve --open",
     "test": "web-test-runner \"dist/test/**/*.test.js\" --node-resolve"
   },

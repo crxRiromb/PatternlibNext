@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PatternlibAngularCommonModule, PatternlibAngularFormsModule } from '@liebherr/patternlib-angular';
 import { TranslocoModule } from '@ngneat/transloco';
 import { PLButtonAngular } from '@liebherr2/angularnext';
@@ -20,6 +20,7 @@ import { PLButtonAngular } from '@liebherr2/angularnext';
     PatternlibAngularFormsModule,
     PLButtonAngular,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PL4IntegrationComponent {
   public exampleData = [

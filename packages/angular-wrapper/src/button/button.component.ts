@@ -4,7 +4,7 @@ import {
   Input,
   CUSTOM_ELEMENTS_SCHEMA,
 } from "@angular/core";
-import "@liebherr2/plnext/components/button/pl-button.js";
+// import "@liebherr2/plnext/components/button/pl-button.js";
 
 @Component({
   selector: "pl-button-angular",

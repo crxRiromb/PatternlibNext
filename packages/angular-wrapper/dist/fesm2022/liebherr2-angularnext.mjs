@@ -1,9 +1,9 @@
 import * as i0 from '@angular/core';
 import { Input, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component } from '@angular/core';
-import '@liebherr2/plnext/components/button/pl-button.js';
 import '@liebherr2/plnext/components/icon/pl-icon.js';
 import '@liebherr2/plnext/components/itemlist/pl-itemlist.js';
 
+// import "@liebherr2/plnext/components/button/pl-button.js";
 class PLButtonAngular {
     label = "Button";
     type = "button";
