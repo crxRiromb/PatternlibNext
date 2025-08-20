@@ -1,4 +1,4 @@
-# Tooling/Build Setup
+# Tooling Setup + Development Workflow
 
 ## Prerequisites
 
@@ -13,7 +13,7 @@
 
 ## Development Workflow
 
-### Dev Lit Component + Storybook
+### Lit Component Development + Storybook Review
 
 - Terminal 1
 
@@ -29,7 +29,7 @@ npm run dev:lit
 npm run dev:lit
 ```
 
-### Dev Angular App + Evaluate static Lit Components (no HMR)
+### Angular App Development with static Lit Components (no HMR)
 
 ```bash
 # call from root folder
