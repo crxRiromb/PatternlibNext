@@ -66,7 +66,7 @@ button {
   background-color: var(--current-bg);
   border: 1px solid var(--current-border);
   color: var(--current-text);
-  background-color: blue; /* for testing */
+  // background-color: blue; /* for testing */
 
   &:hover {
     background-color: var(--current-bg-hover);

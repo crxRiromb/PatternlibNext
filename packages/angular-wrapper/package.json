@@ -4,7 +4,11 @@
   "description": "Angular wrapper library für @liebherr2/plnext.",
   "scripts": {
     "build": "ng-packagr -p ng-package.json",
-    "dev": "nodemon --watch src --ext ts,html,scss --exec \"pnpm run build\""
+    "build:ci": "npm ci && npm run build && npm run pack",
+    "dev": "nodemon",
+    "prepare:dev": "npm pkg set peerDependencies.@liebherr2/plnext=\"file:../../packages/lit\" && npm install",
+    "prepare:ci": "npm pkg set peerDependencies.@liebherr2/plnext=\"file:../../packages/lit/liebherr2-plnext-0.0.1.tgz\" && npm install",
+    "pack": "cd dist && npm pack && cd .. && node ../../scripts/move-files.js dist/*.tgz ."
   },
   "dependencies": {
     "tslib": "^2.3.0"
@@ -12,7 +16,7 @@
   "peerDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",
-    "@liebherr2/plnext": "0.0.1"
+    "@liebherr2/plnext": "file:../../packages/lit/liebherr2-plnext-0.0.1.tgz"
   },
   "devDependencies": {
     "@angular/common": "^19.0.0",

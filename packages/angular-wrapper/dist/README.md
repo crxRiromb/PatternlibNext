@@ -1,5 +1,7 @@
 # Angular Wrapper for Liebherr2 Patternlib Next
 
+"dev": "nodemon --watch src --watch ../../packages/lit/dist --ext ts,html,scss,js,css --exec \"npm run build\"",
+
 ## package.json
 
 ```json
