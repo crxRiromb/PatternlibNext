@@ -1,12 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component } from '@angular/core';
 import { PatternlibAngularCommonModule, PatternlibAngularFormsModule } from '@liebherr/patternlib-angular';
 import { TranslocoModule } from '@ngneat/transloco';
-import { PLButtonAngular } from '@liebherr2/angularnext';
-// import { PLButtonAngular, PLIconAngular, PlItemlistAngular } from '@liebherr2/angularnext';
-// PLButtonAngular,
-// PLIconAngular,
-// PlItemlistAngular,
+import { PLButtonAngular, PLIconAngular, PlItemlistAngular } from '@liebherr2/angularnext';
 
 @Component({
   selector: 'app-pl4integration',
@@ -19,8 +15,9 @@ import { PLButtonAngular } from '@liebherr2/angularnext';
     PatternlibAngularCommonModule,
     PatternlibAngularFormsModule,
     PLButtonAngular,
+    PLIconAngular,
+    PlItemlistAngular,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PL4IntegrationComponent {
   public exampleData = [

@@ -1,4 +1,4 @@
-import { html as a, unsafeCSS as f, css as u } from "lit";
+import { unsafeCSS as a, css as f, html as u } from "lit";
 import { property as m, customElement as y } from "lit/decorators.js";
 import { PlBase as h } from "../base/pl-base.js";
 import { iconMap as i } from "./icon-map.js";
@@ -14,11 +14,11 @@ let r = class extends h {
   }
   render() {
     const e = i[this.iconName] || i.default;
-    return a`<img src=${e} alt=${this.alt} />`;
+    return u`<img src=${e} alt=${this.alt} />`;
   }
 };
-r.styles = u`
-    ${f(v)}
+r.styles = f`
+    ${a(v)}
   `;
 n([
   m({ type: String, reflect: !0 })

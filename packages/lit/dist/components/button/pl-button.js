@@ -1,5 +1,5 @@
 import { IdUtils as d } from "../../utils/id.js";
-import { html as h, unsafeCSS as b, css as f } from "lit";
+import { unsafeCSS as b, css as f, html as h } from "lit";
 import { state as u, property as r, customElement as y } from "lit/decorators.js";
 import { PlBase as _ } from "../base/pl-base.js";
 import m from "./pl-button.scss.js";
