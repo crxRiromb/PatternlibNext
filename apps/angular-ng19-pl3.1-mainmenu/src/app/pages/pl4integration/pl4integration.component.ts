@@ -26,11 +26,11 @@ export class PL4IntegrationComponent {
     { key: '3', value: 'Dritter Listeneintrag' },
   ];
 
-  public onClickButton3(): void {
-    alert('Button 3 clicked!');
+  public onButtonV3Clicked(): void {
+    console.log('Button 3 clicked!');
   }
 
-  public onClickButton4(): void {
-    alert('Button 4 clicked!');
+  public onButtonV4Clicked(): void {
+    console.log('Button 4 clicked!');
   }
 }
