@@ -37,3 +37,12 @@ npm run build:packages:ng:ci
 npm run prepare:app:ng:ci
 npm run dev:app:ng:ci
 ```
+
+### React App Development with static Lit Components (tgz, no HMR)
+
+```bash
+# call from root folder
+npm run build:packages:react:ci
+npm run prepare:app:react:ci
+npm run dev:app:react:ci
+```

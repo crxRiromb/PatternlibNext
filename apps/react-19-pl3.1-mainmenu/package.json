@@ -5,14 +5,17 @@
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
+    "dev:tgz": "react-router dev",
+    "prepare:dev": "npm pkg set dependencies.@liebherr2/plnext=\"file:../../packages/lit\" && npm pkg set dependencies.@liebherr2/reactnext=\"file:../../packages/react-wrapper\" && npm install",
+    "prepare:ci": "npm pkg set dependencies.@liebherr2/plnext=\"file:../../packages/lit/liebherr2-plnext-0.0.1.tgz\" && npm pkg set dependencies.@liebherr2/reactnext=\"file:../../packages/react-wrapper/liebherr2-reactnext-0.0.1.tgz\" && npm install",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
     "@liebherr/patternlib": "^3.1.6",
     "@liebherr/patternlib-react": "^3.1.6",
-    "@liebherr2/plnext": "0.0.1",
-    "@liebherr2/reactnext": "0.0.1",
+    "@liebherr2/plnext": "file:../../packages/lit/liebherr2-plnext-0.0.1.tgz",
+    "@liebherr2/reactnext": "file:../../packages/react-wrapper/liebherr2-reactnext-0.0.1.tgz",
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
     "isbot": "^5.1.27",

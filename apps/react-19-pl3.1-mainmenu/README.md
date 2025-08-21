@@ -1,15 +1,11 @@
 # Welcome to React Router!
 
-A modern, production-ready template for building full-stack React applications using React Router.
+## Test App Dev Mode + Packages tgz
 
-
-## Development
-
-Start the development server with HMR:
+This configuration allows you to test the application in development mode while using the local packages from the `tgz` files.
 
 ```bash
-yalc add @liebherr2/plnext
-yalc add @liebherr2/reactnext
-npm install
-npm run dev
+remove node_modules + package-lock.json
+npm run prepare:dev:tgz
+npm run dev:tgz
 ```

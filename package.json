@@ -3,12 +3,15 @@
   "private": true,
   "scripts": {
     "build:packages:ng:ci": "cd packages/lit && npm install && npm run build:ci && cd .. && cd angular-wrapper && npm install && npm run build:ci && cd ../..",
+    "build:packages:react:ci": "cd packages/lit && npm install && npm run build:ci && cd .. && cd react-wrapper && npm install && npm run build:ci && cd ../..",
     "dev:lit": "cd packages/lit && npm run dev",
     "dev:storybook": "cd apps/storybook && npm run dev",
     "dev:app:ng:ci": "cd apps/angular-ng19-pl3.1-mainmenu && npm run dev:tgz",
+    "dev:app:react:ci": "cd apps/react-19-pl3.1-mainmenu && npm run dev:tgz",
     "format": "prettier --write .",
     "lint": "eslint \"{packages,apps}/**/*.{ts,tsx,js,jsx}\"",
-    "prepare:app:ng:ci": "cd apps/angular-ng19-pl3.1-mainmenu && npm run prepare:dev:tgz"
+    "prepare:app:ng:ci": "cd apps/angular-ng19-pl3.1-mainmenu && npm run prepare:dev:tgz",
+    "prepare:app:react:ci": "cd apps/react-19-pl3.1-mainmenu && npm run prepare:dev:tgz"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
