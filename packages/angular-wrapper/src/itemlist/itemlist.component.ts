@@ -4,12 +4,7 @@ import {
   Input,
   CUSTOM_ELEMENTS_SCHEMA,
 } from "@angular/core";
-import "@liebherr2/plnext/components/itemlist/pl-itemlist.js";
 
-/**
- * Angular component wrapper for the `pl-itemlist` web component.
- * This component allows you to display a list of items with a headline.
- */
 @Component({
   selector: "pl-itemlist-angular",
   standalone: true,

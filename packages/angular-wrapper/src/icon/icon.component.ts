@@ -4,7 +4,6 @@ import {
   Input,
   CUSTOM_ELEMENTS_SCHEMA,
 } from "@angular/core";
-import "@liebherr2/plnext/components/icon/pl-icon.js";
 
 @Component({
   selector: "pl-icon-angular",

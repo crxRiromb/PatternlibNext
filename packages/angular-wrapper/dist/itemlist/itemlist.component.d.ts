@@ -1,4 +1,3 @@
-import "@liebherr2/plnext/components/itemlist/pl-itemlist.js";
 import * as i0 from "@angular/core";
 /**
  * Angular component wrapper for the `pl-itemlist` web component.

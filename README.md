@@ -33,6 +33,7 @@ npm run dev:lit
 
 ```bash
 # call from root folder
-npm run build:packages:ci-ng
-npm run dev:app:ng
+npm run build:packages:ng:ci
+npm run prepare:app:ng:ci
+npm run dev:app:ng:ci
 ```

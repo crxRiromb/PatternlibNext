@@ -1,7 +1,5 @@
 import * as i0 from '@angular/core';
 import { Input, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component } from '@angular/core';
-import '@liebherr2/plnext/components/icon/pl-icon.js';
-import '@liebherr2/plnext/components/itemlist/pl-itemlist.js';
 
 // import "@liebherr2/plnext/components/button/pl-button.js";
 class PLButtonAngular {
@@ -26,6 +24,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "19.2.14", ngImpo
                 type: Input
             }] } });
 
+// import "@liebherr2/plnext/components/icon/pl-icon.js";
 class PLIconAngular {
     alt = "Global Icon";
     iconName = "globe";
@@ -41,6 +40,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "19.2.14", ngImpo
                 type: Input
             }] } });
 
+// import "@liebherr2/plnext/components/itemlist/pl-itemlist.js";
 /**
  * Angular component wrapper for the `pl-itemlist` web component.
  * This component allows you to display a list of items with a headline.

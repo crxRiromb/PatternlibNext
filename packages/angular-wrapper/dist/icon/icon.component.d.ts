@@ -1,4 +1,3 @@
-import "@liebherr2/plnext/components/icon/pl-icon.js";
 import * as i0 from "@angular/core";
 export declare class PLIconAngular {
     alt: string;
