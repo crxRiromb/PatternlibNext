@@ -1,0 +1,43 @@
+{
+  "name": "@liebherr2/reactnext",
+  "version": "0.0.1",
+  "description": "React wrapper library für @liebherr2/plnext.",
+  "main": "./dist/reactnext.umd.js",
+  "module": "./dist/reactnext.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/reactnext.es.js",
+      "require": "./dist/reactnext.umd.js"
+    }
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc --noEmit && vite build",
+    "build:ci": "npm ci && npm run build && npm run pack",
+    "dev": "nodemon",
+    "prepare:dev": "npm pkg set peerDependencies.@liebherr2/plnext=\"file:../../packages/lit\" && npm install",
+    "prepare:ci": "npm pkg set peerDependencies.@liebherr2/plnext=\"file:../../packages/lit/liebherr2-plnext-0.0.1.tgz\" && npm install",
+    "pack": "npm pack"
+  },
+  "dependencies": {
+    "@lit/react": "^1.0.8"
+  },
+  "peerDependencies": {
+    "@liebherr2/plnext": "file:../../packages/lit/liebherr2-plnext-0.0.1.tgz",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react-swc": "^3.7.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "~5.8.0",
+    "vite-plugin-dts": "^3.9.1"
+  }
+}

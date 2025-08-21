@@ -1,0 +1,5 @@
+{
+  "watch": ["src", "../../packages/lit/dist"],
+  "ext": "ts,tsx,js,css",
+  "exec": "npm run build"
+}

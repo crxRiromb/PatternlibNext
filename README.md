@@ -29,7 +29,7 @@ npm run dev:lit
 npm run dev:lit
 ```
 
-### Angular App Development with static Lit Components (no HMR)
+### Angular App Development with static Lit Components (tgz, no HMR)
 
 ```bash
 # call from root folder
