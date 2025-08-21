@@ -1,13 +1,16 @@
-import { defineCustomElements } from '@liebherr/patternlib/loader';
-import { Outlet } from 'react-router';
+import { defineCustomElements } from "@liebherr/patternlib/loader";
+import { Outlet } from "react-router";
 
-import Footer from '~/routes/footer/footer';
-import { Header } from '~/routes/header/header';
+import Footer from "~/routes/footer/footer";
+import { Header } from "~/routes/header/header";
 
-import type { Route } from '../+types/root';
+import type { Route } from "../+types/root";
 
 export function meta({}: Route.MetaArgs) {
-  return [{ title: 'New React Router App' }, { name: 'description', content: 'Welcome to React Router!' }];
+  return [
+    { title: "New React Router App" },
+    { name: "description", content: "Welcome to React Router!" },
+  ];
 }
 
 export default function Layout() {

@@ -5,9 +5,6 @@
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
-    "dev:tgz": "react-router dev",
-    "prepare:dev": "npm pkg set dependencies.@liebherr2/plnext=\"file:../../packages/lit\" && npm pkg set dependencies.@liebherr2/reactnext=\"file:../../packages/react-wrapper\" && npm install",
-    "prepare:ci": "npm pkg set dependencies.@liebherr2/plnext=\"file:../../packages/lit/liebherr2-plnext-0.0.1.tgz\" && npm pkg set dependencies.@liebherr2/reactnext=\"file:../../packages/react-wrapper/liebherr2-reactnext-0.0.1.tgz\" && npm install",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
   },
@@ -29,8 +26,6 @@
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.7",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
