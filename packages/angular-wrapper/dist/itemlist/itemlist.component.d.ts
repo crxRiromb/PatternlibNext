@@ -1,8 +1,4 @@
 import * as i0 from "@angular/core";
-/**
- * Angular component wrapper for the `pl-itemlist` web component.
- * This component allows you to display a list of items with a headline.
- */
 export declare class PlItemlistAngular {
     /**
      * The headline for the list. Passed as an attribute.

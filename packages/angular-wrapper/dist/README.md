@@ -3,16 +3,16 @@
 ## Build in Dev Mode with file watch
 
 ```bash
-npm i
+npm run prepare:dev
 npm run dev
 ```
 
 ## Build tarball archive (tgz)
 
-1. build dist folder
-2. create tgz file
+- builds dist folder
+- creates tgz file
 
 ```bash
-npm i
+npm run prepare:ci
 npm run build:ci
 ```

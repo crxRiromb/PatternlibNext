@@ -1,30 +1,46 @@
 import * as i0 from '@angular/core';
-import { Input, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component } from '@angular/core';
+import { EventEmitter, booleanAttribute, Output, Input, ViewChild, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component } from '@angular/core';
 
-// import "@liebherr2/plnext/components/button/pl-button.js";
 class PLButtonAngular {
+    buttonRef;
     label = "Button";
     type = "button";
-    disabled = false;
+    disabled = false; // disabled in <pl-button-angular disabled> is correctly interpreted as true
+    plClick = new EventEmitter();
+    ngAfterViewInit() {
+        const nativeElement = this.buttonRef.nativeElement;
+        nativeElement.addEventListener("pl-button-click", (event) => {
+            this.plClick.emit(event);
+        });
+    }
     static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "19.2.14", ngImport: i0, type: PLButtonAngular, deps: [], target: i0.ɵɵFactoryTarget.Component });
-    static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "19.2.14", type: PLButtonAngular, isStandalone: true, selector: "pl-button-angular", inputs: { label: "label", type: "type", disabled: "disabled" }, ngImport: i0, template: `
-    <pl-button [label]="label" [type]="type" [disabled]="disabled"></pl-button>
+    static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "16.1.0", version: "19.2.14", type: PLButtonAngular, isStandalone: true, selector: "pl-button-angular", inputs: { label: "label", type: "type", disabled: ["disabled", "disabled", booleanAttribute] }, outputs: { plClick: "plClick" }, viewQueries: [{ propertyName: "buttonRef", first: true, predicate: ["buttonRef"], descendants: true }], ngImport: i0, template: `
+    <pl-button #buttonRef [label]="label" [type]="type" [disabled]="disabled">
+      <ng-content></ng-content>
+    </pl-button>
   `, isInline: true, styles: [":host{display:inline-block}\n"], changeDetection: i0.ChangeDetectionStrategy.OnPush });
 }
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "19.2.14", ngImport: i0, type: PLButtonAngular, decorators: [{
             type: Component,
             args: [{ selector: "pl-button-angular", standalone: true, template: `
-    <pl-button [label]="label" [type]="type" [disabled]="disabled"></pl-button>
+    <pl-button #buttonRef [label]="label" [type]="type" [disabled]="disabled">
+      <ng-content></ng-content>
+    </pl-button>
   `, changeDetection: ChangeDetectionStrategy.OnPush, schemas: [CUSTOM_ELEMENTS_SCHEMA], styles: [":host{display:inline-block}\n"] }]
-        }], propDecorators: { label: [{
+        }], propDecorators: { buttonRef: [{
+                type: ViewChild,
+                args: ["buttonRef"]
+            }], label: [{
                 type: Input
             }], type: [{
                 type: Input
             }], disabled: [{
-                type: Input
+                type: Input,
+                args: [{ transform: booleanAttribute }]
+            }], plClick: [{
+                type: Output
             }] } });
 
-// import "@liebherr2/plnext/components/icon/pl-icon.js";
 class PLIconAngular {
     alt = "Global Icon";
     iconName = "globe";
@@ -40,11 +56,6 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "19.2.14", ngImpo
                 type: Input
             }] } });
 
-// import "@liebherr2/plnext/components/itemlist/pl-itemlist.js";
-/**
- * Angular component wrapper for the `pl-itemlist` web component.
- * This component allows you to display a list of items with a headline.
- */
 class PlItemlistAngular {
     /**
      * The headline for the list. Passed as an attribute.
