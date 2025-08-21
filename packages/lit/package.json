@@ -40,6 +40,8 @@
     "format:check": "prettier --check \"src/**/*.{js,ts,json,md,html,css,scss}\"",
     "lint": "eslint \"src/**/*.ts\"",
     "pack": "npm pack",
+    "prepare:dev": "npm install",
+    "prepare:ci": "npm ci",
     "serve": "web-dev-server --node-resolve --open",
     "test": "web-test-runner \"dist/test/**/*.test.js\" --node-resolve"
   },

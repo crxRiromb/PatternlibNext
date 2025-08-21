@@ -29,7 +29,9 @@ export class PLButtonAngular implements AfterViewInit {
 
   @Input() label: string = "Button";
   @Input() type: "button" | "submit" | "reset" = "button";
-  @Input({ transform: booleanAttribute }) disabled: boolean = false; // disabled in <pl-button-angular disabled> is correctly interpreted as true
+
+  // disabled in <pl-button-angular disabled> is correctly interpreted as true
+  @Input({ transform: booleanAttribute }) disabled: boolean = false;
 
   @Output() plClick = new EventEmitter<CustomEvent>();
 

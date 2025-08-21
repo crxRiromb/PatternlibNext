@@ -6,9 +6,9 @@
     "build": "ng-packagr -p ng-package.json",
     "build:ci": "npm ci && npm run build && npm run pack",
     "dev": "nodemon",
+    "pack": "cd dist && npm pack && cd .. && node ../../scripts/move-files.js dist/*.tgz .",
     "prepare:dev": "npm pkg set peerDependencies.@liebherr2/plnext=\"file:../../packages/lit\" && npm install",
-    "prepare:ci": "npm pkg set peerDependencies.@liebherr2/plnext=\"file:../../packages/lit/liebherr2-plnext-0.0.1.tgz\" && npm install",
-    "pack": "cd dist && npm pack && cd .. && node ../../scripts/move-files.js dist/*.tgz ."
+    "prepare:ci": "npm pkg set peerDependencies.@liebherr2/plnext=\"file:../../packages/lit/liebherr2-plnext-0.0.1.tgz\" && npm install"
   },
   "dependencies": {
     "tslib": "^2.3.0"

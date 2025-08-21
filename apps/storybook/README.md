@@ -3,13 +3,13 @@
 ## Build in Dev Mode with file watch of lit project files
 
 ```bash
-npm i
+npm run prepare:dev
 npm run dev
 ```
 
 ## Build
 
 ```bash
-npm i
+npm run prepare:ci
 npm run build:ci
 ```

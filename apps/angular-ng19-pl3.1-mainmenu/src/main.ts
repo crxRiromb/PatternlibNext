@@ -9,10 +9,10 @@ import { environment } from './environments/environment';
 //   import('@liebherr2/plnext');
 // }
 
-// import('@liebherr2/plnext');
-import '@liebherr2/plnext/components/button/pl-button.js';
-import '@liebherr2/plnext/components/icon/pl-icon.js';
-import '@liebherr2/plnext/components/itemlist/pl-itemlist.js';
+import('@liebherr2/plnext');
+// import '@liebherr2/plnext/components/button/pl-button.js';
+// import '@liebherr2/plnext/components/icon/pl-icon.js';
+// import '@liebherr2/plnext/components/itemlist/pl-itemlist.js';
 
 // Patternlib 3
 import { defineCustomElements } from '@liebherr/patternlib/loader';

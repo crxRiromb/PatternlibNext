@@ -5,7 +5,8 @@ class PLButtonAngular {
     buttonRef;
     label = "Button";
     type = "button";
-    disabled = false; // disabled in <pl-button-angular disabled> is correctly interpreted as true
+    // disabled in <pl-button-angular disabled> is correctly interpreted as true
+    disabled = false;
     plClick = new EventEmitter();
     ngAfterViewInit() {
         const nativeElement = this.buttonRef.nativeElement;

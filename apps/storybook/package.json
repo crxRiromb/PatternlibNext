@@ -2,8 +2,10 @@
   "name": "storybook",
   "private": true,
   "scripts": {
+    "build:ci": "storybook build",
     "dev": "storybook dev -p 6006",
-    "build:ci": "storybook build"
+    "prepare:dev": "npm install",
+    "prepare:ci": "npm ci"
   },
   "devDependencies": {
     "@liebherr2/plnext": "file:../../packages/lit",
