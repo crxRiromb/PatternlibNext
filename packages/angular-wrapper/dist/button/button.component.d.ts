@@ -3,8 +3,12 @@ import type { PlButton as PlButtonWC } from "@liebherr2/plnext";
 import * as i0 from "@angular/core";
 export declare class PLButtonAngular implements AfterViewInit {
     buttonRef: ElementRef<PlButtonWC>;
-    label: string;
-    type: "button" | "submit" | "reset";
+    protected _label: string;
+    protected _type: "button" | "submit" | "reset";
+    set label(value: string | null | undefined);
+    get label(): string;
+    set type(value: "button" | "submit" | "reset" | null | undefined);
+    get type(): "button" | "submit" | "reset";
     disabled: boolean;
     plClick: EventEmitter<CustomEvent<any>>;
     ngAfterViewInit(): void;

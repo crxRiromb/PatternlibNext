@@ -16,7 +16,7 @@ import type { PlButton as PlButtonWC } from "@liebherr2/plnext";
   selector: "pl-button-angular",
   standalone: true,
   template: `
-    <pl-button #buttonRef [label]="label" [type]="type" [disabled]="disabled">
+    <pl-button #buttonRef [label]="_label" [type]="_type" [disabled]="disabled">
       <ng-content></ng-content>
     </pl-button>
   `,
@@ -27,14 +27,34 @@ import type { PlButton as PlButtonWC } from "@liebherr2/plnext";
 export class PLButtonAngular implements AfterViewInit {
   @ViewChild("buttonRef") buttonRef!: ElementRef<PlButtonWC>;
 
-  @Input() label: string = "Button";
-  @Input() type: "button" | "submit" | "reset" = "button";
+  /* --- sanitized state --- */
+  protected _label: string = "Label";
+  protected _type: "button" | "submit" | "reset" = "button";
 
-  // disabled in <pl-button-angular disabled> is correctly interpreted as true
+  /* --- string getter/setter with save guard ---- */
+  @Input()
+  set label(value: string | null | undefined) {
+    this._label = value ?? "";
+  }
+  get label(): string {
+    return this._label;
+  }
+
+  @Input()
+  set type(value: "button" | "submit" | "reset" | null | undefined) {
+    this._type = value ?? "button";
+  }
+  get type(): "button" | "submit" | "reset" {
+    return this._type;
+  }
+
+  /* --- boolean inputs --- */
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
 
+  /* --- events --- */
   @Output() plClick = new EventEmitter<CustomEvent>();
 
+  /* --- lifecycle hooks --- */
   ngAfterViewInit() {
     const nativeElement = this.buttonRef.nativeElement;
     nativeElement.addEventListener("pl-button-click", (event: Event) => {

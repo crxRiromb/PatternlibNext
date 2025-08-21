@@ -3,11 +3,27 @@ import { EventEmitter, booleanAttribute, Output, Input, ViewChild, CUSTOM_ELEMEN
 
 class PLButtonAngular {
     buttonRef;
-    label = "Button";
-    type = "button";
-    // disabled in <pl-button-angular disabled> is correctly interpreted as true
+    /* --- sanitized state --- */
+    _label = "Label";
+    _type = "button";
+    /* --- string getter/setter with save guard ---- */
+    set label(value) {
+        this._label = value ?? "";
+    }
+    get label() {
+        return this._label;
+    }
+    set type(value) {
+        this._type = value ?? "button";
+    }
+    get type() {
+        return this._type;
+    }
+    /* --- boolean inputs --- */
     disabled = false;
+    /* --- events --- */
     plClick = new EventEmitter();
+    /* --- lifecycle hooks --- */
     ngAfterViewInit() {
         const nativeElement = this.buttonRef.nativeElement;
         nativeElement.addEventListener("pl-button-click", (event) => {
@@ -16,7 +32,7 @@ class PLButtonAngular {
     }
     static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "19.2.14", ngImport: i0, type: PLButtonAngular, deps: [], target: i0.ɵɵFactoryTarget.Component });
     static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "16.1.0", version: "19.2.14", type: PLButtonAngular, isStandalone: true, selector: "pl-button-angular", inputs: { label: "label", type: "type", disabled: ["disabled", "disabled", booleanAttribute] }, outputs: { plClick: "plClick" }, viewQueries: [{ propertyName: "buttonRef", first: true, predicate: ["buttonRef"], descendants: true }], ngImport: i0, template: `
-    <pl-button #buttonRef [label]="label" [type]="type" [disabled]="disabled">
+    <pl-button #buttonRef [label]="_label" [type]="_type" [disabled]="disabled">
       <ng-content></ng-content>
     </pl-button>
   `, isInline: true, styles: [":host{display:inline-block}\n"], changeDetection: i0.ChangeDetectionStrategy.OnPush });
@@ -24,7 +40,7 @@ class PLButtonAngular {
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "19.2.14", ngImport: i0, type: PLButtonAngular, decorators: [{
             type: Component,
             args: [{ selector: "pl-button-angular", standalone: true, template: `
-    <pl-button #buttonRef [label]="label" [type]="type" [disabled]="disabled">
+    <pl-button #buttonRef [label]="_label" [type]="_type" [disabled]="disabled">
       <ng-content></ng-content>
     </pl-button>
   `, changeDetection: ChangeDetectionStrategy.OnPush, schemas: [CUSTOM_ELEMENTS_SCHEMA], styles: [":host{display:inline-block}\n"] }]
