@@ -5,7 +5,7 @@
     "build:packages:ng:ci": "cd packages/lit && npm install && npm run build:ci && cd .. && cd angular-wrapper && npm install && npm run build:ci && cd ../..",
     "build:packages:react:ci": "cd packages/lit && npm install && npm run build:ci && cd .. && cd react-wrapper && npm install && npm run build:ci && cd ../..",
     "clean:build": "tsx ./scripts/clean.ts build",
-    "clean:install": "tsx ./scripts/clean.ts install",
+    "clean:install": "tsx ./scripts/clean.ts install && rimraf ./node_modules",
     "clean": "tsx ./scripts/clean.ts all",
     "dev:lit": "cd packages/lit && npm run dev",
     "dev:storybook": "cd apps/storybook && npm run dev",
