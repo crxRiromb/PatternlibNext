@@ -1,7 +1,9 @@
 import "./app.css";
 import "@liebherr/patternlib/dist/patternlib/patternlib.css";
 import "@liebherr/patternlib/www/assets/css/patternlib-fonts.css";
+
 // import "@liebherr2/plnext";
+import "@liebherr2/reactnext/dist/index.css";
 
 import {
   isRouteErrorResponse,

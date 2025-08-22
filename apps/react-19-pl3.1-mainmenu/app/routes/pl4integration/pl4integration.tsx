@@ -1,4 +1,4 @@
-import { PlButton } from "@liebherr2/reactnext";
+import { PlButton, PlIcon } from "@liebherr2/reactnext";
 
 export default function Pl4Integration() {
   const handleButtonClick = () => {
@@ -15,8 +15,20 @@ export default function Pl4Integration() {
           marginTop: "32px",
         }}
       >
-        <p>React Wrapper V4</p>
+        <p>Button React Wrapper V4</p>
         <PlButton label="V4 Primary" onClick={handleButtonClick} />
+
+        <p>Icon React Wrapper V4</p>
+        <PlIcon
+          iconName="globe"
+          alt="Globe Icon"
+          onClick={() => console.log("Globe Icon clicked")}
+        />
+        <PlIcon
+          iconName="search"
+          alt="Search Icon"
+          onClick={() => console.log("Search Icon clicked")}
+        />
       </div>
     </div>
   );
