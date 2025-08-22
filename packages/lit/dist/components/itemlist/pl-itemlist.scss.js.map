@@ -1,1 +1,0 @@
-{"version":3,"file":"pl-itemlist.scss.js","sources":["../../../src/components/itemlist/pl-itemlist.scss?raw"],"sourcesContent":["export default \":host {\\r\\n  display: block;\\r\\n}\\r\\n\""],"names":["itemlistStyles"],"mappings":"AAAA,MAAAA,IAAe;AAAA;AAAA;AAAA;"}
