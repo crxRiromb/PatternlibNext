@@ -7,9 +7,9 @@
 node_modules/
 
 # Build-Ausgaben und temporäre Verzeichnisse
-/dist/
-/tmp/
-/build/
+dist/
+tmp/
+build/
 .local-tarballs
 *.tgz
 

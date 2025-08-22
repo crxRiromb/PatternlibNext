@@ -4,6 +4,9 @@
   "scripts": {
     "build:packages:ng:ci": "cd packages/lit && npm install && npm run build:ci && cd .. && cd angular-wrapper && npm install && npm run build:ci && cd ../..",
     "build:packages:react:ci": "cd packages/lit && npm install && npm run build:ci && cd .. && cd react-wrapper && npm install && npm run build:ci && cd ../..",
+    "clean:build": "tsx ./scripts/clean.ts build",
+    "clean:install": "tsx ./scripts/clean.ts install",
+    "clean": "tsx ./scripts/clean.ts all",
     "dev:lit": "cd packages/lit && npm run dev",
     "dev:storybook": "cd apps/storybook && npm run dev",
     "dev:app:ng:ci": "cd apps/angular-ng19-pl3.1-mainmenu && npm run dev:tgz",
@@ -17,7 +20,7 @@
     "prepare:storybook:dev": "cd apps/storybook && npm run prepare:dev"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0",
+    "@types/node": "^22.17.2",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
     "@web/dev-server": "^0.4.2",
@@ -29,6 +32,9 @@
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
+    "sass": "^1.90.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.9.2",
     "vite": "^7.0.0"
   }
 }
