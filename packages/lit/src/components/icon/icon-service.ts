@@ -26,7 +26,7 @@ class IconService {
         const url = await this.getUrl(name);
         const response = await fetch(url);
         if (!response.ok) {
-          throw new Error(`SVG not found at ${url}`);
+          throw new Error(`Icon SVG not found at ${url}`);
         }
         return await response.text();
       } catch (error) {
@@ -46,12 +46,11 @@ class IconService {
         'https://assets-cdn.liebherr.com/assets/api/3b9ef745-bcb3-44ba-8945-b07d2c7fe568/original/icon-map.json'
       );
       if (!response.ok) {
-        throw new Error('Network error');
+        throw new Error('Network error while fetching icon map');
       }
-      // console.log('Fetched icon map:', response);
       return await response.json();
     } catch (error) {
-      console.error('Failed to fetch:', error);
+      console.error('Failed to fetch icon map:', error);
       return {
         default:
           'https://assets-cdn.liebherr.com/assets/api/313d8c9e-622d-4ab8-984d-4d1bf88ec9ab/original/test-search-icon.svg',
