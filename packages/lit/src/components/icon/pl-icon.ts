@@ -35,7 +35,6 @@ export class PlIcon extends PlBase {
   render() {
     const imageUrlPromise = iconService.getUrl(this.iconName);
 
-    // until manage asynchrone rendering
     return html`${until(
       imageUrlPromise.then(src => html`<img src=${src} alt=${this.alt} />`),
 
