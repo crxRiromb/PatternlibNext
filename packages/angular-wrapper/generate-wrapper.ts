@@ -1,6 +1,3 @@
-// English: This script generates Angular wrappers from the custom-elements.json manifest.
-// German: Dieses Skript generiert Angular-Wrapper aus dem custom-elements.json Manifest.
-
 import * as fs from "fs";
 import * as path from "path";
 
@@ -45,31 +42,28 @@ function generateWrapper() {
   const inputs = (componentDef.attributes || [])
     .map((attr) => {
       const propName = toCamelCase(attr.name || attr.fieldName);
-      const type = attr.type?.text || "string";
+      // CORRECTED: Replace single quotes with double quotes in the type definition itself.
+      const type = (attr.type?.text || "string").replace(/'/g, '"');
       const isBoolean = type.toLowerCase() === "boolean";
 
       if (isBoolean) {
         return `
-  // Maps to the '${attr.name}' attribute of the web component.
+  // Maps to the "${attr.name}" attribute of the web component.
   @Input({ transform: booleanAttribute }) ${propName}: ${type} = false;`;
       }
 
-      // CORRECTED: Read the default value from both possible properties ('defaultValue' or 'default').
       const defaultValue = attr.defaultValue || attr.default;
-
-      // CORRECTED: Clean the default value and prepare it for code generation.
-      // This removes potential quotes from the manifest (e.g., "'button'") and provides a fallback.
       const cleanedDefaultValue = defaultValue
         ? defaultValue.replace(/['"]/g, "")
         : "";
-      const defaultValueForCode = `'${cleanedDefaultValue}'`;
+      const defaultValueForCode = `"${cleanedDefaultValue}"`;
 
       return `
   protected _${propName}: ${type} = ${defaultValueForCode};
-  // Maps to the '${attr.name}' attribute of the web component.
+  // Maps to the "${attr.name}" attribute of the web component.
   @Input()
   set ${propName}(value: ${type} | null | undefined) {
-    this._${propName} = value ?? ${cleanedDefaultValue ? `'${cleanedDefaultValue}'` : "''"};
+    this._${propName} = value ?? ${cleanedDefaultValue ? `"${cleanedDefaultValue}"` : '""'};
   }
   get ${propName}(): ${type} {
     return this._${propName};
@@ -82,7 +76,7 @@ function generateWrapper() {
     .map((event) => {
       const eventName = toCamelCase(event.name);
       return `
-  // Emits when the '${event.name}' event is fired by the web component.
+  // Emits when the "${event.name}" event is fired by the web component.
   @Output() ${eventName} = new EventEmitter<CustomEvent>();`;
     })
     .join("\n");
@@ -92,7 +86,7 @@ function generateWrapper() {
     .map((event) => {
       const eventName = toCamelCase(event.name);
       return `
-    nativeElement.addEventListener('${event.name}', (event: Event) => {
+    nativeElement.addEventListener("${event.name}", (event: Event) => {
       this.${eventName}.emit(event as CustomEvent);
     });`;
     })
