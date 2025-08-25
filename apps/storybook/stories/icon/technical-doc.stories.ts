@@ -7,16 +7,22 @@ const meta: Meta = {
   component: "pl-icon",
   tags: ["autodocs"],
   argTypes: {
+    decorative: {
+      control: "boolean",
+      description:
+        "If true, the icon is marked as decorative for accessibility purposes. Useful when the icon is purely decorative (e.g. next to visible text).",
+      defaultValue: false,
+    },
     iconName: {
       control: { type: "select" },
       options: ["globe", "search"],
       description: "Name of the icon to display",
       defaultValue: "globe",
     },
-    alt: {
+    label: {
       control: "text",
-      description: "Alternative text for the icon",
-      defaultValue: "Global Icon",
+      description: "The alternative text for the icon, used for accessibility",
+      defaultValue: "",
     },
   },
 };
@@ -30,11 +36,7 @@ type Story = StoryObj;
 
 export const PrimaryStory: Story = {
   render: (args) => html`
-    <pl-icon
-      alt=${args.alt}
-      iconName=${args.iconName}
-      style="height: 32px; width: 32px;"
-    ></pl-icon>
+    <pl-icon alt=${args.alt} iconName=${args.iconName}></pl-icon>
   `,
   args: {
     alt: "Global Icon",
@@ -48,6 +50,20 @@ export const SizeStory: Story = {
       alt=${args.alt}
       iconName=${args.iconName}
       style="height: 48px; width: 48px;"
+    ></pl-icon>
+  `,
+  args: {
+    alt: "Global Icon",
+    iconName: "globe",
+  },
+};
+
+export const ColorStory: Story = {
+  render: (args) => html`
+    <pl-icon
+      alt=${args.alt}
+      iconName=${args.iconName}
+      style="color: red;"
     ></pl-icon>
   `,
   args: {
