@@ -1,10 +1,10 @@
 @use 'sass:map';
-@use '@styles/theming';
+@use '@src/styles/theming';
 @use 'pl-button.theme' as theme;
 
-@use '@styles/reset-styles';
-@use '@styles/base-mixins' as base;
-@use '@styles/flex-mixins' as flex;
+@use '@src/styles/reset-styles';
+@use '@src/styles/base-mixins' as base;
+@use '@src/styles/flex-mixins' as flex;
 
 $component: 'pl-button';
 
