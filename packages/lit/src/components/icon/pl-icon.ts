@@ -1,9 +1,19 @@
 import { css, html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { until } from 'lit/directives/until.js';
 import { PlBase } from '../base/pl-base';
-import { iconMap } from './icon-map';
+import { iconService } from './icon-service';
 import iconStyles from './pl-icon.scss?raw';
 
+/**
+ * The `pl-icon` component is used to display icons from a predefined set.
+ * You can specify the icon to display using the `icon-name` property, and provide alternative
+ * text for accessibility using the `alt` property.
+ *
+ * @slot - This component has no slots.
+ *
+ * @csspart img - The image element displaying the icon.
+ */
 @customElement('pl-icon')
 export class PlIcon extends PlBase {
   /**
@@ -23,9 +33,15 @@ export class PlIcon extends PlBase {
   `;
 
   render() {
-    const src = iconMap[this.iconName] || iconMap.default;
+    const imageUrlPromise = iconService.getUrl(this.iconName);
 
-    return html`<img src=${src} alt=${this.alt} />`;
+    // until manage asynchrone rendering
+    return html`${until(
+      imageUrlPromise.then(src => html`<img src=${src} alt=${this.alt} />`),
+
+      // Placeholder while loading
+      html`<span></span>`
+    )}`;
   }
 }
 
