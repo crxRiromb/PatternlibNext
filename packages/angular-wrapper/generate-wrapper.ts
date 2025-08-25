@@ -1,15 +1,14 @@
-import fs from "fs";
-import path from "path";
+import * as fs from "fs";
+import * as path from "path";
 
 // --- CONFIGURATION ---
 const cemPath = path.resolve(
   process.cwd(),
   "../../packages/lit/custom-elements.json",
 );
-const outputDir = path.resolve(process.cwd(), "./src/lib/generated");
 const componentTagName = "pl-button";
+// --- END CONFIGURATION ---
 
-// --- UTILITY FUNCTIONS ---
 function toCamelCase(str) {
   return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 }
@@ -19,7 +18,6 @@ function toPascalCase(str) {
   return camel.charAt(0).toUpperCase() + camel.slice(1);
 }
 
-// --- MAIN GENERATION LOGIC ---
 function generateWrapper() {
   if (!fs.existsSync(cemPath)) {
     console.error(`❌ Error: custom-elements.json not found at ${cemPath}`);
@@ -147,11 +145,18 @@ export class ${angularComponentName} implements AfterViewInit {
 `;
 
   // --- Write the file ---
-  const outputFilePath = path.join(
-    outputDir,
-    `${componentTagName}.component.ts`,
+  const componentSubfolder = componentTagName.replace("pl-", ""); // e.g., 'button'
+  const finalOutputDir = path.resolve(
+    process.cwd(),
+    "./src",
+    componentSubfolder,
   );
-  fs.mkdirSync(outputDir, { recursive: true });
+  const outputFilePath = path.join(
+    finalOutputDir,
+    `${componentSubfolder}.component.ts`,
+  );
+
+  fs.mkdirSync(finalOutputDir, { recursive: true });
   fs.writeFileSync(outputFilePath, template.trim());
   console.log(
     `✅ Successfully generated wrapper for <${componentTagName}> at ${outputFilePath}`,
