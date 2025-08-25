@@ -10,13 +10,19 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   booleanAttribute,
 } from "@angular/core";
-import type { PlButton as PlButtonWC } from "@liebherr2/plnext";
+import type { PlButton } from "@liebherr2/plnext";
 
 @Component({
   selector: "pl-button-angular",
   standalone: true,
   template: `
-    <pl-button #buttonRef [label]="_label" [type]="_type" [disabled]="disabled">
+    <pl-button
+      #elementRef
+      [disabled]="disabled"
+      [label]="_label"
+      [type]="_type"
+      [variant]="_variant"
+    >
       <ng-content></ng-content>
     </pl-button>
   `,
@@ -25,14 +31,14 @@ import type { PlButton as PlButtonWC } from "@liebherr2/plnext";
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PLButtonAngular implements AfterViewInit {
-  @ViewChild("buttonRef") buttonRef!: ElementRef<PlButtonWC>;
+  @ViewChild("elementRef") elementRef!: ElementRef<PlButton>;
 
   // --- Inputs ---
 
-  protected _label: string = "Label";
   // Maps to the 'disabled' attribute of the web component.
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
 
+  protected _label: string = "";
   // Maps to the 'label' attribute of the web component.
   @Input()
   set label(value: string | null | undefined) {
@@ -52,16 +58,26 @@ export class PLButtonAngular implements AfterViewInit {
     return this._type;
   }
 
+  protected _variant: "primary" | "secondary" | "error" = "primary";
+  // Maps to the 'variant' attribute of the web component.
+  @Input()
+  set variant(value: "primary" | "secondary" | "error" | null | undefined) {
+    this._variant = value ?? "primary";
+  }
+  get variant(): "primary" | "secondary" | "error" {
+    return this._variant;
+  }
+
   // --- Outputs ---
 
   // Emits when the 'pl-button-click' event is fired by the web component.
-  @Output() plClick = new EventEmitter<CustomEvent>();
+  @Output() plButtonClick = new EventEmitter<CustomEvent>();
 
-  /* --- lifecycle hooks --- */
+  // --- Lifecycle hooks ---
   ngAfterViewInit() {
-    const nativeElement = this.buttonRef.nativeElement;
+    const nativeElement = this.elementRef.nativeElement;
     nativeElement.addEventListener("pl-button-click", (event: Event) => {
-      this.plClick.emit(event as CustomEvent);
+      this.plButtonClick.emit(event as CustomEvent);
     });
   }
 }

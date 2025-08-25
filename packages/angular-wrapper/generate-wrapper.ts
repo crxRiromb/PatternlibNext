@@ -1,3 +1,6 @@
+// English: This script generates Angular wrappers from the custom-elements.json manifest.
+// German: Dieses Skript generiert Angular-Wrapper aus dem custom-elements.json Manifest.
+
 import * as fs from "fs";
 import * as path from "path";
 
@@ -7,7 +10,6 @@ const cemPath = path.resolve(
   "../../packages/lit/custom-elements.json",
 );
 const componentTagName = "pl-button";
-// --- END CONFIGURATION ---
 
 function toCamelCase(str) {
   return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
@@ -52,12 +54,22 @@ function generateWrapper() {
   @Input({ transform: booleanAttribute }) ${propName}: ${type} = false;`;
       }
 
+      // CORRECTED: Read the default value from both possible properties ('defaultValue' or 'default').
+      const defaultValue = attr.defaultValue || attr.default;
+
+      // CORRECTED: Clean the default value and prepare it for code generation.
+      // This removes potential quotes from the manifest (e.g., "'button'") and provides a fallback.
+      const cleanedDefaultValue = defaultValue
+        ? defaultValue.replace(/['"]/g, "")
+        : "";
+      const defaultValueForCode = `'${cleanedDefaultValue}'`;
+
       return `
-  private _${propName}: ${type} = '';
+  protected _${propName}: ${type} = ${defaultValueForCode};
   // Maps to the '${attr.name}' attribute of the web component.
   @Input()
   set ${propName}(value: ${type} | null | undefined) {
-    this._${propName} = value ?? '';
+    this._${propName} = value ?? ${cleanedDefaultValue ? `'${cleanedDefaultValue}'` : "''"};
   }
   get ${propName}(): ${type} {
     return this._${propName};
@@ -137,6 +149,7 @@ export class ${angularComponentName} implements AfterViewInit {
   // --- Outputs ---
   ${outputs}
 
+  // --- Lifecycle hooks ---
   ngAfterViewInit() {
     const nativeElement = this.elementRef.nativeElement;
     ${eventListeners}

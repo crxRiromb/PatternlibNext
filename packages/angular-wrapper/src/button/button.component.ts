@@ -40,7 +40,7 @@ export class PlButtonAngular implements AfterViewInit {
   // Maps to the 'disabled' attribute of the web component.
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
 
-  private _label: string = "";
+  protected _label: string = "";
   // Maps to the 'label' attribute of the web component.
   @Input()
   set label(value: string | null | undefined) {
@@ -50,21 +50,21 @@ export class PlButtonAngular implements AfterViewInit {
     return this._label;
   }
 
-  private _type: "button" | "submit" = "";
+  protected _type: "button" | "submit" = "button";
   // Maps to the 'type' attribute of the web component.
   @Input()
   set type(value: "button" | "submit" | null | undefined) {
-    this._type = value ?? "";
+    this._type = value ?? "button";
   }
   get type(): "button" | "submit" {
     return this._type;
   }
 
-  private _variant: "primary" | "secondary" | "error" = "";
+  protected _variant: "primary" | "secondary" | "error" = "primary";
   // Maps to the 'variant' attribute of the web component.
   @Input()
   set variant(value: "primary" | "secondary" | "error" | null | undefined) {
-    this._variant = value ?? "";
+    this._variant = value ?? "primary";
   }
   get variant(): "primary" | "secondary" | "error" {
     return this._variant;
@@ -75,6 +75,7 @@ export class PlButtonAngular implements AfterViewInit {
   // Emits when the 'pl-button-click' event is fired by the web component.
   @Output() plButtonClick = new EventEmitter<CustomEvent>();
 
+  // --- Lifecycle hooks ---
   ngAfterViewInit() {
     const nativeElement = this.elementRef.nativeElement;
 

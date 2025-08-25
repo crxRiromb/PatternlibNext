@@ -39,21 +39,21 @@ export class PlButton extends PlBase {
    * @type {boolean}
    */
   @property({ type: Boolean, reflect: true })
-  disabled?: boolean;
+  disabled: boolean = false;
 
   /**
    * The label for the button.
    * @type {string}
    */
   @property({ type: String, reflect: true })
-  label?: string;
+  label: string = '';
 
   /**
    * The type of the button.
    * @type {'button' | 'submit'}
    */
   @property({ type: String, reflect: true })
-  type?: 'button' | 'submit';
+  type: 'button' | 'submit' = 'button';
 
   /**
    * The variant of the button.
@@ -61,7 +61,7 @@ export class PlButton extends PlBase {
    * @type {'primary' | 'secondary' | 'error'}
    */
   @property({ type: String, reflect: true })
-  variant?: 'primary' | 'secondary' | 'error';
+  variant: 'primary' | 'secondary' | 'error' = 'primary';
 
   static styles = css`
     ${unsafeCSS(fontStyles)}
