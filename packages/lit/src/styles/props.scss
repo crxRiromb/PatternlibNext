@@ -124,6 +124,7 @@
 }
 
 /* --- LANGUAGE SPECIFIC OVERRIDES --- */
+/* lang|='zh' covers zh, zh-CN etc. */
 :root:lang(zh),
 :root[lang|='zh'] {
   --ppl-font-text-regular: #{t.$font-noto-text-regular};

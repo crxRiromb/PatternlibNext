@@ -3,8 +3,21 @@
  * It's intended to be used as a building block for the component styles.
  */
 
-@mixin center-center {
+@mixin row-center {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin inline-center {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin column-center {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

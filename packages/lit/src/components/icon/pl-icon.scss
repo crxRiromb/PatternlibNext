@@ -1,7 +1,9 @@
-@use '@styles/styles/flex-mixins' as flex;
+@use '@styles/flex-mixins' as flex;
 
 :host {
   display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
   color: black;
   width: 24px;
   height: 24px;

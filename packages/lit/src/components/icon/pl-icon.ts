@@ -12,7 +12,7 @@ import iconStyles from './pl-icon.scss?raw';
  * You can specify the icon to display using the `icon-name` property, and provide alternative
  * text for accessibility using the `alt` property.
  *
- * @csspart img - The image element displaying the icon.
+ * @csspart wrapper - The wrapper `<div>` around the SVG icon.
  */
 @customElement('pl-icon')
 export class PlIcon extends PlBase {
@@ -46,6 +46,7 @@ export class PlIcon extends PlBase {
    */
   render() {
     const svgContentPromise = iconService.getSvgContent(this.iconName);
+
     let accessibleLabel: string | undefined;
     if (!this.decorative) {
       if (this.label) {
@@ -57,9 +58,10 @@ export class PlIcon extends PlBase {
 
     return html`
       <div
-        role=${this.decorative ? 'presentation' : 'img'}
         aria-label=${ifDefined(accessibleLabel)}
         aria-hidden=${ifDefined(this.decorative ? 'true' : undefined)}
+        role=${this.decorative ? 'presentation' : 'img'}
+        part="wrapper"
       >
         ${until(
           svgContentPromise.then(svgContent => unsafeHTML(svgContent)),
