@@ -9,7 +9,8 @@
     "generate:wrapper": "tsx generate-wrapper.js",
     "pack": "cd dist && npm pack && cd .. && node ../../scripts/move-files.js dist/*.tgz .",
     "prepare:dev": "npm pkg set peerDependencies.@liebherr2/plnext=\"file:../../packages/lit\" && npm install",
-    "prepare:ci": "npm pkg set peerDependencies.@liebherr2/plnext=\"file:../../packages/lit/liebherr2-plnext-0.0.1.tgz\" && npm install"
+    "prepare:tgz": "npm pkg set peerDependencies.@liebherr2/plnext=\"file:../../packages/lit/liebherr2-plnext-0.0.1.tgz\" && npm install",
+    "prepare:ci": "npm pkg set peerDependencies.@liebherr2/plnext=\"file:../../packages/lit/liebherr2-plnext-0.0.1.tgz\" && npm ci"
   },
   "dependencies": {
     "tslib": "^2.3.0"

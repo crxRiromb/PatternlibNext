@@ -34,6 +34,7 @@
     "build": "rimraf dist && npm run analyze && vite build && tsc --emitDeclarationOnly && npm run build:styles",
     "build:ci": "npm run build && npm run pack",
     "build:styles": "sass src/styles/props.scss dist/styles/props.css --no-source-map && sass src/styles/fonts.css dist/styles/fonts.css --no-source-map",
+    "build:tgz": "npm run build:ci",
     "dev": "concurrently -k -n VITE,TSC,SASS \"vite build --watch\" \"tsc --emitDeclarationOnly -w\" \"npm:dev:styles\"",
     "dev:styles": "nodemon --watch src --ext scss --exec \"npm run build:styles\"",
     "format": "prettier --write \"src/**/*.{js,ts,json,md,html,css,scss}\"",
@@ -42,6 +43,7 @@
     "pack": "npm pack",
     "prepare:dev": "npm install",
     "prepare:ci": "npm ci",
+    "prepare:tgz": "npm run prepare:dev",
     "serve": "web-dev-server --node-resolve --open",
     "test": "web-test-runner \"dist/test/**/*.test.js\" --node-resolve"
   },

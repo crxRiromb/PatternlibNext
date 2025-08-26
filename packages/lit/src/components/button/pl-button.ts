@@ -36,21 +36,18 @@ export class PlButton extends PlBase {
 
   /**
    * Whether the button is disabled.
-   * @type {boolean}
    */
   @property({ type: Boolean, reflect: true })
   disabled: boolean = false;
 
   /**
    * The label for the button.
-   * @type {string}
    */
   @property({ type: String, reflect: true })
   label: string = '';
 
   /**
    * The type of the button.
-   * @type {'button' | 'submit'}
    */
   @property({ type: String, reflect: true })
   type: 'button' | 'submit' = 'button';
@@ -58,7 +55,6 @@ export class PlButton extends PlBase {
   /**
    * The variant of the button.
    * Can be 'primary', 'secondary', or 'error'.
-   * @type {'primary' | 'secondary' | 'error'}
    */
   @property({ type: String, reflect: true })
   variant: 'primary' | 'secondary' | 'error' = 'primary';
@@ -69,7 +65,7 @@ export class PlButton extends PlBase {
   `;
 
   /** @internal */
-  willUpdate(changedProperties: Map<string, unknown>) {
+  update(changedProperties: Map<string, unknown>) {
     const newState: Partial<PlButtonState> = {};
 
     // update for the internal state.
