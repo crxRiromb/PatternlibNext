@@ -8,7 +8,6 @@ const cemPath = path.resolve(
 const outputSrcDir = path.resolve(process.cwd(), "./src");
 
 function toCamelCase(str: string): string {
-  // Guard to handle potential undefined input
   if (!str) return "";
   return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 }
@@ -18,44 +17,62 @@ function toPascalCase(str: string): string {
   return camel.charAt(0).toUpperCase() + camel.slice(1);
 }
 
-function generateComponentWrapper(componentDef: any): string {
+function generateComponentWrapper(componentDef) {
   const { tagName } = componentDef;
   const angularComponentName = `${toPascalCase(tagName)}Angular`;
   const litComponentType = toPascalCase(tagName);
 
-  // --- Generate Inputs (nur boolean & string; andere Typen -> string) ---
-  const inputs = (componentDef.attributes || [])
-    .map((attr: any) => {
-      const propName = toCamelCase(attr.name || attr.fieldName);
-      const rawType = (attr.type?.text || "string").replace(/'/g, '"');
-      const lt = rawType.toLowerCase();
-      const isBoolean = lt === "boolean";
-      const typeText = isBoolean ? "boolean" : "string";
+  // Combine 'attributes' and 'fields' to capture all public properties.
+  const propMap = new Map();
+  (componentDef.attributes || []).forEach((attr) =>
+    propMap.set(attr.name, attr),
+  );
+  (componentDef.fields || []).forEach((field) => {
+    if (field.privacy !== "private" && field.kind === "field") {
+      propMap.set(field.name, field);
+    }
+  });
+  const allProperties = Array.from(propMap.values());
 
-      // robuste Default-Normalisierung für strings
-      const rawDefault = attr.defaultValue ?? attr.default ?? null;
-      const cleanedDefault =
-        typeof rawDefault === "string"
-          ? rawDefault.replace(/^["']|["']$/g, "")
-          : rawDefault;
+  // --- Generate Inputs ---
+  const inputs = allProperties
+    .map((prop) => {
+      const propName = toCamelCase(prop.name || prop.fieldName);
+      const type = (prop.type?.text || "string").replace(/'/g, '"');
+      const isBoolean = type.toLowerCase() === "boolean";
+      const isString = type.toLowerCase() === "string";
+      // A complex property is now identified as anything that isn't a string or boolean.
+      const isComplexProperty = !isBoolean && !isString;
 
       if (isBoolean) {
         return `
-  /** Maps to the "${attr.name}" boolean attribute of the web component (present if true, absent if false). */
-  @Input({ transform: booleanAttribute }) ${propName}: boolean = false;`;
+  /** Maps to the "${prop.name}" attribute of the web component. */
+  @Input({ transform: booleanAttribute }) ${propName}: ${type} = false;`;
       }
 
-      const defaultForCode =
-        cleanedDefault == null ? `""` : `"${String(cleanedDefault)}"`;
+      // Generate a simple Input for complex properties.
+      if (isComplexProperty) {
+        const defaultValue = prop.defaultValue || prop.default || "undefined";
+        return `
+  /** Maps to the "${prop.name}" property of the web component. */
+  @Input() ${propName}?: ${type} = ${defaultValue};`;
+      }
+
+      // Default handling for string-based attributes.
+      const defaultValue = prop.defaultValue || prop.default;
+      const cleanedDefaultValue = defaultValue
+        ? defaultValue.replace(/['"]/g, "")
+        : "";
+      const defaultValueForCode = `"${cleanedDefaultValue}"`;
 
       return `
-  protected _${propName}: ${typeText} = ${defaultForCode};
-  /** Maps to the "${attr.name}" attribute of the web component (string). */
+  protected _${propName}: ${type} = ${defaultValueForCode};
+  /** Maps to the "${prop.name}" attribute of the web component. */
   @Input()
-  set ${propName}(value: ${typeText} | null | undefined) {
-    this._${propName} = (value ?? ${defaultForCode}) as ${typeText};
+  set ${propName}(value: ${type} | null | undefined) {
+    this._${propName} = value ?? ${cleanedDefaultValue ? `"${cleanedDefaultValue}"` : '""'};
   }
-  get ${propName}(): ${typeText} {
+  get ${propName}(): ${type} {
     return this._${propName};
   }`;
     })
@@ -63,40 +80,47 @@ function generateComponentWrapper(componentDef: any): string {
 
   // --- Generate Outputs ---
   const outputs = (componentDef.events || [])
-    .map((event: any) => {
+    .map((event) => {
       const eventName = toCamelCase(event.name);
       return `
   /** Emits when the "${event.name}" event is fired by the web component. */
-  @Output() ${eventName} = new EventEmitter<CustomEvent<any>>();`;
+  @Output() ${eventName} = new EventEmitter<CustomEvent>();`;
     })
     .join("\n");
 
-  // --- Generate Event Listeners (mit Cleanup) ---
+  // --- Generate Event Listeners ---
   const eventListeners = (componentDef.events || [])
-    .map((event: any) => {
+    .map((event) => {
       const eventName = toCamelCase(event.name);
       return `
     nativeElement.addEventListener("${event.name}", (event: Event) => {
       this.${eventName}.emit(event as CustomEvent);
-    }, { signal: this._listenerCtl.signal });`;
+    });`;
     })
     .join("");
 
-  // --- Template Bindings (HTML-konforme Attribute) ---
-  // booleans: Präsenz/Abwesenheit -> [attr.foo]="foo ? '' : null"
-  // strings:  Attributwert -> [attr.foo]="_foo"
-  const templateBindings = (componentDef.attributes || [])
-    .map((attr: any) => {
-      const propName = toCamelCase(attr.name || attr.fieldName);
-      const lt = ((attr.type?.text || "string") as string).toLowerCase();
-      const isBoolean = lt === "boolean";
-      return isBoolean
-        ? `[attr.${attr.name}]="${propName} ? '' : null"`
-        : `[attr.${attr.name}]="_${propName}"`;
+  // --- Generate Template Bindings ---
+  const templateBindings = allProperties
+    .map((prop) => {
+      const propName = toCamelCase(prop.name || prop.fieldName);
+      const type = prop.type?.text || "string";
+      const isBoolean = type.toLowerCase() === "boolean";
+      const isString = type.toLowerCase() === "string";
+      const isComplexProperty = !isBoolean && !isString;
+
+      const attributeName = prop.name || prop.fieldName;
+
+      // Use property binding for complex types and booleans.
+      if (isComplexProperty || isBoolean) {
+        return `[${attributeName}]="${propName}"`;
+      }
+
+      // Use binding to the sanitized, private property for strings.
+      return `[${attributeName}]="_${propName}"`;
     })
     .join("\n      ");
 
-  // --- Assemble ---
+  // --- Assemble the full component file ---
   return `
 // THIS FILE IS AUTO-GENERATED BY THE WRAPPER-GENERATOR SCRIPT. DO NOT EDIT.
 
@@ -109,7 +133,6 @@ import {
   ElementRef,
   ViewChild,
   AfterViewInit,
-  OnDestroy,
   CUSTOM_ELEMENTS_SCHEMA,
   booleanAttribute,
 } from "@angular/core";
@@ -130,9 +153,8 @@ import type { ${litComponentType} } from "@liebherr2/plnext";
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class ${angularComponentName} implements AfterViewInit, OnDestroy {
+export class ${angularComponentName} implements AfterViewInit {
   @ViewChild("elementRef") elementRef!: ElementRef<${litComponentType}>;
-  private _listenerCtl = new AbortController();
 
   // --- Inputs ---
   ${inputs}
@@ -144,10 +166,6 @@ export class ${angularComponentName} implements AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     const nativeElement = this.elementRef.nativeElement;
     ${eventListeners}
-  }
-
-  ngOnDestroy() {
-    this._listenerCtl.abort();
   }
 }
 `;

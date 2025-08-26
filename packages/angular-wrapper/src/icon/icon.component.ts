@@ -9,6 +9,7 @@ import {
   ElementRef,
   ViewChild,
   AfterViewInit,
+  OnDestroy,
   CUSTOM_ELEMENTS_SCHEMA,
   booleanAttribute,
 } from "@angular/core";
@@ -20,9 +21,9 @@ import type { PlIcon } from "@liebherr2/plnext";
   template: `
     <pl-icon
       #elementRef
-      [decorative]="decorative"
-      [iconName]="_iconName"
-      [label]="_label"
+      [attr.decorative]="decorative ? '' : null"
+      [attr.iconName]="_iconName"
+      [attr.label]="_label"
     >
       <ng-content></ng-content>
     </pl-icon>
@@ -31,29 +32,30 @@ import type { PlIcon } from "@liebherr2/plnext";
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class PlIconAngular implements AfterViewInit {
+export class PlIconAngular implements AfterViewInit, OnDestroy {
   @ViewChild("elementRef") elementRef!: ElementRef<PlIcon>;
+  private _listenerCtl = new AbortController();
 
   // --- Inputs ---
   
-  /** Maps to the "decorative" attribute of the web component. */
+  /** Maps to the "decorative" boolean attribute of the web component (present if true, absent if false). */
   @Input({ transform: booleanAttribute }) decorative: boolean = false;
 
   protected _iconName: string = "";
-  /** Maps to the "iconName" attribute of the web component. */
+  /** Maps to the "iconName" attribute of the web component (string). */
   @Input()
   set iconName(value: string | null | undefined) {
-    this._iconName = value ?? "";
+    this._iconName = (value ?? "") as string;
   }
   get iconName(): string {
     return this._iconName;
   }
 
   protected _label: string = "";
-  /** Maps to the "label" attribute of the web component. */
+  /** Maps to the "label" attribute of the web component (string). */
   @Input()
   set label(value: string | null | undefined) {
-    this._label = value ?? "";
+    this._label = (value ?? "") as string;
   }
   get label(): string {
     return this._label;
@@ -66,5 +68,9 @@ export class PlIconAngular implements AfterViewInit {
   ngAfterViewInit() {
     const nativeElement = this.elementRef.nativeElement;
     
+  }
+
+  ngOnDestroy() {
+    this._listenerCtl.abort();
   }
 }

@@ -9,6 +9,7 @@ import {
   ElementRef,
   ViewChild,
   AfterViewInit,
+  OnDestroy,
   CUSTOM_ELEMENTS_SCHEMA,
   booleanAttribute,
 } from "@angular/core";
@@ -20,7 +21,7 @@ import type { PlItemlist } from "@liebherr2/plnext";
   template: `
     <pl-itemlist
       #elementRef
-      [headline-label]="_headlineLabel"
+      [attr.headline-label]="_headlineLabel"
     >
       <ng-content></ng-content>
     </pl-itemlist>
@@ -29,16 +30,17 @@ import type { PlItemlist } from "@liebherr2/plnext";
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class PlItemlistAngular implements AfterViewInit {
+export class PlItemlistAngular implements AfterViewInit, OnDestroy {
   @ViewChild("elementRef") elementRef!: ElementRef<PlItemlist>;
+  private _listenerCtl = new AbortController();
 
   // --- Inputs ---
   
   protected _headlineLabel: string = "";
-  /** Maps to the "headline-label" attribute of the web component. */
+  /** Maps to the "headline-label" attribute of the web component (string). */
   @Input()
   set headlineLabel(value: string | null | undefined) {
-    this._headlineLabel = value ?? "";
+    this._headlineLabel = (value ?? "") as string;
   }
   get headlineLabel(): string {
     return this._headlineLabel;
@@ -51,5 +53,9 @@ export class PlItemlistAngular implements AfterViewInit {
   ngAfterViewInit() {
     const nativeElement = this.elementRef.nativeElement;
     
+  }
+
+  ngOnDestroy() {
+    this._listenerCtl.abort();
   }
 }

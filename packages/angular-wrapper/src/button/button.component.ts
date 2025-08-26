@@ -9,6 +9,7 @@ import {
   ElementRef,
   ViewChild,
   AfterViewInit,
+  OnDestroy,
   CUSTOM_ELEMENTS_SCHEMA,
   booleanAttribute,
 } from "@angular/core";
@@ -20,10 +21,10 @@ import type { PlButton } from "@liebherr2/plnext";
   template: `
     <pl-button
       #elementRef
-      [disabled]="disabled"
-      [label]="_label"
-      [type]="_type"
-      [variant]="_variant"
+      [attr.disabled]="disabled ? '' : null"
+      [attr.label]="_label"
+      [attr.type]="_type"
+      [attr.variant]="_variant"
     >
       <ng-content></ng-content>
     </pl-button>
@@ -32,55 +33,64 @@ import type { PlButton } from "@liebherr2/plnext";
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class PlButtonAngular implements AfterViewInit {
+export class PlButtonAngular implements AfterViewInit, OnDestroy {
   @ViewChild("elementRef") elementRef!: ElementRef<PlButton>;
+  private _listenerCtl = new AbortController();
 
   // --- Inputs ---
-  
-  /** Maps to the "disabled" attribute of the web component. */
+
+  /** Maps to the "disabled" boolean attribute of the web component (present if true, absent if false). */
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
 
   protected _label: string = "";
-  /** Maps to the "label" attribute of the web component. */
+  /** Maps to the "label" attribute of the web component (string). */
   @Input()
   set label(value: string | null | undefined) {
-    this._label = value ?? "";
+    this._label = (value ?? "") as string;
   }
   get label(): string {
     return this._label;
   }
 
-  protected _type: "button" | "submit" = "button";
-  /** Maps to the "type" attribute of the web component. */
+  protected _type: string = "button";
+  /** Maps to the "type" attribute of the web component (string). */
   @Input()
-  set type(value: "button" | "submit" | null | undefined) {
-    this._type = value ?? "button";
+  set type(value: string | null | undefined) {
+    this._type = (value ?? "button") as string;
   }
-  get type(): "button" | "submit" {
+  get type(): string {
     return this._type;
   }
 
-  protected _variant: "primary" | "secondary" | "error" = "primary";
-  /** Maps to the "variant" attribute of the web component. */
+  protected _variant: string = "primary";
+  /** Maps to the "variant" attribute of the web component (string). */
   @Input()
-  set variant(value: "primary" | "secondary" | "error" | null | undefined) {
-    this._variant = value ?? "primary";
+  set variant(value: string | null | undefined) {
+    this._variant = (value ?? "primary") as string;
   }
-  get variant(): "primary" | "secondary" | "error" {
+  get variant(): string {
     return this._variant;
   }
 
   // --- Outputs ---
-  
+
   /** Emits when the "pl-button-click" event is fired by the web component. */
-  @Output() plButtonClick = new EventEmitter<CustomEvent>();
+  @Output() plButtonClick = new EventEmitter<CustomEvent<any>>();
 
   // --- Lifecycle hooks ---
   ngAfterViewInit() {
     const nativeElement = this.elementRef.nativeElement;
-    
-    nativeElement.addEventListener("pl-button-click", (event: Event) => {
-      this.plButtonClick.emit(event as CustomEvent);
-    });
+
+    nativeElement.addEventListener(
+      "pl-button-click",
+      (event: Event) => {
+        this.plButtonClick.emit(event as CustomEvent);
+      },
+      { signal: this._listenerCtl.signal },
+    );
+  }
+
+  ngOnDestroy() {
+    this._listenerCtl.abort();
   }
 }
