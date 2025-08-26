@@ -23,25 +23,28 @@ function generateComponentWrapper(componentDef: any): string {
   const angularComponentName = `${toPascalCase(tagName)}Angular`;
   const litComponentType = toPascalCase(tagName);
 
-  // --- Generate Inputs (nur boolean & string; andere Typen -> string) ---
-  const inputs = (componentDef.attributes || [])
-    .map((attr: any) => {
+  // --- Helpers ---
+  const getLowerType = (t?: string) =>
+    (t || "string").replace(/'/g, '"').toLowerCase();
+  const stripQuotes = (s: any) =>
+    typeof s === "string" ? s.replace(/^["']|["']$/g, "") : s;
+
+  // --- Inputs (simple: string/boolean via attributes) ---
+  const simpleAttrs = (componentDef.attributes || []) as Array<any>;
+
+  const inputsSimple = simpleAttrs
+    .map((attr) => {
       const propName = toCamelCase(attr.name || attr.fieldName);
-      const rawType = (attr.type?.text || "string").replace(/'/g, '"');
-      const lt = rawType.toLowerCase();
+      const lt = getLowerType(attr.type?.text);
       const isBoolean = lt === "boolean";
       const typeText = isBoolean ? "boolean" : "string";
 
-      // robuste Default-Normalisierung für strings
-      const rawDefault = attr.defaultValue ?? attr.default ?? null;
-      const cleanedDefault =
-        typeof rawDefault === "string"
-          ? rawDefault.replace(/^["']|["']$/g, "")
-          : rawDefault;
-
+      const cleanedDefault = stripQuotes(
+        attr.defaultValue ?? attr.default ?? null,
+      );
       if (isBoolean) {
         return `
-  /** Maps to the "${attr.name}" boolean attribute of the web component (present if true, absent if false). */
+  /** Maps to the "${attr.name}" boolean attribute (present if true, absent if false). */
   @Input({ transform: booleanAttribute }) ${propName}: boolean = false;`;
       }
 
@@ -50,7 +53,7 @@ function generateComponentWrapper(componentDef: any): string {
 
       return `
   protected _${propName}: ${typeText} = ${defaultForCode};
-  /** Maps to the "${attr.name}" attribute of the web component (string). */
+  /** Maps to the "${attr.name}" string attribute. */
   @Input()
   set ${propName}(value: ${typeText} | null | undefined) {
     this._${propName} = (value ?? ${defaultForCode}) as ${typeText};
@@ -61,7 +64,57 @@ function generateComponentWrapper(componentDef: any): string {
     })
     .join("\n");
 
-  // --- Generate Outputs ---
+  // --- Complex properties (from members: kind:"field", public, not static) ---
+  const memberFields = ((componentDef.members || []) as Array<any>).filter(
+    (m) => m && m.kind === "field" && !m.static,
+  );
+
+  // Namen von einfachen Attributen, um Kollisionen zu vermeiden
+  const simpleNames = new Set(
+    simpleAttrs.map((a: any) => toCamelCase(a.name || a.fieldName)),
+  );
+
+  const complexProps = memberFields.filter((m) => {
+    const name = m.name || m.fieldName;
+    const lt = getLowerType(m.type?.text);
+    // einfache Typen lassen wir hier raus (die sind schon als Attribute abgedeckt)
+    const isSimple = lt === "string" || lt === "boolean";
+    // Wenn CEM "attribute" gesetzt hat UND simple ist, wird es als Attribut behandelt.
+    // Alles andere gilt als complex property.
+    return !isSimple || !m.attribute;
+  });
+
+  const inputsComplex = complexProps
+    .filter((m) => !simpleNames.has(toCamelCase(m.name || m.fieldName))) // keine Duplikate
+    .map((m) => {
+      const name = toCamelCase(m.name || m.fieldName);
+      const tsType = (m.type?.text || "any").replace(/'/g, '"');
+
+      // Default ableiten: "[]", "{}", sonst null
+      const rawDef = stripQuotes(m.default ?? m.defaultValue ?? null);
+      let defaultCode = "null";
+      if (typeof rawDef === "string") {
+        const trimmed = rawDef.trim();
+        if (trimmed === "[]" || trimmed.startsWith("[")) defaultCode = "[]";
+        else if (trimmed === "{}" || trimmed.startsWith("{"))
+          defaultCode = "{}";
+        else if (trimmed.length > 0) defaultCode = trimmed; // falls schon TS-Literal
+      }
+
+      // Für Arrays ist [] praktisch, für Objekte {}
+      if (defaultCode === "null") {
+        const lt = getLowerType(m.type?.text);
+        if (/\[\]$/.test(m.type?.text || "")) defaultCode = "[]";
+        else if (lt.includes("record") || lt.includes("{")) defaultCode = "{}";
+      }
+
+      return `
+  /** Complex property "${m.name}" (set as DOM property, not attribute). */
+  @Input() ${name}: ${tsType} = ${defaultCode};`;
+    })
+    .join("\n");
+
+  // --- Outputs ---
   const outputs = (componentDef.events || [])
     .map((event: any) => {
       const eventName = toCamelCase(event.name);
@@ -71,7 +124,7 @@ function generateComponentWrapper(componentDef: any): string {
     })
     .join("\n");
 
-  // --- Generate Event Listeners (mit Cleanup) ---
+  // --- Event listeners with cleanup ---
   const eventListeners = (componentDef.events || [])
     .map((event: any) => {
       const eventName = toCamelCase(event.name);
@@ -82,18 +135,30 @@ function generateComponentWrapper(componentDef: any): string {
     })
     .join("");
 
-  // --- Template Bindings (HTML-konforme Attribute) ---
-  // booleans: Präsenz/Abwesenheit -> [attr.foo]="foo ? '' : null"
-  // strings:  Attributwert -> [attr.foo]="_foo"
-  const templateBindings = (componentDef.attributes || [])
+  // --- Template bindings ---
+  // simple (HTML-konform): booleans Präsenz/Abwesenheit, strings als Attributwert
+  const templateBindingsSimple = simpleAttrs
     .map((attr: any) => {
       const propName = toCamelCase(attr.name || attr.fieldName);
-      const lt = ((attr.type?.text || "string") as string).toLowerCase();
+      const lt = getLowerType(attr.type?.text);
       const isBoolean = lt === "boolean";
       return isBoolean
         ? `[attr.${attr.name}]="${propName} ? '' : null"`
         : `[attr.${attr.name}]="_${propName}"`;
     })
+    .join("\n      ");
+
+  // complex: echte Property-Bindings auf dem Element
+  const templateBindingsComplex = complexProps
+    .filter((m) => !simpleNames.has(toCamelCase(m.name || m.fieldName)))
+    .map((m) => {
+      const name = toCamelCase(m.name || m.fieldName);
+      return `[${m.name}]="${name}"`;
+    })
+    .join("\n      ");
+
+  const allBindings = [templateBindingsSimple, templateBindingsComplex]
+    .filter(Boolean)
     .join("\n      ");
 
   // --- Assemble ---
@@ -121,7 +186,7 @@ import type { ${litComponentType} } from "@liebherr2/plnext";
   template: \`
     <${tagName}
       #elementRef
-      ${templateBindings}
+      ${allBindings}
     >
       <ng-content></ng-content>
     </${tagName}>
@@ -134,8 +199,11 @@ export class ${angularComponentName} implements AfterViewInit, OnDestroy {
   @ViewChild("elementRef") elementRef!: ElementRef<${litComponentType}>;
   private _listenerCtl = new AbortController();
 
-  // --- Inputs ---
-  ${inputs}
+  // --- Inputs (simple attributes) ---
+  ${inputsSimple}
+
+  // --- Inputs (complex properties) ---
+  ${inputsComplex}
 
   // --- Outputs ---
   ${outputs}

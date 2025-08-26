@@ -37,13 +37,13 @@ export class PlButtonAngular implements AfterViewInit, OnDestroy {
   @ViewChild("elementRef") elementRef!: ElementRef<PlButton>;
   private _listenerCtl = new AbortController();
 
-  // --- Inputs ---
+  // --- Inputs (simple attributes) ---
 
-  /** Maps to the "disabled" boolean attribute of the web component (present if true, absent if false). */
+  /** Maps to the "disabled" boolean attribute (present if true, absent if false). */
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
 
   protected _label: string = "";
-  /** Maps to the "label" attribute of the web component (string). */
+  /** Maps to the "label" string attribute. */
   @Input()
   set label(value: string | null | undefined) {
     this._label = (value ?? "") as string;
@@ -53,7 +53,7 @@ export class PlButtonAngular implements AfterViewInit, OnDestroy {
   }
 
   protected _type: string = "button";
-  /** Maps to the "type" attribute of the web component (string). */
+  /** Maps to the "type" string attribute. */
   @Input()
   set type(value: string | null | undefined) {
     this._type = (value ?? "button") as string;
@@ -63,7 +63,7 @@ export class PlButtonAngular implements AfterViewInit, OnDestroy {
   }
 
   protected _variant: string = "primary";
-  /** Maps to the "variant" attribute of the web component (string). */
+  /** Maps to the "variant" string attribute. */
   @Input()
   set variant(value: string | null | undefined) {
     this._variant = (value ?? "primary") as string;
@@ -71,6 +71,8 @@ export class PlButtonAngular implements AfterViewInit, OnDestroy {
   get variant(): string {
     return this._variant;
   }
+
+  // --- Inputs (complex properties) ---
 
   // --- Outputs ---
 

@@ -22,6 +22,7 @@ import type { PlItemlist } from "@liebherr2/plnext";
     <pl-itemlist
       #elementRef
       [attr.headline-label]="_headlineLabel"
+      [data]="data"
     >
       <ng-content></ng-content>
     </pl-itemlist>
@@ -34,10 +35,10 @@ export class PlItemlistAngular implements AfterViewInit, OnDestroy {
   @ViewChild("elementRef") elementRef!: ElementRef<PlItemlist>;
   private _listenerCtl = new AbortController();
 
-  // --- Inputs ---
-  
+  // --- Inputs (simple attributes) ---
+
   protected _headlineLabel: string = "";
-  /** Maps to the "headline-label" attribute of the web component (string). */
+  /** Maps to the "headline-label" string attribute. */
   @Input()
   set headlineLabel(value: string | null | undefined) {
     this._headlineLabel = (value ?? "") as string;
@@ -46,13 +47,16 @@ export class PlItemlistAngular implements AfterViewInit, OnDestroy {
     return this._headlineLabel;
   }
 
+  // --- Inputs (complex properties) ---
+
+  /** Complex property "data" (set as DOM property, not attribute). */
+  @Input() data: { key: string; value: string }[] = [];
+
   // --- Outputs ---
-  
 
   // --- Lifecycle hooks ---
   ngAfterViewInit() {
     const nativeElement = this.elementRef.nativeElement;
-    
   }
 
   ngOnDestroy() {

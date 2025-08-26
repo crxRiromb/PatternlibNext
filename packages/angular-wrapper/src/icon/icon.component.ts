@@ -36,13 +36,13 @@ export class PlIconAngular implements AfterViewInit, OnDestroy {
   @ViewChild("elementRef") elementRef!: ElementRef<PlIcon>;
   private _listenerCtl = new AbortController();
 
-  // --- Inputs ---
-  
-  /** Maps to the "decorative" boolean attribute of the web component (present if true, absent if false). */
+  // --- Inputs (simple attributes) ---
+
+  /** Maps to the "decorative" boolean attribute (present if true, absent if false). */
   @Input({ transform: booleanAttribute }) decorative: boolean = false;
 
   protected _iconName: string = "";
-  /** Maps to the "iconName" attribute of the web component (string). */
+  /** Maps to the "iconName" string attribute. */
   @Input()
   set iconName(value: string | null | undefined) {
     this._iconName = (value ?? "") as string;
@@ -52,7 +52,7 @@ export class PlIconAngular implements AfterViewInit, OnDestroy {
   }
 
   protected _label: string = "";
-  /** Maps to the "label" attribute of the web component (string). */
+  /** Maps to the "label" string attribute. */
   @Input()
   set label(value: string | null | undefined) {
     this._label = (value ?? "") as string;
@@ -61,13 +61,13 @@ export class PlIconAngular implements AfterViewInit, OnDestroy {
     return this._label;
   }
 
+  // --- Inputs (complex properties) ---
+
   // --- Outputs ---
-  
 
   // --- Lifecycle hooks ---
   ngAfterViewInit() {
     const nativeElement = this.elementRef.nativeElement;
-    
   }
 
   ngOnDestroy() {
