@@ -13,7 +13,7 @@ It provides information for the tooling ecosystem and make the components machin
 
 ## The Workflow
 
-1. Component Source Code (with JSDoc) 
+1. Component Source Code (with JSDoc)
 2. Analyzer Tool (@custom-elements-manifest/analyzer)
 3. custom-elements.json
-4. Use in Tooling Ecosystem (Storybook, IDEs, etc.)
+4. Use in Tooling Ecosystem (Storybook, VSCode, etc.)

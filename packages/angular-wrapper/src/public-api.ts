@@ -1,3 +1,3 @@
 export * from "./button/button.component";
-export * from "./icon/icon.component-manual";
-export * from "./itemlist/itemlist.component-manual";
+export * from "./icon/icon.component";
+export * from "./itemlist/itemlist.component";
