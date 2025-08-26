@@ -37,7 +37,7 @@ export class PlIconAngular implements AfterViewInit, OnDestroy {
   private _listenerCtl = new AbortController();
 
   // --- Inputs (simple attributes) ---
-
+  
   /** Maps to the "decorative" boolean attribute (present if true, absent if false). */
   @Input({ transform: booleanAttribute }) decorative: boolean = false;
 
@@ -62,12 +62,15 @@ export class PlIconAngular implements AfterViewInit, OnDestroy {
   }
 
   // --- Inputs (complex properties) ---
+  
 
   // --- Outputs ---
+  
 
   // --- Lifecycle hooks ---
   ngAfterViewInit() {
     const nativeElement = this.elementRef.nativeElement;
+    
   }
 
   ngOnDestroy() {

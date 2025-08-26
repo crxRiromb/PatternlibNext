@@ -36,7 +36,7 @@ export class PlItemlistAngular implements AfterViewInit, OnDestroy {
   private _listenerCtl = new AbortController();
 
   // --- Inputs (simple attributes) ---
-
+  
   protected _headlineLabel: string = "";
   /** Maps to the "headline-label" string attribute. */
   @Input()
@@ -48,15 +48,17 @@ export class PlItemlistAngular implements AfterViewInit, OnDestroy {
   }
 
   // --- Inputs (complex properties) ---
-
+  
   /** Complex property "data" (set as DOM property, not attribute). */
   @Input() data: { key: string; value: string }[] = [];
 
   // --- Outputs ---
+  
 
   // --- Lifecycle hooks ---
   ngAfterViewInit() {
     const nativeElement = this.elementRef.nativeElement;
+    
   }
 
   ngOnDestroy() {

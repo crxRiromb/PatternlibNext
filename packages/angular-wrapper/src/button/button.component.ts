@@ -38,7 +38,7 @@ export class PlButtonAngular implements AfterViewInit, OnDestroy {
   private _listenerCtl = new AbortController();
 
   // --- Inputs (simple attributes) ---
-
+  
   /** Maps to the "disabled" boolean attribute (present if true, absent if false). */
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
 
@@ -73,23 +73,20 @@ export class PlButtonAngular implements AfterViewInit, OnDestroy {
   }
 
   // --- Inputs (complex properties) ---
+  
 
   // --- Outputs ---
-
+  
   /** Emits when the "pl-button-click" event is fired by the web component. */
   @Output() plButtonClick = new EventEmitter<CustomEvent<any>>();
 
   // --- Lifecycle hooks ---
   ngAfterViewInit() {
     const nativeElement = this.elementRef.nativeElement;
-
-    nativeElement.addEventListener(
-      "pl-button-click",
-      (event: Event) => {
-        this.plButtonClick.emit(event as CustomEvent);
-      },
-      { signal: this._listenerCtl.signal },
-    );
+    
+    nativeElement.addEventListener("pl-button-click", (event: Event) => {
+      this.plButtonClick.emit(event as CustomEvent);
+    }, { signal: this._listenerCtl.signal });
   }
 
   ngOnDestroy() {
