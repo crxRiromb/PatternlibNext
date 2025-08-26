@@ -8,6 +8,8 @@ const cemPath = path.resolve(
 const outputSrcDir = path.resolve(process.cwd(), "./src");
 
 function toCamelCase(str: string): string {
+  // Guard to handle potential undefined input
+  if (!str) return "";
   return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 }
 
@@ -166,9 +168,16 @@ function main() {
   const generatedFilePaths = [];
 
   for (const componentDef of targetComponentDefs) {
+    if (!componentDef.tagName) {
+      console.warn(
+        `⚠️ Skipping declaration "${componentDef.name}" because it has no tagName.`,
+      );
+      continue;
+    }
+
     const componentCode = generateComponentWrapper(componentDef);
     const componentSubfolder = componentDef.tagName.replace("pl-", "");
-    const finalOutputDir = path.join(outputSrcDir, "lib", componentSubfolder);
+    const finalOutputDir = path.join(outputSrcDir, componentSubfolder);
     const outputFilePath = path.join(
       finalOutputDir,
       `${componentSubfolder}.component.ts`,
@@ -180,7 +189,7 @@ function main() {
       `✅ Successfully generated wrapper for <${componentDef.tagName}> at ${outputFilePath}`,
     );
     generatedFilePaths.push(
-      `./lib/${componentSubfolder}/${componentSubfolder}.component.ts`,
+      `./${componentSubfolder}/${componentSubfolder}.component.ts`,
     );
   }
 
