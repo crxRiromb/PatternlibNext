@@ -85,6 +85,9 @@ export class PlButton extends PlBase {
     if (Object.keys(newState).length > 0) {
       this._state = { ...this._state, ...newState };
     }
+
+    // always call super.update()
+    super.update(changedProperties);
   }
 
   render() {

@@ -63,10 +63,11 @@ These methods are controlled by Lit and handle the efficient re-rendering of you
 - Is called exactly once in the component's life, right after the template has been rendered and inserted into the DOM for the first time.
 - This is the ideal place for one-time DOM manipulations that require access to the rendered Shadow DOM (e.g., starting an animation or initializing a canvas element).
 
-### `updated(changedProperties)`
+### `update(changedProperties)`
 
 - Is called after every update cycle, after `render()` has run and the DOM has been updated.
 - Here you can react to the updated DOM or perform operations that depend on the new property values.
+- Important: If you override this method, you must always call `super.updated(changedProperties)`.
 
 ## 3. Update Sequence
 

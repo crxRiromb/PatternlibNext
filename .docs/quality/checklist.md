@@ -1,5 +1,12 @@
 # Quality Checklist
 
+## Feature Checklist
+
+- [ ] Dark/Light mode support.
+- [ ] RTL support.
+- [ ] Accessibility (a11y) support.
+- [ ] Responsive design support with flexible breakpoints.
+
 ## Component Checklist
 
 - [ ] The component has a descriptive JSDoc comment at the top with `@slot`, `@event`, and `@csspart` annotations.

@@ -19,30 +19,33 @@
 
 ```bash
 # call from root folder
+npm run prepare:lit:dev
 npm run dev:lit
 ```
 
-- Terminal 1
+- Terminal 2
 
 ```bash
 # call from root folder
-npm run dev:lit
+npm run dev:storybook
 ```
 
 ### Angular App Development with static Lit Components (tgz, no HMR)
 
 ```bash
 # call from root folder
-npm run build:packages:ng:ci
-npm run prepare:app:ng:ci
-npm run dev:app:ng:ci
+npm run build:package:lit:tgz
+npm run build:package:ng:tgz
+npm run prepare:app:ng:tgz
+npm run dev:app:ng:tgz
 ```
 
 ### React App Development with static Lit Components (tgz, no HMR)
 
 ```bash
 # call from root folder
-npm run build:packages:react:ci
-npm run prepare:app:react:ci
-npm run dev:app:react:ci
+npm run build:package:lit:tgz
+npm run build:package:react:tgz
+npm run prepare:app:react:tgz
+npm run dev:app:react:tgz
 ```
