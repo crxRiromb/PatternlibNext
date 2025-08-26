@@ -1,9 +1,8 @@
-import { IdUtils } from '@src/utils/id';
+import fontStyles from '@src/styles/fonts.css?inline';
 import { css, html, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { PlBase } from '../base/pl-base';
 import buttonStyles from './pl-button.scss?inline';
-import fontStyles from '@src/styles/fonts.css?inline';
 
 export type PlButtonClickEvent = CustomEvent<void>;
 interface PlButtonState {
@@ -89,14 +88,6 @@ export class PlButton extends PlBase {
   }
 
   render() {
-    // console.log(
-    //   'Rendering PlButton with RTL/Light/Dark/Id:',
-    //   this.isRTL(),
-    //   this.isLightMode(),
-    //   this.isDarkMode(),
-    //   IdUtils.generateId()
-    // );
-
     return html`
       <button
         data-testid="button"

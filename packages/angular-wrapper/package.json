@@ -4,7 +4,8 @@
   "description": "Angular wrapper library für @liebherr2/plnext.",
   "scripts": {
     "build": "ng-packagr -p ng-package.json",
-    "build:ci": "npm ci && npm run build && npm run pack",
+    "build:ci": "npm run generate:wrappers && npm run build && npm run pack",
+    "build:tgz": "npm run build:ci",
     "dev": "nodemon",
     "generate:wrapper": "tsx generate-wrapper.js",
     "generate:wrappers": "tsx generate-wrappers.js",
