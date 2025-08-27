@@ -32,7 +32,7 @@ type Story = StoryObj;
 
 const DefaultExample = (args) => {
   const handleClick = (event) => {
-    console.log("[pl-button] click event:", event);
+    console.log("[pl-button] click event:", event.detail);
   };
 
   return html`<pl-button

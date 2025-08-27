@@ -5,17 +5,7 @@
   color: black;
   width: 24px;
   height: 24px;
-}
-
-:host([decorative='false']) [part='wrapper'] {
-  cursor: pointer;
-  outline: none;
-}
-
-:host([decorative='false']) [part='wrapper']:focus-visible {
   border-radius: 0;
-  outline: 2px solid black;
-  outline-offset: 2px;
 }
 
 img {
