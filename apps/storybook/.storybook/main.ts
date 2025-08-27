@@ -1,6 +1,6 @@
+// storybook/.storybook/main.ts
 import type { StorybookConfig } from "@storybook/web-components-vite";
 import path from "node:path";
-import fs from "node:fs";
 
 const posix = (p: string) => p.split(path.sep).join("/");
 
@@ -13,15 +13,15 @@ const config: StorybookConfig = {
   addons: ["@storybook/addon-docs"],
 
   async viteFinal(cfg) {
-    // 1. Define the paths
+    // 1) Path-Constants
+    //    (to avoid having to constantly write __dirname + ../../../packages/lit/... in the code)
     const litRoot = path.resolve(__dirname, "../../../packages/lit");
     const storybookRoot = path.resolve(__dirname, "..");
 
-    // 2. Alias
+    // 2) Aliasse
     cfg.resolve ??= {};
     cfg.resolve.alias = {
       ...(cfg.resolve.alias || {}),
-      "@liebherr2/plnext": posix(path.join(litRoot, "src")),
       "@liebherr2/plnext/custom-elements.json": posix(
         path.join(litRoot, "custom-elements.json"),
       ),
@@ -31,11 +31,23 @@ const config: StorybookConfig = {
       "@liebherr2/plnext/styles/fonts.css": posix(
         path.join(litRoot, "src/styles/fonts.css"),
       ),
+      "@liebherr2/plnext": posix(path.join(litRoot, "src")),
       "@src": posix(path.join(litRoot, "src")),
       "@styles": posix(path.join(litRoot, "src/styles")),
     };
 
-    // 3. Server Access
+    // only use one version of lit
+    cfg.resolve.dedupe = [
+      ...((cfg.resolve.dedupe as string[] | undefined) || []),
+      "lit",
+      "lit-html",
+      "@lit/reactive-element",
+    ];
+
+    // Optional
+    cfg.resolve.preserveSymlinks = true;
+
+    // 3) Access files outside of the SB root
     cfg.server ??= {};
     cfg.server.fs ??= {};
     cfg.server.fs.allow = [
@@ -43,22 +55,22 @@ const config: StorybookConfig = {
       litRoot,
       storybookRoot,
     ];
+    cfg.server.watch = {
+      ...(cfg.server.watch || {}),
+      followSymlinks: true,
+      // Fallback for Windows/Network Drive/WSL sporadic dropouts, uncomment if needed:
+      // usePolling: true,
+      // interval: 150,
+    };
 
-    // 4. read custom-elements.json -> save to env CEM_RAW
-    const cemPath = path.join(litRoot, "custom-elements.json");
-    if (fs.existsSync(cemPath)) {
-      const cemRaw = fs.readFileSync(cemPath, "utf-8");
-      cfg.define = {
-        ...(cfg.define || {}),
-        "process.env.CEM_RAW": JSON.stringify(cemRaw),
-      };
-    } else {
-      console.warn(`[Storybook] custom-elements.json not found at: ${cemPath}`);
-      cfg.define = {
-        ...(cfg.define || {}),
-        "process.env.CEM_RAW": '""',
-      };
-    }
+    // not pre-bundle, so HMR works on source basis
+    cfg.optimizeDeps = {
+      ...(cfg.optimizeDeps || {}),
+      exclude: [
+        ...((cfg.optimizeDeps?.exclude as string[] | undefined) || []),
+        "@liebherr2/plnext",
+      ],
+    };
 
     return cfg;
   },
