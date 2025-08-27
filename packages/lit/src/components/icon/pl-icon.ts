@@ -8,19 +8,37 @@ import { iconService } from './icon-service';
 import iconStyles from './pl-icon.scss?raw';
 
 /**
- * The `pl-icon` component is used to display icons from a predefined set.
- * You can specify the icon to display using the `icon-name` property, and provide alternative
- * text for accessibility using the `alt` property.
+ * The `pl-icon` component displays icons from a predefined set.
  *
- * @csspart wrapper - The wrapper `<div>` around the SVG icon.
+ * ## Accessibility & Behavior Modes
+ *
+ * The combination of `decorative` and `interactive` defines one of three modes:
+ * 1. **Decorative** (`decorative=true`)
+ *    - Icon is hidden from assistive technologies (`aria-hidden="true"`, `role="presentation"`).
+ *    - No accessible label.
+ *    - No interactivity.
+ * 2. **Informative (non-interactive)** (`decorative=false`, `interactive=false`)
+ *    - Icon is exposed as an image (`role="img"`).
+ *    - Requires an accessible label via `label` (or falls back to `iconName`).
+ *    - No click or keyboard interaction.
+ * 3. **Interactive** (`decorative=false`, `interactive=true`)
+ *    - Icon is exposed as a button (`role="button"`, `tabindex="0"`).
+ *    - Requires an accessible label via `label` (or falls back to `iconName`).
+ *    - Emits `pl-icon-click` on click, Enter, or Space.
+ *
+ * ## Events
+ * - `pl-icon-click` — fired when the icon is activated in interactive mode.
+ *
+ * @csspart wrapper - The wrapper <div> around the SVG icon.
+ * @fires pl-icon-click - Emitted when the icon is activated (click, Enter/Space) while interactive.
  */
 @customElement('pl-icon')
 export class PlIcon extends PlBase {
   /**
-   * If true, the icon is marked as decorative for accessibility purposes.
-   * Useful when the icon is purely decorative (e.g. next to visible text).
+   * Marks the icon as purely decorative (hidden from assistive tech).
+   * When true: aria-hidden="true", role="presentation", no interactivity.
    */
-  @property({ type: Boolean })
+  @property({ type: Boolean, reflect: true })
   decorative = false;
 
   /**
@@ -30,8 +48,15 @@ export class PlIcon extends PlBase {
   iconName = '';
 
   /**
-   * The alternative text for the icon, used for accessibility.
-   * Will be ignored if `decorative` is true.
+   * Enables interactive behavior (keyboard + click) when not decorative.
+   * When true (and decorative is false): role="button", tabindex="0".
+   */
+  @property({ type: Boolean, reflect: true })
+  interactive = false;
+
+  /**
+   * The accessible label when not decorative.
+   * If empty, falls back to iconName.
    */
   @property({ type: String })
   label = '';
@@ -40,70 +65,71 @@ export class PlIcon extends PlBase {
     ${unsafeCSS(iconStyles)}
   `;
 
-  /*
-   * Content taken from LiMAM,
-   * Cross-Site-Scripting is not an issue here
-   */
   render() {
     const svgContentPromise = iconService.getSvgContent(this.iconName);
 
-    let accessibleLabel: string | undefined;
-    if (!this.decorative) {
-      if (this.label) {
-        accessibleLabel = this.label;
-      } else {
-        accessibleLabel = this.iconName;
-      }
-    }
+    // Effective state resolution
+    const isDecorative = this.decorative === true;
+    const isInteractive = !isDecorative && this.interactive === true;
 
-    const interactive = !this.decorative;
+    // Accessible label only when not decorative
+    const accessibleLabel = !isDecorative ? this.label?.trim() || this.iconName : undefined;
+
+    // Role & focusability matrix
+    const role = isDecorative ? 'presentation' : isInteractive ? 'button' : 'img';
+    const tabIndex = isInteractive ? '0' : undefined;
 
     return html`
       <div
         aria-label=${ifDefined(accessibleLabel)}
-        aria-hidden=${ifDefined(this.decorative ? 'true' : undefined)}
-        role=${interactive ? 'button' : 'img'}
+        aria-hidden=${ifDefined(isDecorative ? 'true' : undefined)}
         part="wrapper"
-        tabindex=${ifDefined(interactive ? '0' : undefined)}
+        role=${role}
+        tabindex=${ifDefined(tabIndex)}
+        style=${isInteractive ? 'cursor: pointer;' : ''}
         @click=${this.handleClick}
         @keydown=${this.handleKeyDown}
         @keyup=${this.handleKeyUp}
       >
         ${until(
-          svgContentPromise.then(svgContent => unsafeHTML(svgContent)),
+          svgContentPromise.then(svg => unsafeHTML(svg)),
           html`<span></span>`
         )}
       </div>
     `;
   }
 
+  /** @internal */
   private handleClick = (event: MouseEvent) => {
-    if (this.decorative) return;
+    // Only emit when interactive (and thus not decorative)
+    if (!this.interactive || this.decorative) return;
     event.stopPropagation();
     this._emitEvent('pl-icon-click', { iconName: this.iconName });
   };
 
-  /*
-   * Handle keyboard interactions for accessibility:
-   * - Enter on keydown
-   * - Space on keyup (to match button behavior)
+  /**
+   * @internal
+   * Keyboard: Enter on keydown, Space on keyup (button-like behavior).
    */
   private handleKeyDown = (event: KeyboardEvent) => {
-    if (this.decorative) return;
+    if (!this.interactive || this.decorative) return;
+
     if (event.key === 'Enter') {
       event.preventDefault();
       event.stopPropagation();
       this._emitEvent('pl-icon-click', { iconName: this.iconName });
     }
     if (event.key === ' ') {
-      // prevent default, trigger on keyup
+      // Prevent page scroll; actual activation on keyup (Space)
       event.preventDefault();
       event.stopPropagation();
     }
   };
 
+  /** @internal */
   private handleKeyUp = (event: KeyboardEvent) => {
-    if (this.decorative) return;
+    if (!this.interactive || this.decorative) return;
+
     if (event.key === ' ') {
       event.preventDefault();
       event.stopPropagation();
@@ -115,5 +141,8 @@ export class PlIcon extends PlBase {
 declare global {
   interface HTMLElementTagNameMap {
     'pl-icon': PlIcon;
+  }
+  interface GlobalEventHandlersEventMap {
+    'pl-icon-click': CustomEvent<{ iconName: string }>;
   }
 }
