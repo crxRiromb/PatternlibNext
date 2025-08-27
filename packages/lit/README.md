@@ -1,18 +1,25 @@
-# Liebherr2 Patternlib Next
+# Liebherr2 Patternlib Next (@liebherr2/patternlib-next)
 
-## Build in Dev Mode with file watch
+## 1. Dev Mode with file watch
 
 ```bash
 npm run prepare:dev
 npm run dev
 ```
 
-## Build tarball archive (tgz)
+## 2. ci Build (no file watch)
+
+```bash
+npm run prepare:ci
+npm run build:ci
+```
+
+## 3. tgz Build tarball archive (for registry simulation)
 
 - builds dist folder
 - creates tgz file
 
 ```bash
-npm run prepare:ci
-npm run build:ci
+npm run prepare:tgz
+npm run build:tgz
 ```

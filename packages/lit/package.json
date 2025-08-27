@@ -21,7 +21,6 @@
       "types": "./dist/index.d.ts"
     },
     "./custom-elements.json": "./custom-elements.json",
-    "./react-types": "./dist/custom-elements.d.ts",
     "./styles/props.css": "./dist/styles/props.css",
     "./styles/fonts.css": "./dist/styles/fonts.css",
     "./components/*": {
@@ -51,12 +50,10 @@
   "peerDependencies": {
     "lit": "^3"
   },
-  "dependencies": {
-    "lit": "^3"
-  },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.2",
     "@open-wc/testing": "^4.0.0",
+    "lit": "^3",
     "typescript": "~5.8.0"
   },
   "customElements": "custom-elements.json"

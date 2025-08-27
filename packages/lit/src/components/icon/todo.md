@@ -1,5 +1,5 @@
 # Todo
 
-- What to do if icon not found?
-- Fallack-Icon and which style?
+- Fallack-Icon and style if icon not found
+- focus-visible style
 - Migrate React Wrapper to new Icon-Service
