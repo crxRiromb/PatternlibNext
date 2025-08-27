@@ -69,7 +69,7 @@ function generateComponentWrapper(componentDef: any): string {
     (m) => m && m.kind === "field" && !m.static,
   );
 
-  // Namen von einfachen Attributen, um Kollisionen zu vermeiden
+  // Names of simple attributes, to avoid duplicates
   const simpleNames = new Set(
     simpleAttrs.map((a: any) => toCamelCase(a.name || a.fieldName)),
   );
@@ -77,20 +77,20 @@ function generateComponentWrapper(componentDef: any): string {
   const complexProps = memberFields.filter((m) => {
     const name = m.name || m.fieldName;
     const lt = getLowerType(m.type?.text);
-    // einfache Typen lassen wir hier raus (die sind schon als Attribute abgedeckt)
+    // simple types
     const isSimple = lt === "string" || lt === "boolean";
-    // Wenn CEM "attribute" gesetzt hat UND simple ist, wird es als Attribut behandelt.
-    // Alles andere gilt als complex property.
+    // If CEM has "attribute" set AND it is simple, it is treated as an attribute.
+    // Everything else is considered a complex property.
     return !isSimple || !m.attribute;
   });
 
   const inputsComplex = complexProps
-    .filter((m) => !simpleNames.has(toCamelCase(m.name || m.fieldName))) // keine Duplikate
+    .filter((m) => !simpleNames.has(toCamelCase(m.name || m.fieldName))) // no duplicates
     .map((m) => {
       const name = toCamelCase(m.name || m.fieldName);
       const tsType = (m.type?.text || "any").replace(/'/g, '"');
 
-      // Default ableiten: "[]", "{}", sonst null
+      // derive default value: "[]", "{}", otherwise null
       const rawDef = stripQuotes(m.default ?? m.defaultValue ?? null);
       let defaultCode = "null";
       if (typeof rawDef === "string") {
@@ -101,7 +101,7 @@ function generateComponentWrapper(componentDef: any): string {
         else if (trimmed.length > 0) defaultCode = trimmed; // falls schon TS-Literal
       }
 
-      // Für Arrays ist [] praktisch, für Objekte {}
+      // FFor arrays, [] is practical; for objects {}
       if (defaultCode === "null") {
         const lt = getLowerType(m.type?.text);
         if (/\[\]$/.test(m.type?.text || "")) defaultCode = "[]";

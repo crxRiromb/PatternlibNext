@@ -47,6 +47,7 @@ export class PlBase extends LitElement {
       detail,
       bubbles: true,
       composed: true,
+      cancelable: false,
     });
     this.dispatchEvent(event);
   }

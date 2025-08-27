@@ -52,16 +52,22 @@ export class PlIcon extends PlBase {
       if (this.label) {
         accessibleLabel = this.label;
       } else {
-        accessibleLabel = `Icon of ${this.iconName}`;
+        accessibleLabel = this.iconName;
       }
     }
+
+    const interactive = !this.decorative;
 
     return html`
       <div
         aria-label=${ifDefined(accessibleLabel)}
         aria-hidden=${ifDefined(this.decorative ? 'true' : undefined)}
-        role=${this.decorative ? 'presentation' : 'img'}
+        role=${interactive ? 'button' : 'img'}
         part="wrapper"
+        tabindex=${ifDefined(interactive ? '0' : undefined)}
+        @click=${this.handleClick}
+        @keydown=${this.handleKeyDown}
+        @keyup=${this.handleKeyUp}
       >
         ${until(
           svgContentPromise.then(svgContent => unsafeHTML(svgContent)),
@@ -70,6 +76,40 @@ export class PlIcon extends PlBase {
       </div>
     `;
   }
+
+  private handleClick = (event: MouseEvent) => {
+    if (this.decorative) return;
+    event.stopPropagation();
+    this._emitEvent('pl-icon-click', { iconName: this.iconName });
+  };
+
+  /*
+   * Handle keyboard interactions for accessibility:
+   * - Enter on keydown
+   * - Space on keyup (to match button behavior)
+   */
+  private handleKeyDown = (event: KeyboardEvent) => {
+    if (this.decorative) return;
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+      this._emitEvent('pl-icon-click', { iconName: this.iconName });
+    }
+    if (event.key === ' ') {
+      // prevent default, trigger on keyup
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  };
+
+  private handleKeyUp = (event: KeyboardEvent) => {
+    if (this.decorative) return;
+    if (event.key === ' ') {
+      event.preventDefault();
+      event.stopPropagation();
+      this._emitEvent('pl-icon-click', { iconName: this.iconName });
+    }
+  };
 }
 
 declare global {

@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "build": "ng build",
+    "clear:npmcache": "npm cache rm @liebherr2/plnext && npm cache rm @liebherr2/angularnext",
     "dev": "ng serve",
     "dev:prod": "ng serve --configuration=production",
     "dev:tgz": "ng serve --configuration=development-tgz",
