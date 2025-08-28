@@ -63,7 +63,7 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
-              "scripts": ["src/load-web-components-outside-zonejs.ts"]
+              "scripts": []
             },
             "development-tgz": {
               "optimization": false,

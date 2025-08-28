@@ -6,14 +6,9 @@ import {
   Input,
   Output,
   EventEmitter,
-  ElementRef,
-  ViewChild,
-  AfterViewInit,
-  OnDestroy,
   CUSTOM_ELEMENTS_SCHEMA,
   booleanAttribute,
 } from "@angular/core";
-import type { PlIcon } from "@liebherr2/plnext";
 
 // Side-effect import: registers this web component once at runtime
 import "@liebherr2/plnext/components/icon/pl-icon.js";
@@ -23,23 +18,20 @@ import "@liebherr2/plnext/components/icon/pl-icon.js";
   standalone: true,
   template: `
     <pl-icon
-      #elementRef
       [attr.decorative]="decorative ? '' : null"
       [attr.iconName]="_iconName"
       [attr.interactive]="interactive ? '' : null"
       [attr.label]="_label"
+      (pl-icon-click)="plIconClick.emit($any($event))"
     >
       <ng-content></ng-content>
     </pl-icon>
   `,
-  styles: [":host { display: inline-block; }"],
+  // styles: [":host { display: inline-block; }"],
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class PlIconAngular implements AfterViewInit, OnDestroy {
-  @ViewChild("elementRef") elementRef!: ElementRef<PlIcon>;
-  private _listenerCtl = new AbortController();
-
+export class PlIconAngular {
   // --- Inputs (simple attributes) ---
   
   /** Maps to the "decorative" boolean attribute (present if true, absent if false). */
@@ -75,17 +67,4 @@ export class PlIconAngular implements AfterViewInit, OnDestroy {
   
   /** Emits when the "pl-icon-click" event is fired by the web component. */
   @Output() plIconClick = new EventEmitter<CustomEvent<any>>();
-
-  // --- Lifecycle hooks ---
-  ngAfterViewInit() {
-    const nativeElement = this.elementRef.nativeElement;
-    
-    nativeElement.addEventListener("pl-icon-click", (event: Event) => {
-      this.plIconClick.emit(event as CustomEvent);
-    }, { signal: this._listenerCtl.signal });
-  }
-
-  ngOnDestroy() {
-    this._listenerCtl.abort();
-  }
 }

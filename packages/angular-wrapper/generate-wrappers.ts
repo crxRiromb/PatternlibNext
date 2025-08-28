@@ -8,7 +8,6 @@ const cemPath = path.resolve(
 const outputSrcDir = path.resolve(process.cwd(), "./src");
 
 function toCamelCase(str: string): string {
-  // Guard to handle potential undefined input
   if (!str) return "";
   return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 }
@@ -19,7 +18,6 @@ function toPascalCase(str: string): string {
 }
 
 function litSideEffectImportPath(tagName: string): string {
-  // "pl-button" -> "@liebherr2/plnext/components/button/pl-button.js"
   const folder = tagName.replace(/^pl-/, "");
   return `@liebherr2/plnext/components/${folder}/${tagName}.js`;
 }
@@ -27,10 +25,8 @@ function litSideEffectImportPath(tagName: string): string {
 function generateComponentWrapper(componentDef: any): string {
   const { tagName } = componentDef;
   const angularComponentName = `${toPascalCase(tagName)}Angular`;
-  const litComponentType = toPascalCase(tagName);
   const sideEffectImport = litSideEffectImportPath(tagName);
 
-  // --- Helpers ---
   const getLowerType = (t?: string) =>
     (t || "string").replace(/'/g, '"').toLowerCase();
   const stripQuotes = (s: any) =>
@@ -75,29 +71,22 @@ function generateComponentWrapper(componentDef: any): string {
   const memberFields = ((componentDef.members || []) as Array<any>).filter(
     (m) => m && m.kind === "field" && !m.static,
   );
-
-  // Names of simple attributes, to avoid duplicates
   const simpleNames = new Set(
     simpleAttrs.map((a: any) => toCamelCase(a.name || a.fieldName)),
   );
 
   const complexProps = memberFields.filter((m) => {
-    const name = m.name || m.fieldName;
     const lt = getLowerType(m.type?.text);
-    // simple types
     const isSimple = lt === "string" || lt === "boolean";
-    // If CEM has "attribute" set AND it is simple, it is treated as an attribute.
-    // Everything else is considered a complex property.
     return !isSimple || !m.attribute;
   });
 
   const inputsComplex = complexProps
-    .filter((m) => !simpleNames.has(toCamelCase(m.name || m.fieldName))) // no duplicates
+    .filter((m) => !simpleNames.has(toCamelCase(m.name || m.fieldName)))
     .map((m) => {
       const name = toCamelCase(m.name || m.fieldName);
       const tsType = (m.type?.text || "any").replace(/'/g, '"');
 
-      // derive default value: "[]", "{}", otherwise null
       const rawDef = stripQuotes(m.default ?? m.defaultValue ?? null);
       let defaultCode = "null";
       if (typeof rawDef === "string") {
@@ -105,10 +94,8 @@ function generateComponentWrapper(componentDef: any): string {
         if (trimmed === "[]" || trimmed.startsWith("[")) defaultCode = "[]";
         else if (trimmed === "{}" || trimmed.startsWith("{"))
           defaultCode = "{}";
-        else if (trimmed.length > 0) defaultCode = trimmed; // falls schon TS-Literal
+        else if (trimmed.length > 0) defaultCode = trimmed;
       }
-
-      // FFor arrays, [] is practical; for objects {}
       if (defaultCode === "null") {
         const lt = getLowerType(m.type?.text);
         if (/\[\]$/.test(m.type?.text || "")) defaultCode = "[]";
@@ -131,19 +118,7 @@ function generateComponentWrapper(componentDef: any): string {
     })
     .join("\n");
 
-  // --- Event listeners with cleanup ---
-  const eventListeners = (componentDef.events || [])
-    .map((event: any) => {
-      const eventName = toCamelCase(event.name);
-      return `
-    nativeElement.addEventListener("${event.name}", (event: Event) => {
-      this.${eventName}.emit(event as CustomEvent);
-    }, { signal: this._listenerCtl.signal });`;
-    })
-    .join("");
-
   // --- Template bindings ---
-  // simple (HTML-konform): booleans Präsenz/Abwesenheit, strings als Attributwert
   const templateBindingsSimple = simpleAttrs
     .map((attr: any) => {
       const propName = toCamelCase(attr.name || attr.fieldName);
@@ -155,16 +130,23 @@ function generateComponentWrapper(componentDef: any): string {
     })
     .join("\n      ");
 
-  // complex: echte Property-Bindings auf dem Element
   const templateBindingsComplex = complexProps
     .filter((m) => !simpleNames.has(toCamelCase(m.name || m.fieldName)))
-    .map((m) => {
-      const name = toCamelCase(m.name || m.fieldName);
-      return `[${m.name}]="${name}"`;
-    })
+    .map((m) => `[${m.name}]="${toCamelCase(m.name || m.fieldName)}"`)
     .join("\n      ");
 
-  const allBindings = [templateBindingsSimple, templateBindingsComplex]
+  const templateEventBindings = (componentDef.events || [])
+    .map(
+      (event: any) =>
+        `(${event.name})="${toCamelCase(event.name)}.emit($any($event))"`,
+    )
+    .join("\n      ");
+
+  const allBindings = [
+    templateBindingsSimple,
+    templateBindingsComplex,
+    templateEventBindings,
+  ]
     .filter(Boolean)
     .join("\n      ");
 
@@ -178,14 +160,9 @@ import {
   Input,
   Output,
   EventEmitter,
-  ElementRef,
-  ViewChild,
-  AfterViewInit,
-  OnDestroy,
   CUSTOM_ELEMENTS_SCHEMA,
   booleanAttribute,
 } from "@angular/core";
-import type { ${litComponentType} } from "@liebherr2/plnext";
 
 // Side-effect import: registers this web component once at runtime
 import "${sideEffectImport}";
@@ -195,20 +172,16 @@ import "${sideEffectImport}";
   standalone: true,
   template: \`
     <${tagName}
-      #elementRef
       ${allBindings}
     >
       <ng-content></ng-content>
     </${tagName}>
   \`,
-  styles: [":host { display: inline-block; }"],
+  // styles: [":host { display: inline-block; }"],
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class ${angularComponentName} implements AfterViewInit, OnDestroy {
-  @ViewChild("elementRef") elementRef!: ElementRef<${litComponentType}>;
-  private _listenerCtl = new AbortController();
-
+export class ${angularComponentName} {
   // --- Inputs (simple attributes) ---
   ${inputsSimple}
 
@@ -217,16 +190,6 @@ export class ${angularComponentName} implements AfterViewInit, OnDestroy {
 
   // --- Outputs ---
   ${outputs}
-
-  // --- Lifecycle hooks ---
-  ngAfterViewInit() {
-    const nativeElement = this.elementRef.nativeElement;
-    ${eventListeners}
-  }
-
-  ngOnDestroy() {
-    this._listenerCtl.abort();
-  }
 }
 `;
 }
@@ -260,7 +223,7 @@ function main() {
     );
   }
 
-  const generatedFilePaths = [];
+  const generatedFilePaths: string[] = [];
 
   for (const componentDef of targetComponentDefs) {
     if (!componentDef.tagName) {
@@ -288,7 +251,6 @@ function main() {
     );
   }
 
-  // --- Generate public-api.ts ---
   console.log("Generating public-api.ts...");
   const publicApiContent = generatedFilePaths
     .map((p) => `export * from '${p.replace(".ts", "")}';`)

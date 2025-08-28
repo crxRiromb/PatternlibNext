@@ -24,8 +24,6 @@
     "lit": "^3"
   },
   "devDependencies": {
-    "@angular/common": "^19.0.0",
-    "@angular/core": "^19.0.0",
     "ng-packagr": "^19.0.0",
     "typescript": "~5.8.0"
   }

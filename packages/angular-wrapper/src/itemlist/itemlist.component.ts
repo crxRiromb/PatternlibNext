@@ -6,14 +6,9 @@ import {
   Input,
   Output,
   EventEmitter,
-  ElementRef,
-  ViewChild,
-  AfterViewInit,
-  OnDestroy,
   CUSTOM_ELEMENTS_SCHEMA,
   booleanAttribute,
 } from "@angular/core";
-import type { PlItemlist } from "@liebherr2/plnext";
 
 // Side-effect import: registers this web component once at runtime
 import "@liebherr2/plnext/components/itemlist/pl-itemlist.js";
@@ -23,21 +18,17 @@ import "@liebherr2/plnext/components/itemlist/pl-itemlist.js";
   standalone: true,
   template: `
     <pl-itemlist
-      #elementRef
       [attr.headline-label]="_headlineLabel"
       [data]="data"
     >
       <ng-content></ng-content>
     </pl-itemlist>
   `,
-  styles: [":host { display: inline-block; }"],
+  // styles: [":host { display: inline-block; }"],
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class PlItemlistAngular implements AfterViewInit, OnDestroy {
-  @ViewChild("elementRef") elementRef!: ElementRef<PlItemlist>;
-  private _listenerCtl = new AbortController();
-
+export class PlItemlistAngular {
   // --- Inputs (simple attributes) ---
   
   protected _headlineLabel: string = "";
@@ -57,14 +48,4 @@ export class PlItemlistAngular implements AfterViewInit, OnDestroy {
 
   // --- Outputs ---
   
-
-  // --- Lifecycle hooks ---
-  ngAfterViewInit() {
-    const nativeElement = this.elementRef.nativeElement;
-    
-  }
-
-  ngOnDestroy() {
-    this._listenerCtl.abort();
-  }
 }

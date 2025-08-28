@@ -1,8 +1,0 @@
-{
-  "verbose": true,
-  "delay": 5000,
-  "watchOptions": {
-    "usePolling": true,
-    "interval": 1500
-  }
-}
