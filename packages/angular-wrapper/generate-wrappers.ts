@@ -5,8 +5,15 @@ const cemPath = path.resolve(
   process.cwd(),
   "../../packages/lit/custom-elements.json",
 );
+const manifestPath = path.resolve(
+  process.cwd(),
+  "../../packages/lit/wrapper-manifest.json",
+);
 const outputSrcDir = path.resolve(process.cwd(), "./src");
 
+// ------------------------------
+// Helpers
+// ------------------------------
 function toCamelCase(str: string): string {
   if (!str) return "";
   return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
@@ -18,15 +25,47 @@ function toPascalCase(str: string): string {
 }
 
 function litSideEffectImportPath(tagName: string): string {
+  // "pl-button" -> "@liebherr2/plnext/components/button/pl-button.js"
   const folder = tagName.replace(/^pl-/, "");
   return `@liebherr2/plnext/components/${folder}/${tagName}.js`;
 }
 
+type DisplayMode = "block" | "inline" | "inline-block";
+type WrapperManifest = { displayMode?: Record<string, DisplayMode> };
+
+function readManifest(): WrapperManifest {
+  if (!fs.existsSync(manifestPath)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
+  } catch {
+    console.warn(`⚠️ Could not parse wrapper-manifest.json at ${manifestPath}`);
+    return {};
+  }
+}
+const manifest: WrapperManifest = readManifest();
+
+function getDisplayMode(tagName: string): DisplayMode {
+  return manifest.displayMode?.[tagName] ?? "block"; // konservativer Default
+}
+
+function styleForDisplayMode(tagName: string): string {
+  const mode = getDisplayMode(tagName);
+  if (mode === "inline-block") {
+    // Wichtig: line-height: 1 verhindert zusätzlichen Vertikalraum
+    return ":host { display: inline-block; line-height: 1; }";
+  }
+  return `:host { display: ${mode}; }`;
+}
+
+// ------------------------------
+// Generator
+// ------------------------------
 function generateComponentWrapper(componentDef: any): string {
   const { tagName } = componentDef;
   const angularComponentName = `${toPascalCase(tagName)}Angular`;
   const sideEffectImport = litSideEffectImportPath(tagName);
 
+  // --- Helpers ---
   const getLowerType = (t?: string) =>
     (t || "string").replace(/'/g, '"').toLowerCase();
   const stripQuotes = (s: any) =>
@@ -71,6 +110,8 @@ function generateComponentWrapper(componentDef: any): string {
   const memberFields = ((componentDef.members || []) as Array<any>).filter(
     (m) => m && m.kind === "field" && !m.static,
   );
+
+  // Names of simple attributes, to avoid duplicates
   const simpleNames = new Set(
     simpleAttrs.map((a: any) => toCamelCase(a.name || a.fieldName)),
   );
@@ -78,15 +119,17 @@ function generateComponentWrapper(componentDef: any): string {
   const complexProps = memberFields.filter((m) => {
     const lt = getLowerType(m.type?.text);
     const isSimple = lt === "string" || lt === "boolean";
+    // Wenn CEM "attribute" setzt UND simpel → Attribut; sonst komplexe Property
     return !isSimple || !m.attribute;
   });
 
   const inputsComplex = complexProps
-    .filter((m) => !simpleNames.has(toCamelCase(m.name || m.fieldName)))
+    .filter((m) => !simpleNames.has(toCamelCase(m.name || m.fieldName))) // no duplicates
     .map((m) => {
       const name = toCamelCase(m.name || m.fieldName);
       const tsType = (m.type?.text || "any").replace(/'/g, '"');
 
+      // derive default value: "[]", "{}", otherwise null
       const rawDef = stripQuotes(m.default ?? m.defaultValue ?? null);
       let defaultCode = "null";
       if (typeof rawDef === "string") {
@@ -94,8 +137,9 @@ function generateComponentWrapper(componentDef: any): string {
         if (trimmed === "[]" || trimmed.startsWith("[")) defaultCode = "[]";
         else if (trimmed === "{}" || trimmed.startsWith("{"))
           defaultCode = "{}";
-        else if (trimmed.length > 0) defaultCode = trimmed;
+        else if (trimmed.length > 0) defaultCode = trimmed; // already a TS literal?
       }
+      // Heuristik
       if (defaultCode === "null") {
         const lt = getLowerType(m.type?.text);
         if (/\[\]$/.test(m.type?.text || "")) defaultCode = "[]";
@@ -119,6 +163,7 @@ function generateComponentWrapper(componentDef: any): string {
     .join("\n");
 
   // --- Template bindings ---
+  // simple (HTML-konform): booleans Präsenz/Abwesenheit, strings als Attributwert
   const templateBindingsSimple = simpleAttrs
     .map((attr: any) => {
       const propName = toCamelCase(attr.name || attr.fieldName);
@@ -130,11 +175,16 @@ function generateComponentWrapper(componentDef: any): string {
     })
     .join("\n      ");
 
+  // complex: echte Property-Bindings auf dem Element
   const templateBindingsComplex = complexProps
     .filter((m) => !simpleNames.has(toCamelCase(m.name || m.fieldName)))
-    .map((m) => `[${m.name}]="${toCamelCase(m.name || m.fieldName)}"`)
+    .map((m) => {
+      const name = toCamelCase(m.name || m.fieldName);
+      return `[${m.name}]="${name}"`;
+    })
     .join("\n      ");
 
+  // Events direkt im Template binden; $any($event) löst Typ-Konflikt (Event vs CustomEvent)
   const templateEventBindings = (componentDef.events || [])
     .map(
       (event: any) =>
@@ -149,6 +199,8 @@ function generateComponentWrapper(componentDef: any): string {
   ]
     .filter(Boolean)
     .join("\n      ");
+
+  const hostStyle = styleForDisplayMode(tagName);
 
   // --- Assemble ---
   return `
@@ -177,7 +229,7 @@ import "${sideEffectImport}";
       <ng-content></ng-content>
     </${tagName}>
   \`,
-  // styles: [":host { display: inline-block; }"],
+  styles: ["${hostStyle}"],
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
@@ -251,6 +303,7 @@ function main() {
     );
   }
 
+  // --- Generate public-api.ts ---
   console.log("Generating public-api.ts...");
   const publicApiContent = generatedFilePaths
     .map((p) => `export * from '${p.replace(".ts", "")}';`)

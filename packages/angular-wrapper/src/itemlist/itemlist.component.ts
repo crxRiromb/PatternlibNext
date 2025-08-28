@@ -24,7 +24,7 @@ import "@liebherr2/plnext/components/itemlist/pl-itemlist.js";
       <ng-content></ng-content>
     </pl-itemlist>
   `,
-  // styles: [":host { display: inline-block; }"],
+  styles: [":host { display: block; }"],
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

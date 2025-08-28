@@ -27,7 +27,7 @@ import "@liebherr2/plnext/components/icon/pl-icon.js";
       <ng-content></ng-content>
     </pl-icon>
   `,
-  // styles: [":host { display: inline-block; }"],
+  styles: [":host { display: inline-block; line-height: 1; }"],
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

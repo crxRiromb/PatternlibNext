@@ -21,7 +21,7 @@ import "@liebherr2/plnext/components/button/pl-button.js";
       [attr.label]="_label"
       [attr.type]="_type"
       [attr.variant]="_variant"
-      (pl-button-click)="plButtonClick.emit($event)"
+      (pl-button-click)="plButtonClick.emit($any($event))"
     >
       <ng-content></ng-content>
     </pl-button>
