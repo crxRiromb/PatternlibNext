@@ -15,6 +15,9 @@ import {
 } from "@angular/core";
 import type { PlIcon } from "@liebherr2/plnext";
 
+// Side-effect import: registers this web component once at runtime
+import "@liebherr2/plnext/components/icon/pl-icon.js";
+
 @Component({
   selector: "pl-icon-angular",
   standalone: true,

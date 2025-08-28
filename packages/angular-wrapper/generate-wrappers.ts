@@ -18,10 +18,17 @@ function toPascalCase(str: string): string {
   return camel.charAt(0).toUpperCase() + camel.slice(1);
 }
 
+function litSideEffectImportPath(tagName: string): string {
+  // "pl-button" -> "@liebherr2/plnext/components/button/pl-button.js"
+  const folder = tagName.replace(/^pl-/, "");
+  return `@liebherr2/plnext/components/${folder}/${tagName}.js`;
+}
+
 function generateComponentWrapper(componentDef: any): string {
   const { tagName } = componentDef;
   const angularComponentName = `${toPascalCase(tagName)}Angular`;
   const litComponentType = toPascalCase(tagName);
+  const sideEffectImport = litSideEffectImportPath(tagName);
 
   // --- Helpers ---
   const getLowerType = (t?: string) =>
@@ -179,6 +186,9 @@ import {
   booleanAttribute,
 } from "@angular/core";
 import type { ${litComponentType} } from "@liebherr2/plnext";
+
+// Side-effect import: registers this web component once at runtime
+import "${sideEffectImport}";
 
 @Component({
   selector: "${tagName}-angular",

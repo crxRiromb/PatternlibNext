@@ -15,6 +15,9 @@ import {
 } from "@angular/core";
 import type { PlItemlist } from "@liebherr2/plnext";
 
+// Side-effect import: registers this web component once at runtime
+import "@liebherr2/plnext/components/itemlist/pl-itemlist.js";
+
 @Component({
   selector: "pl-itemlist-angular",
   standalone: true,

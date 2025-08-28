@@ -15,6 +15,9 @@ import {
 } from "@angular/core";
 import type { PlButton } from "@liebherr2/plnext";
 
+// Side-effect import: registers this web component once at runtime
+import "@liebherr2/plnext/components/button/pl-button.js";
+
 @Component({
   selector: "pl-button-angular",
   standalone: true,
