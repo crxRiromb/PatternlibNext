@@ -3,15 +3,14 @@
   "version": "0.0.1",
   "description": "Angular wrapper library für @liebherr2/plnext.",
   "scripts": {
-    "build": "ng-packagr -p ng-package.json",
-    "build:ci": "npm run generate:wrappers && npm run build && npm run pack",
+    "build": "npm run generate:wrappers && ng-packagr -p ng-package.json",
+    "build:ci": "npm run build && npm run pack",
     "build:tgz": "npm run build:ci",
     "dev": "nodemon",
-    "generate:wrapper": "tsx generate-wrapper.js",
     "generate:wrappers": "tsx generate-wrappers.js",
     "generate:wrappers:single": "tsx generate-wrappers.js pl-button pl-icon",
     "pack": "cd dist && npm pack && cd .. && node ../../scripts/move-files.js dist/*.tgz .",
-    "prepare:dev": "npm pkg set peerDependencies.@liebherr2/plnext=\"file:../../packages/lit\" && npm install",
+    "prepare:dev": "npm pkg set peerDependencies.@liebherr2/plnext=\"*\" && npm install --no-save ../../packages/lit",
     "prepare:tgz": "npm pkg set peerDependencies.@liebherr2/plnext=\"file:../../packages/lit/liebherr2-plnext-0.0.1.tgz\" && npm install",
     "prepare:ci": "npm pkg set peerDependencies.@liebherr2/plnext=\"file:../../packages/lit/liebherr2-plnext-0.0.1.tgz\" && npm ci"
   },
@@ -21,7 +20,8 @@
   "peerDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",
-    "@liebherr2/plnext": "file:../../packages/lit/liebherr2-plnext-0.0.1.tgz"
+    "@liebherr2/plnext": "*",
+    "lit": "^3"
   },
   "devDependencies": {
     "@angular/common": "^19.0.0",

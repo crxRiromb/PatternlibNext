@@ -23,6 +23,7 @@ import type { PlIcon } from "@liebherr2/plnext";
       #elementRef
       [attr.decorative]="decorative ? '' : null"
       [attr.iconName]="_iconName"
+      [attr.interactive]="interactive ? '' : null"
       [attr.label]="_label"
     >
       <ng-content></ng-content>
@@ -51,6 +52,9 @@ export class PlIconAngular implements AfterViewInit, OnDestroy {
     return this._iconName;
   }
 
+  /** Maps to the "interactive" boolean attribute (present if true, absent if false). */
+  @Input({ transform: booleanAttribute }) interactive: boolean = false;
+
   protected _label: string = "";
   /** Maps to the "label" string attribute. */
   @Input()
@@ -66,11 +70,16 @@ export class PlIconAngular implements AfterViewInit, OnDestroy {
 
   // --- Outputs ---
   
+  /** Emits when the "pl-icon-click" event is fired by the web component. */
+  @Output() plIconClick = new EventEmitter<CustomEvent<any>>();
 
   // --- Lifecycle hooks ---
   ngAfterViewInit() {
     const nativeElement = this.elementRef.nativeElement;
     
+    nativeElement.addEventListener("pl-icon-click", (event: Event) => {
+      this.plIconClick.emit(event as CustomEvent);
+    }, { signal: this._listenerCtl.signal });
   }
 
   ngOnDestroy() {
