@@ -10,6 +10,9 @@ $component: 'pl-button';
 
 /* Generate all CSS Custom Properties for this component in the shadow DOM */
 :host {
+  --style-pl-button-focus-width: 2px;
+  --style-pl-button-focus-offset: -2px;
+
   display: inline-block;
 
   // Fallback theme
@@ -19,7 +22,7 @@ $component: 'pl-button';
   }
 }
 
-/* Evaluate theming attributes */
+/* Evaluate theming attributes - search upwards */
 :host-context([data-theme='corporate'][data-mode='dark']) {
   $theme-palette: map.get(theme.$button-themes, 'corporate', 'dark');
   @each $variant, $variant-config in theme.$button-variants {
@@ -79,8 +82,8 @@ button {
     color: var(--current-text-active);
   }
   &:focus-visible {
-    outline: 3px solid var(--current-border-focus);
-    outline-offset: -3px;
+    outline: var(--style-pl-button-focus-width) solid var(--current-border-focus);
+    outline-offset: var(--style-pl-button-focus-offset);
   }
 }
 

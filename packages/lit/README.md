@@ -1,5 +1,7 @@
 # Liebherr2 Patternlib Next (@liebherr2/patternlib-next)
 
+There are three main ways to build and test the Angular Wrapper package:
+
 ## 1. Dev Mode with file watch
 
 ```bash
