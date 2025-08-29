@@ -1,6 +1,7 @@
 /*
   Hints:
   - There is no color explicitly defined. The color ist taken from the current text color.
+  - The color can be set by style the element (<pl-icon style="color: blue;">) or with the part::-Selector.
   - The size is 24x24px by default.
  */
 
@@ -10,7 +11,6 @@
 
   display: inline-block;
   line-height: 1;
-  vertical-align: middle;
   width: 24px;
   height: 24px;
   border-radius: 0;
