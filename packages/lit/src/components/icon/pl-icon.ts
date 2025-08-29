@@ -29,7 +29,7 @@ import iconStyles from './pl-icon.scss?raw';
  * ## Events
  * - `pl-icon-click` — fired when the icon is activated in interactive mode.
  *
- * @csspart wrapper - The wrapper <div> around the SVG icon.
+ * @csspart wrapper - The wrapper <div> around the SVG icon. Can be used to pierce the shadow DOM and override styling (color, size, etc.).
  * @fires pl-icon-click - Emitted when the icon is activated (click, Enter/Space) while interactive.
  */
 @customElement('pl-icon')
@@ -83,17 +83,18 @@ export class PlIcon extends PlBase {
       <div
         aria-label=${ifDefined(accessibleLabel)}
         aria-hidden=${ifDefined(isDecorative ? 'true' : undefined)}
+        class="wrapper"
+        data-testid="wrapper"
         part="wrapper"
         role=${role}
         tabindex=${ifDefined(tabIndex)}
-        style=${isInteractive ? 'cursor: pointer;' : ''}
         @click=${this.handleClick}
         @keydown=${this.handleKeyDown}
         @keyup=${this.handleKeyUp}
       >
         ${until(
           svgContentPromise.then(svg => unsafeHTML(svg)),
-          html`<span></span>`
+          html`<span class="placeholder"></span>`
         )}
       </div>
     `;

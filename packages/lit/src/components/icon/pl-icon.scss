@@ -1,21 +1,42 @@
+/*
+  Hints:
+  - There is no color explicitly defined. The color ist taken from the current text color.
+  - The size is 24x24px by default.
+ */
+
 :host {
+  --pl-icon-focus-width: 2px;
+  --pl-icon-focus-offset: 0px;
+
   display: inline-block;
   line-height: 1;
   vertical-align: middle;
-  color: black;
   width: 24px;
   height: 24px;
   border-radius: 0;
 }
 
-img {
+/* interaktiv and not dekorative */
+:host([interactive]:not([decorative])) .wrapper {
+  cursor: pointer;
+  outline: none;
+}
+
+/* :focus-visible – only tab focus shows the outline */
+:host([interactive]:not([decorative])) .wrapper:focus-visible {
+  border-radius: 0;
+  outline: var(--pl-icon-focus-width) solid currentColor;
+  outline-offset: var(--pl-icon-focus-offset);
+}
+
+.wrapper {
   width: 100%;
   height: 100%;
   /* This is defined in the SVG itself. SaveGuard here to ensure SVGs inherit the text color. */
   fill: currentColor;
 }
 
-span {
+.placeholder {
   width: 100%;
   height: 100%;
 }

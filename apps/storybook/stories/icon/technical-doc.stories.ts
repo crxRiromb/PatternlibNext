@@ -44,10 +44,6 @@ const DefaultExample = (args) => {
 };
 
 const SizeExample = (args) => {
-  const handleClick = (event) => {
-    console.log("[pl-icon] click event:", event.detail);
-  };
-
   return html`
     <pl-icon
       ?decorative=${args.decorative}
@@ -55,16 +51,11 @@ const SizeExample = (args) => {
       ?interactive=${args.interactive}
       label=${args.label}
       style="height: 48px; width: 48px;"
-      @pl-icon-click=${handleClick}
     ></pl-icon>
   `;
 };
 
 const ColorExample = (args) => {
-  const handleClick = (event) => {
-    console.log("[pl-icon] click event:", event.detail);
-  };
-
   return html`
     <pl-icon
       ?decorative=${args.decorative}
@@ -72,7 +63,24 @@ const ColorExample = (args) => {
       ?interactive=${args.interactive}
       label=${args.label}
       style="color: red;"
-      @pl-icon-click=${handleClick}
+    ></pl-icon>
+  `;
+};
+
+const PartExample = (args) => {
+  return html`
+    <style>
+      pl-icon.part-example::part(wrapper) {
+        color: blue;
+        background-color: lightgray;
+      }
+    </style>
+    <pl-icon
+      class="part-example"
+      ?decorative=${args.decorative}
+      iconName=${args.iconName}
+      ?interactive=${args.interactive}
+      label=${args.label}
     ></pl-icon>
   `;
 };
@@ -95,8 +103,23 @@ export const SizeStory: Story = {
   },
 };
 
+export const InteractiveStory: Story = {
+  render: DefaultExample,
+  args: {
+    ...DefaultStory.args,
+    interactive: true,
+  },
+};
+
 export const ColorStory: Story = {
   render: ColorExample,
+  args: {
+    ...DefaultStory.args,
+  },
+};
+
+export const PartStory: Story = {
+  render: PartExample,
   args: {
     ...DefaultStory.args,
   },
