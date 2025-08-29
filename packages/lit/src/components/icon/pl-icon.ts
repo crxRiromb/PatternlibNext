@@ -30,7 +30,7 @@ import iconStyles from './pl-icon.scss?raw';
  * - `pl-icon-click` — fired when the icon is activated in interactive mode.
  *
  * @csspart wrapper - The wrapper <div> around the SVG icon. Can be used to pierce the shadow DOM and override styling (color, size, etc.).
- * @fires pl-icon-click - Emitted when the icon is activated (click, Enter/Space) while interactive.
+ * @event pl-icon-click - Emitted when the icon is activated (click, Enter/Space) while interactive.
  */
 @customElement('pl-icon')
 export class PlIcon extends PlBase {
@@ -100,7 +100,10 @@ export class PlIcon extends PlBase {
     `;
   }
 
-  /** @internal */
+  /**
+   * @internal
+   * @fires pl-icon-click
+   */
   private handleClick = (event: MouseEvent) => {
     // Only emit when interactive (and thus not decorative)
     if (!this.interactive || this.decorative) return;
@@ -111,6 +114,7 @@ export class PlIcon extends PlBase {
   /**
    * @internal
    * Keyboard: Enter on keydown, Space on keyup (button-like behavior).
+   * @fires pl-icon-click
    */
   private handleKeyDown = (event: KeyboardEvent) => {
     if (!this.interactive || this.decorative) return;
@@ -127,7 +131,10 @@ export class PlIcon extends PlBase {
     }
   };
 
-  /** @internal */
+  /**
+   * @internal
+   * @fires pl-icon-click
+   */
   private handleKeyUp = (event: KeyboardEvent) => {
     if (!this.interactive || this.decorative) return;
 

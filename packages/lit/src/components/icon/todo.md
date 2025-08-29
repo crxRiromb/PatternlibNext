@@ -1,5 +1,5 @@
 # Todo
 
-- Fallack-Icon and style if icon not found
-- focus-visible style
+- Fallback icon if icon not found
+- Placeholder content while loading
 - Migrate React Wrapper to new Icon-Service
